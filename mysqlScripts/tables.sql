@@ -26,20 +26,20 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `abilities`
+-- Table structure for table `ABILITIES`
 --
 
-CREATE TABLE `abilities` (
-  `ability_id` int(11) NOT NULL,
-  `nombre_habilidad` varchar(100) NOT NULL,
-  `descripcion_actividad` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `ABILITIES` (
+  `ID_ABILITY` int(11) NOT NULL,
+  `NOMBRE_HABILIDAD` varchar(100) NOT NULL,
+  `DESCRIPCION_HABILIDAD` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `abilities`
+-- Dumping data for table `ABILITIES`
 --
 
-INSERT INTO `abilities` (`ability_id`, `nombre_habilidad`, `descripcion_actividad`) VALUES
+INSERT INTO `ABILITIES` (`ID_ABILITY`, `NOMBRE_HABILIDAD`, `DESCRIPCION_HABILIDAD`) VALUES
 (0, 'Cavar', 'Se cava mas rapido con una super pala'),
 (1, 'Picar', 'Pica mas rapido la tierra con un super pico'),
 (2, 'Recoger basura', 'Se puede recoger la basura mas rapido, con una super aspiradora'),
@@ -47,24 +47,57 @@ INSERT INTO `abilities` (`ability_id`, `nombre_habilidad`, `descripcion_activida
 (4, 'Barrer', 'Puede barrer con más agileza'),
 (5, 'Trapear', 'Puede trapear con más rapidez');
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `ADMINS`
+--
+CREATE TABLE `ADMINS` (
+`id_user` int(11)
+,`nombre_usuario` varchar(100)
+);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `communes`
+-- Stand-in structure for view `AGV_VALORATION`
+--
+CREATE TABLE `AGV_VALORATION` (
+`id_user` int(11)
+,`nombre_usuario` varchar(100)
+,`promedio` decimal(14,4)
+,`nro_tasks` bigint(21)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `AVAILABLE_USERS`
+--
+CREATE TABLE `AVAILABLE_USERS` (
+`ID_USER` int(11)
+,`NOMBRE_USUARIO` varchar(100)
+,`ID_ABILITY` int(11)
+,`NIVEL_ABILITY` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `COMMUNES`
 --
 
-CREATE TABLE `communes` (
-  `commune_id` int(11) NOT NULL,
-  `region_id` int(11) NOT NULL,
-  `nombre_comuna` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `COMMUNES` (
+  `ID_COMMUNE` int(11) NOT NULL,
+  `ID_REGION` int(11) NOT NULL,
+  `NOMBRE_COMUNA` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `communes`
+-- Dumping data for table `COMMUNES`
 --
 
-INSERT INTO `communes` (`commune_id`, `region_id`, `nombre_comuna`) VALUES
+INSERT INTO `COMMUNES` (`ID_COMMUNE`, `ID_REGION`, `NOMBRE_COMUNA`) VALUES
 (1, 14, 'ARICA'),
 (2, 0, 'IQUIQUE'),
 (3, 0, 'HUARA'),
@@ -412,20 +445,20 @@ INSERT INTO `communes` (`commune_id`, `region_id`, `nombre_comuna`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `docs`
+-- Table structure for table `DOCUMENTATIONS`
 --
 
-CREATE TABLE `docs` (
-  `doc_id` int(11) NOT NULL,
-  `nombre_doc` varchar(100) NOT NULL,
-  `url_doc` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `DOCUMENTATIONS` (
+  `ID_DOC` int(11) NOT NULL,
+  `NOMBRE_DOC` varchar(100) NOT NULL,
+  `URL_DOC` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `docs`
+-- Dumping data for table `DOCUMENTATIONS`
 --
 
-INSERT INTO `docs` (`doc_id`, `nombre_doc`, `url_doc`) VALUES
+INSERT INTO `DOCUMENTATIONS` (`ID_DOC`, `NOMBRE_DOC`, `URL_DOC`) VALUES
 (0, 'Documento 0', 'www.asd.com/doc0'),
 (1, 'Documento 1', 'www.asd.com/doc1'),
 (2, 'Documento 2', 'www.asd.com/doc2');
@@ -433,19 +466,19 @@ INSERT INTO `docs` (`doc_id`, `nombre_doc`, `url_doc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `emails`
+-- Table structure for table `EMAILS`
 --
 
-CREATE TABLE `emails` (
-  `email` varchar(100) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `EMAILS` (
+  `EMAIL` varchar(100) NOT NULL,
+  `ID_USER` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `emails`
+-- Dumping data for table `EMAILS`
 --
 
-INSERT INTO `emails` (`email`, `user_id`) VALUES
+INSERT INTO `EMAILS` (`EMAIL`, `ID_USER`) VALUES
 ('gonzalo.estay@usach.cl', 1),
 ('julio.vasquez@usach.cl', 2),
 ('dwdew@fefre.cl', 102),
@@ -457,25 +490,25 @@ INSERT INTO `emails` (`email`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `emergencies`
+-- Table structure for table `EMERGENCIES`
 --
 
-CREATE TABLE `emergencies` (
-  `emergency_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `commune_id` int(11) DEFAULT NULL,
-  `nombre_emergencia` varchar(20) NOT NULL,
-  `fecha_emergencia` datetime NOT NULL,
-  `gravedad_emergencia` int(11) NOT NULL,
-  `estado_emergencia` int(11) NOT NULL,
-  `descripcion_emergencia` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `EMERGENCIES` (
+  `ID_EMERGENCY` int(11) NOT NULL,
+  `ID_USER` int(11) DEFAULT NULL,
+  `ID_COMMUNE` int(11) DEFAULT NULL,
+  `NOMBRE` varchar(20) NOT NULL,
+  `FECHA_EMERGENCIA` datetime NOT NULL,
+  `GRAVEDAD` int(11) NOT NULL,
+  `ESTADO_EMERGENCIA` int(11) NOT NULL,
+  `DESCRIPCION_EMERGENCIA` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `emergencies`
+-- Dumping data for table `EMERGENCIES`
 --
 
-INSERT INTO `emergencies` (`emergency_id`, `user_id`, `commune_id`, `nombre_emergencia`, `fecha_emergencia`, `gravedad_emergencia`, `estado_emergencia`, `descripcion_emergencia`) VALUES
+INSERT INTO `EMERGENCIES` (`ID_EMERGENCY`, `ID_USER`, `ID_COMMUNE`, `NOMBRE`, `FECHA_EMERGENCIA`, `GRAVEDAD`, `ESTADO_EMERGENCIA`, `DESCRIPCION_EMERGENCIA`) VALUES
 (1, 110, 2, 'Terremoto en Iquique', '2020-01-23 10:18:39', 3, 1, 'Terremoto grado 7.\r\nMultiples derrumbes.\r\nEs necesario reconstruir varios edificios de la zona afectada.'),
 (3, 108, 2, 'Incendio en Iquique', '2017-06-23 12:06:49', 1, 1, 'Incendio afecta tres cuadras de la comuna.\r\nEs necesario realizar una limpieza en el área y reconstruir viviendas.'),
 (4, 109, 7, 'Derrumbe en Cañete', '2016-11-01 00:00:00', 3, 1, 'Derrumbe en la comuna de Cañete.\r\nAlgunas viviendas se ven afectadas, por lo que se necesita una limpieza en el área y ayuda a las familias afectadas.'),
@@ -484,46 +517,72 @@ INSERT INTO `emergencies` (`emergency_id`, `user_id`, `commune_id`, `nombre_emer
 -- --------------------------------------------------------
 
 --
--- Table structure for table `docs_tasks`
+-- Stand-in structure for view `ENCARGADOS_MISSION`
 --
-
-CREATE TABLE `docs_tasks` (
-  `doc_id` int(11) NOT NULL,
-  `task_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `ENCARGADOS_MISSION` (
+`id_emergency` int(11)
+,`nombre` varchar(20)
+,`id_user` int(11)
+,`nombre_usuario` varchar(100)
+,`id_mission` int(11)
+,`nombre_mision` varchar(100)
+);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messages`
+-- Stand-in structure for view `ENCARGADO_EMERGENCIA`
 --
-
-CREATE TABLE `messages` (
-  `message_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `contenido` text NOT NULL,
-  `fecha` datetime NOT NULL,
-  `asunto` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `ENCARGADO_EMERGENCIA` (
+`id_user` int(11)
+,`nombre_usuario` varchar(100)
+,`id_emergency` int(11)
+,`nombre` varchar(20)
+);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `missions`
+-- Table structure for table `GENERA`
 --
 
-CREATE TABLE `missions` (
-  `mission_id` int(11) NOT NULL,
-  `emergency_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `nombre_mision` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `GENERA` (
+  `ID_DOC` int(11) NOT NULL,
+  `ID_TASK` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `missions`
+-- Table structure for table `MESSAGES`
 --
 
-INSERT INTO `missions` (`mission_id`, `emergency_id`, `user_id`, `nombre_mision`) VALUES
+CREATE TABLE `MESSAGES` (
+  `ID_MESSAGE` int(11) NOT NULL,
+  `ID_USER` int(11) DEFAULT NULL,
+  `CONTENIDO` text NOT NULL,
+  `FECHA` datetime NOT NULL,
+  `ASUNTO` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `MISSIONS`
+--
+
+CREATE TABLE `MISSIONS` (
+  `ID_MISSION` int(11) NOT NULL,
+  `ID_EMERGENCY` int(11) NOT NULL,
+  `ID_USER` int(11) DEFAULT NULL,
+  `NOMBRE_MISION` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `MISSIONS`
+--
+
+INSERT INTO `MISSIONS` (`ID_MISSION`, `ID_EMERGENCY`, `ID_USER`, `NOMBRE_MISION`) VALUES
 (2, 1, 3, 'Limpieza del área'),
 (3, 1, 1, 'Ayuda a damnificados'),
 (4, 3, 102, 'Limpieza del área'),
@@ -532,21 +591,21 @@ INSERT INTO `missions` (`mission_id`, `emergency_id`, `user_id`, `nombre_mision`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifications`
+-- Table structure for table `NOTIFICATIONS`
 --
 
-CREATE TABLE `notifications` (
-  `notification_id` int(11) NOT NULL,
-  `url` text,
-  `contenido` text NOT NULL,
-  `fecha` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `NOTIFICATIONS` (
+  `ID_NOTIFICATION` int(11) NOT NULL,
+  `URL` text,
+  `CONTENIDO` text NOT NULL,
+  `FECHA` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `notifications`
+-- Dumping data for table `NOTIFICATIONS`
 --
 
-INSERT INTO `notifications` (`notification_id`, `url`, `contenido`, `fecha`) VALUES
+INSERT INTO `NOTIFICATIONS` (`ID_NOTIFICATION`, `URL`, `CONTENIDO`, `FECHA`) VALUES
 (0, 'https://www.jaidefinichon.com/', 'Buenos videos :D', '0001-01-01 00:00:00'),
 (1, 'https://www.google.cl/', 'Toda la wea que te imagines', '1701-10-27 05:40:26'),
 (2, 'https://www.youtube.com/', 'Videos de todo tipo, especialmente muchos de gatitos', '0973-06-14 03:43:12'),
@@ -556,19 +615,19 @@ INSERT INTO `notifications` (`notification_id`, `url`, `contenido`, `fecha`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phone_numbers`
+-- Table structure for table `PHONE_NUMBERS`
 --
 
-CREATE TABLE `phone_numbers` (
-  `phone` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `PHONE_NUMBERS` (
+  `PHONE` int(11) NOT NULL,
+  `ID_USER` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `phone_numbers`
+-- Dumping data for table `PHONE_NUMBERS`
 --
 
-INSERT INTO `phone_numbers` (`phone`, `user_id`) VALUES
+INSERT INTO `PHONE_NUMBERS` (`PHONE`, `ID_USER`) VALUES
 (0, 2),
 (11111111, 102),
 (88888888, 106),
@@ -579,62 +638,63 @@ INSERT INTO `phone_numbers` (`phone`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tasks_users`
+-- Table structure for table `REALIZA`
 --
 
-CREATE TABLE `tasks_users` (
-  `task_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `valoracion` int(11) NOT NULL,
-  `comentario_eval` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `REALIZA` (
+  `ID_EVALUATION` int(11) NOT NULL,
+  `ID_TASK` int(11) NOT NULL,
+  `ID_USER` int(11) NOT NULL,
+  `VALORACION` int(11) NOT NULL,
+  `COMENTARIO_EVAL` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messages_users`
+-- Table structure for table `RECIBE`
 --
 
-CREATE TABLE `messages_users` (
-  `message_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `RECIBE` (
+  `ID_MESSAGE` int(11) NOT NULL,
+  `ID_USER` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifications_users`
+-- Table structure for table `RECIBE_NOTIFICACION`
 --
 
-CREATE TABLE `notifications_users` (
-  `user_id` int(11) NOT NULL,
-  `notification_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `RECIBE_NOTIFICACION` (
+  `ID_USER` int(11) NOT NULL,
+  `ID_NOTIFICATION` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `notifications_users`
+-- Dumping data for table `RECIBE_NOTIFICACION`
 --
 
-INSERT INTO `notifications_users` (`user_id`, `notification_id`) VALUES
+INSERT INTO `RECIBE_NOTIFICACION` (`ID_USER`, `ID_NOTIFICATION`) VALUES
 (2, 0),
 (2, 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `regions`
+-- Table structure for table `REGIONS`
 --
 
-CREATE TABLE `regions` (
-  `region_id` int(11) NOT NULL,
-  `nombre_region` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `REGIONS` (
+  `ID_REGION` int(11) NOT NULL,
+  `NOMBRE_REGION` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `regions`
+-- Dumping data for table `REGIONS`
 --
 
-INSERT INTO `regions` (`region_id`, `nombre_region`) VALUES
+INSERT INTO `REGIONS` (`ID_REGION`, `NOMBRE_REGION`) VALUES
 (0, 'Arica y parinacota'),
 (1, 'Tarapacá'),
 (2, 'Antofagasta'),
@@ -654,83 +714,134 @@ INSERT INTO `regions` (`region_id`, `nombre_region`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `requests`
+-- Stand-in structure for view `REGION_COMMUNE_EMERGENCY_HISTORY`
 --
-
-CREATE TABLE `requests` (
-  `request_id` int(11) NOT NULL,
-  `task_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `nombre_solicitud` varchar(100) DEFAULT NULL,
-  `estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
---
--- Table structure for table `abilities_tasks`
---
-
-CREATE TABLE `abilities_tasks` (
-  `ability_id` int(11) NOT NULL,
-  `task_id` int(11) NOT NULL,
-  `nivel_requerido` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `REGION_COMMUNE_EMERGENCY_HISTORY` (
+`ID_REGION` int(11)
+,`NOMBRE_REGION` varchar(100)
+,`ID_COMMUNE` int(11)
+,`NOMBRE_COMUNA` varchar(100)
+,`nombre` varchar(20)
+,`estado_emergencia` int(11)
+,`fecha_emergencia` datetime
+);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tasks`
+-- Table structure for table `REQUESTS`
 --
 
-CREATE TABLE `tasks` (
-  `task_id` int(11) NOT NULL,
-  `mission_id` int(11) NOT NULL,
-  `nombre_tarea` varchar(100) DEFAULT NULL,
-  `descripcion_tarea` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `REQUESTS` (
+  `ID_APPLICATION` int(11) NOT NULL,
+  `ID_TASK` int(11) NOT NULL,
+  `ID_USER` int(11) NOT NULL,
+  `NOMBRE_SOLICITUD` varchar(100) DEFAULT NULL,
+  `ESTADO` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tasks`
+-- Triggers `REQUESTS`
+--
+DELIMITER $$
+CREATE TRIGGER `notificacion_request` AFTER INSERT ON `REQUESTS` FOR EACH ROW BEGIN 
+
+SET @id_user_2 = (SELECT NEW.id_user);
+SET @cont_notif = (SELECT NEW.nombre_solicitud);
+
+INSERT INTO NOTIFICATIONS(URL, CONTENIDO, FECHA)
+SELECT '', @cont_notif, NOW();
+
+SET @id_notificacion_2 = 
+( SELECT ID_NOTIFICATION 
+FROM NOTIFICATIONS
+ORDER BY ID_NOTIFICATION DESC 
+LIMIT 1);
+
+INSERT INTO RECIBE_NOTIFICACION(ID_USER, ID_NOTIFICATION)
+SELECT @id_user_2, @id_notificacion_2;
+
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `REQUIERE`
 --
 
-INSERT INTO `tasks` (`task_id`, `mission_id`, `nombre_tarea`, `descripcion_tarea`) VALUES
+CREATE TABLE `REQUIERE` (
+  `ID_ABILITY` int(11) NOT NULL,
+  `ID_TASK` int(11) NOT NULL,
+  `nivel_ability` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `TASKS`
+--
+
+CREATE TABLE `TASKS` (
+  `ID_TASK` int(11) NOT NULL,
+  `ID_MISSION` int(11) NOT NULL,
+  `NOMBRE_TAREA` varchar(100) DEFAULT NULL,
+  `DESCRIPCION_TAREA` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `TASKS`
+--
+
+INSERT INTO `TASKS` (`ID_TASK`, `ID_MISSION`, `NOMBRE_TAREA`, `DESCRIPCION_TAREA`) VALUES
 (1, 2, 'Remover escombros', 'Se deben remover todos los escombros del área que representen un riesgo para la población del área o que obstruyan la reconstrucción de la zona afectada.'),
 (2, 3, 'Repartir alimentos', 'Se debe entregar una caja de alimentos por familia la que ha sido preparada previamente.'),
 (3, 4, 'Remover escombros', 'Se deben remover todos los escombros del área que representen un riesgo para la población del área o que obstruyan la reconstrucción de la zona afectada.'),
 (4, 5, 'Estabilizar el terreno', 'Se debe nivelar el suelo de manera que posteriormente se pueda construir el radier de la casa.');
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `TASK_DOC_VIEW`
+--
+CREATE TABLE `TASK_DOC_VIEW` (
+`ID_TASK` int(11)
+,`id_doc` int(11)
+,`nombre_doc` varchar(100)
+,`url_doc` varchar(100)
+);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `problems`
+-- Table structure for table `TASK_PROBLEMS`
 --
 
-CREATE TABLE `problems` (
-  `problem_id` int(11) NOT NULL,
-  `task_id` int(11) NOT NULL,
-  `descripcion_problema` text,
-  `gravedad_problema` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `TASK_PROBLEMS` (
+  `ID_PROBLEM` int(11) NOT NULL,
+  `ID_TASK` int(11) NOT NULL,
+  `PROBLEM_DESCRIPTION` text,
+  `PROBLEM_GRAVITY` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `abilities_users`
+-- Table structure for table `TIENE`
 --
 
-CREATE TABLE `abilities_users` (
-  `user_id` int(11) NOT NULL,
-  `ability_id` int(11) NOT NULL,
-  `nivel_requerido` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `TIENE` (
+  `ID_USER` int(11) NOT NULL,
+  `ID_ABILITY` int(11) NOT NULL,
+  `NIVEL_ABILITY` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `abilities_users`
+-- Dumping data for table `TIENE`
 --
 
-INSERT INTO `abilities_users` (`user_id`, `ability_id`, `nivel_requerido`) VALUES
+INSERT INTO `TIENE` (`ID_USER`, `ID_ABILITY`, `NIVEL_ABILITY`) VALUES
 (1, 3, 2),
 (2, 1, 0),
 (3, 3, 3),
@@ -744,23 +855,23 @@ INSERT INTO `abilities_users` (`user_id`, `ability_id`, `nivel_requerido`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `USERS`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `commune_id` int(11) NOT NULL,
-  `nombre_usuario` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `disponibilidad` tinyint(1) NOT NULL,
+CREATE TABLE `USERS` (
+  `ID_USER` int(11) NOT NULL,
+  `ID_COMMUNE` int(11) NOT NULL,
+  `NOMBRE_USUARIO` varchar(100) NOT NULL,
+  `PASSWORD` varchar(255) NOT NULL,
+  `DISPONIBILIDAD` tinyint(1) NOT NULL,
   `ADMIN` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `USERS`
 --
 
-INSERT INTO `users` (`user_id`, `commune_id`, `nombre_usuario`, `password`, `disponibilidad`, `ADMIN`) VALUES
+INSERT INTO `USERS` (`ID_USER`, `ID_COMMUNE`, `NOMBRE_USUARIO`, `PASSWORD`, `DISPONIBILIDAD`, `ADMIN`) VALUES
 (1, 2, 'Ichigo', 'ichigo', 2, 0),
 (2, 1, 'Richard', 'richard', 0, 1),
 (3, 7, 'shrek', 'getouttamyswamp', 1, 0),
@@ -770,316 +881,460 @@ INSERT INTO `users` (`user_id`, `commune_id`, `nombre_usuario`, `password`, `dis
 (109, 201, 'Michael Jackson', '123asd', 1, 1),
 (110, 13, 'Steve Jobs', 'passtest', 1, 1);
 
+--
+-- Triggers `USERS`
+--
+DELIMITER $$
+CREATE TRIGGER `notificacion_delete_user` BEFORE DELETE ON `USERS` FOR EACH ROW BEGIN
+
+IF OLD.ADMIN=1 THEN
+
+SET @bool = 
+(SELECT COUNT(*)
+FROM ENCARGADO_EMERGENCIA
+WHERE ENCARGADO_EMERGENCIA.id_user=OLD.id_user);
+
+IF @bool>0 THEN
+
+INSERT INTO NOTIFICATIONS(URL, CONTENIDO, FECHA) 
+SELECT '', 'Se necesita un administrador de emergencia', NOW();
+
+SET @id_notificacion_2 = 
+( SELECT ID_NOTIFICATION 
+FROM NOTIFICATIONS
+ORDER BY ID_NOTIFICATION DESC 
+LIMIT 1);
+
+INSERT INTO RECIBE_NOTIFICACION(ID_USER, ID_NOTIFICATION) SELECT ID_USER, @id_notificacion_2 FROM ADMINS;
+
+END IF;
+
+ELSE 
+
+SET @bool = 
+(SELECT COUNT(*)
+FROM ENCARGADOS_MISSION
+WHERE ENCARGADOS_MISSION.id_user=OLD.id_user);
+
+IF @bool>0 THEN
+
+INSERT INTO NOTIFICATIONS(URL, CONTENIDO, FECHA) 
+SELECT '', 'Se necesita un encargado de mision', NOW();
+
+SET @id_notificacion_2 = 
+( SELECT ID_NOTIFICATION 
+FROM NOTIFICATIONS
+ORDER BY ID_NOTIFICATION DESC 
+LIMIT 1);
+
+INSERT INTO RECIBE_NOTIFICACION(ID_USER, ID_NOTIFICATION) SELECT DISTINCT(ID_USER), @id_notificacion_2 FROM ENCARGADOS_MISSION;
+
+END IF;
+
+END IF;
+
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `USER_MISSION_HISTORY`
+--
+CREATE TABLE `USER_MISSION_HISTORY` (
+`ID_USER` int(11)
+,`nombre_usuario` varchar(100)
+,`nombre_mision` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `ADMINS`
+--
+DROP TABLE IF EXISTS `ADMINS`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`gerardo`@`%` SQL SECURITY DEFINER VIEW `ADMINS`  AS  select `USERS`.`ID_USER` AS `id_user`,`USERS`.`NOMBRE_USUARIO` AS `nombre_usuario` from `USERS` where (`USERS`.`ADMIN` = 1) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `AGV_VALORATION`
+--
+DROP TABLE IF EXISTS `AGV_VALORATION`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`gerardo`@`%` SQL SECURITY DEFINER VIEW `AGV_VALORATION`  AS  select `USERS`.`ID_USER` AS `id_user`,`USERS`.`NOMBRE_USUARIO` AS `nombre_usuario`,`PROM_TABLE`.`PROMEDIO` AS `promedio`,`PROM_TABLE`.`NRO_TASKs` AS `nro_tasks` from (`USERS` join (select `REALIZA`.`ID_USER` AS `id_user`,avg(`REALIZA`.`VALORACION`) AS `PROMEDIO`,count(0) AS `NRO_TASKs` from `REALIZA` group by `REALIZA`.`ID_USER`) `PROM_TABLE` on((`USERS`.`ID_USER` = `PROM_TABLE`.`id_user`))) order by `PROM_TABLE`.`PROMEDIO` desc ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `AVAILABLE_USERS`
+--
+DROP TABLE IF EXISTS `AVAILABLE_USERS`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`gonzalo`@`%` SQL SECURITY DEFINER VIEW `AVAILABLE_USERS`  AS  select `USERS`.`ID_USER` AS `ID_USER`,`USERS`.`NOMBRE_USUARIO` AS `NOMBRE_USUARIO`,`TIENE`.`ID_ABILITY` AS `ID_ABILITY`,`TIENE`.`NIVEL_ABILITY` AS `NIVEL_ABILITY` from (`USERS` join `TIENE`) where ((`USERS`.`DISPONIBILIDAD` = 1) and (`TIENE`.`ID_USER` = `USERS`.`ID_USER`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `ENCARGADOS_MISSION`
+--
+DROP TABLE IF EXISTS `ENCARGADOS_MISSION`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`gerardo`@`%` SQL SECURITY DEFINER VIEW `ENCARGADOS_MISSION`  AS  select `MISSIONS`.`ID_EMERGENCY` AS `id_emergency`,`EMERGENCIES`.`NOMBRE` AS `nombre`,`MISSIONS`.`ID_USER` AS `id_user`,`USERS`.`NOMBRE_USUARIO` AS `nombre_usuario`,`MISSIONS`.`ID_MISSION` AS `id_mission`,`MISSIONS`.`NOMBRE_MISION` AS `nombre_mision` from ((`USERS` join `MISSIONS` on((`USERS`.`ID_USER` = `MISSIONS`.`ID_USER`))) join `EMERGENCIES` on((`MISSIONS`.`ID_EMERGENCY` = `EMERGENCIES`.`ID_EMERGENCY`))) order by `MISSIONS`.`ID_EMERGENCY`,`MISSIONS`.`ID_USER`,`MISSIONS`.`ID_MISSION` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `ENCARGADO_EMERGENCIA`
+--
+DROP TABLE IF EXISTS `ENCARGADO_EMERGENCIA`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`gerardo`@`%` SQL SECURITY DEFINER VIEW `ENCARGADO_EMERGENCIA`  AS  select `USERS`.`ID_USER` AS `id_user`,`USERS`.`NOMBRE_USUARIO` AS `nombre_usuario`,`EMERGENCIES`.`ID_EMERGENCY` AS `id_emergency`,`EMERGENCIES`.`NOMBRE` AS `nombre` from (`USERS` join `EMERGENCIES` on((`USERS`.`ID_USER` = `EMERGENCIES`.`ID_USER`))) order by `USERS`.`ID_USER` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `REGION_COMMUNE_EMERGENCY_HISTORY`
+--
+DROP TABLE IF EXISTS `REGION_COMMUNE_EMERGENCY_HISTORY`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`gerardo`@`%` SQL SECURITY DEFINER VIEW `REGION_COMMUNE_EMERGENCY_HISTORY`  AS  select `REGIONS`.`ID_REGION` AS `ID_REGION`,`REGIONS`.`NOMBRE_REGION` AS `NOMBRE_REGION`,`COMMUNES`.`ID_COMMUNE` AS `ID_COMMUNE`,`COMMUNES`.`NOMBRE_COMUNA` AS `NOMBRE_COMUNA`,`EMERGENCIES`.`NOMBRE` AS `nombre`,`EMERGENCIES`.`ESTADO_EMERGENCIA` AS `estado_emergencia`,`EMERGENCIES`.`FECHA_EMERGENCIA` AS `fecha_emergencia` from ((`REGIONS` join `COMMUNES` on((`REGIONS`.`ID_REGION` = `COMMUNES`.`ID_REGION`))) join `EMERGENCIES` on((`COMMUNES`.`ID_COMMUNE` = `EMERGENCIES`.`ID_COMMUNE`))) order by `REGIONS`.`ID_REGION`,`COMMUNES`.`ID_COMMUNE`,`EMERGENCIES`.`FECHA_EMERGENCIA` desc ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `TASK_DOC_VIEW`
+--
+DROP TABLE IF EXISTS `TASK_DOC_VIEW`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`gerardo`@`%` SQL SECURITY DEFINER VIEW `TASK_DOC_VIEW`  AS  select `GENERA`.`ID_TASK` AS `ID_TASK`,`DOCUMENTATIONS`.`ID_DOC` AS `id_doc`,`DOCUMENTATIONS`.`NOMBRE_DOC` AS `nombre_doc`,`DOCUMENTATIONS`.`URL_DOC` AS `url_doc` from (`DOCUMENTATIONS` join `GENERA` on((`DOCUMENTATIONS`.`ID_DOC` = `GENERA`.`ID_DOC`))) order by `GENERA`.`ID_TASK`,`DOCUMENTATIONS`.`NOMBRE_DOC` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `USER_MISSION_HISTORY`
+--
+DROP TABLE IF EXISTS `USER_MISSION_HISTORY`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`gerardo`@`%` SQL SECURITY DEFINER VIEW `USER_MISSION_HISTORY`  AS  select `USERS`.`ID_USER` AS `ID_USER`,`USERS`.`NOMBRE_USUARIO` AS `nombre_usuario`,`MISSIONS`.`NOMBRE_MISION` AS `nombre_mision` from (((`REALIZA` join `USERS` on((`REALIZA`.`ID_USER` = `USERS`.`ID_USER`))) join `TASKS` on((`REALIZA`.`ID_TASK` = `TASKS`.`ID_TASK`))) join `MISSIONS` on((`TASKS`.`ID_MISSION` = `MISSIONS`.`ID_MISSION`))) order by `USERS`.`ID_USER`,`TASKS`.`ID_TASK` ;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `abilities`
+-- Indexes for table `ABILITIES`
 --
-ALTER TABLE `abilities`
-  ADD PRIMARY KEY (`ability_id`);
+ALTER TABLE `ABILITIES`
+  ADD PRIMARY KEY (`ID_ABILITY`);
 
 --
--- Indexes for table `communes`
+-- Indexes for table `COMMUNES`
 --
-ALTER TABLE `communes`
-  ADD PRIMARY KEY (`commune_id`),
-  ADD KEY `FK_RELATIONSHIP_12` (`region_id`);
+ALTER TABLE `COMMUNES`
+  ADD PRIMARY KEY (`ID_COMMUNE`),
+  ADD KEY `FK_RELATIONSHIP_12` (`ID_REGION`);
 
 --
--- Indexes for table `docs`
+-- Indexes for table `DOCUMENTATIONS`
 --
-ALTER TABLE `docs`
-  ADD PRIMARY KEY (`doc_id`);
+ALTER TABLE `DOCUMENTATIONS`
+  ADD PRIMARY KEY (`ID_DOC`);
 
 --
--- Indexes for table `emails`
+-- Indexes for table `EMAILS`
 --
-ALTER TABLE `emails`
-  ADD PRIMARY KEY (`email`),
-  ADD KEY `FK_POSEE2` (`user_id`);
+ALTER TABLE `EMAILS`
+  ADD PRIMARY KEY (`EMAIL`),
+  ADD KEY `FK_POSEE2` (`ID_USER`);
 
 --
--- Indexes for table `emergencies`
+-- Indexes for table `EMERGENCIES`
 --
-ALTER TABLE `emergencies`
-  ADD PRIMARY KEY (`emergency_id`),
-  ADD KEY `FK_UBICADO` (`commune_id`),
-  ADD KEY `FK_SE_ENCARGA__ENCARGADO_DE_EMERGENCIA_` (`user_id`);
+ALTER TABLE `EMERGENCIES`
+  ADD PRIMARY KEY (`ID_EMERGENCY`),
+  ADD KEY `FK_UBICADO` (`ID_COMMUNE`),
+  ADD KEY `FK_SE_ENCARGA__ENCARGADO_DE_EMERGENCIA_` (`ID_USER`);
 
 --
 -- Indexes for table `GENERA`
 --
-ALTER TABLE `docs_tasks`
-  ADD PRIMARY KEY (`doc_id`,`task_id`),
-  ADD KEY `FK_GENERA2` (`task_id`);
+ALTER TABLE `GENERA`
+  ADD PRIMARY KEY (`ID_DOC`,`ID_TASK`),
+  ADD KEY `FK_GENERA2` (`ID_TASK`);
 
 --
--- Indexes for table `messages`
+-- Indexes for table `MESSAGES`
 --
-ALTER TABLE `messages`
-  ADD PRIMARY KEY (`message_id`),
-  ADD KEY `FK_RELATIONSHIP_19` (`user_id`);
+ALTER TABLE `MESSAGES`
+  ADD PRIMARY KEY (`ID_MESSAGE`),
+  ADD KEY `FK_RELATIONSHIP_19` (`ID_USER`);
 
 --
--- Indexes for table `missions`
+-- Indexes for table `MISSIONS`
 --
-ALTER TABLE `missions`
-  ADD PRIMARY KEY (`mission_id`),
-  ADD KEY `FK_RELATIONSHIP_1` (`emergency_id`),
-  ADD KEY `FK_TRABAJAN` (`user_id`);
+ALTER TABLE `MISSIONS`
+  ADD PRIMARY KEY (`ID_MISSION`),
+  ADD KEY `FK_RELATIONSHIP_1` (`ID_EMERGENCY`),
+  ADD KEY `FK_TRABAJAN` (`ID_USER`);
 
 --
--- Indexes for table `notifications`
+-- Indexes for table `NOTIFICATIONS`
 --
-ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`notification_id`);
+ALTER TABLE `NOTIFICATIONS`
+  ADD PRIMARY KEY (`ID_NOTIFICATION`);
 
 --
--- Indexes for table `phone_numbers`
+-- Indexes for table `PHONE_NUMBERS`
 --
-ALTER TABLE `phone_numbers`
-  ADD PRIMARY KEY (`phone`),
-  ADD KEY `FK_POSEE` (`user_id`);
+ALTER TABLE `PHONE_NUMBERS`
+  ADD PRIMARY KEY (`PHONE`),
+  ADD KEY `FK_POSEE` (`ID_USER`);
 
 --
--- Indexes for table `tasks_users`
+-- Indexes for table `REALIZA`
 --
-ALTER TABLE `tasks_users`
-  ADD KEY `FK_RELATIONSHIP_22` (`task_id`),
-  ADD KEY `FK_RELATIONSHIP_23` (`user_id`);
+ALTER TABLE `REALIZA`
+  ADD PRIMARY KEY (`ID_EVALUATION`),
+  ADD KEY `FK_RELATIONSHIP_22` (`ID_TASK`),
+  ADD KEY `FK_RELATIONSHIP_23` (`ID_USER`);
 
 --
 -- Indexes for table `RECIBE`
 --
-ALTER TABLE `messages_users`
-  ADD PRIMARY KEY (`message_id`,`user_id`),
-  ADD KEY `FK_RELATIONSHIP_21` (`user_id`);
+ALTER TABLE `RECIBE`
+  ADD PRIMARY KEY (`ID_MESSAGE`,`ID_USER`),
+  ADD KEY `FK_RELATIONSHIP_21` (`ID_USER`);
 
 --
--- Indexes for table `notifications_users`
+-- Indexes for table `RECIBE_NOTIFICACION`
 --
-ALTER TABLE `notifications_users`
-  ADD PRIMARY KEY (`user_id`,`notification_id`),
-  ADD KEY `FK_notifications_users2` (`notification_id`);
+ALTER TABLE `RECIBE_NOTIFICACION`
+  ADD PRIMARY KEY (`ID_USER`,`ID_NOTIFICATION`),
+  ADD KEY `FK_RECIBE_NOTIFICACION2` (`ID_NOTIFICATION`);
 
 --
--- Indexes for table `regions`
+-- Indexes for table `REGIONS`
 --
-ALTER TABLE `regions`
-  ADD PRIMARY KEY (`region_id`);
+ALTER TABLE `REGIONS`
+  ADD PRIMARY KEY (`ID_REGION`);
 
 --
--- Indexes for table `requests`
+-- Indexes for table `REQUESTS`
 --
-ALTER TABLE `requests`
-  ADD PRIMARY KEY (`request_id`),
-  ADD KEY `FK_RECIBE` (`user_id`),
-  ADD KEY `FK_RELATIONSHIP_8` (`task_id`);
+ALTER TABLE `REQUESTS`
+  ADD PRIMARY KEY (`ID_APPLICATION`),
+  ADD KEY `FK_RECIBE` (`ID_USER`),
+  ADD KEY `FK_RELATIONSHIP_8` (`ID_TASK`);
 
 --
--- Indexes for table `abilities_tasks`
+-- Indexes for table `REQUIERE`
 --
-ALTER TABLE `abilities_tasks`
-  ADD PRIMARY KEY (`ability_id`,`task_id`),
-  ADD KEY `FK_RELATIONSHIP_5` (`task_id`);
+ALTER TABLE `REQUIERE`
+  ADD PRIMARY KEY (`ID_ABILITY`,`ID_TASK`),
+  ADD KEY `FK_RELATIONSHIP_5` (`ID_TASK`);
 
 --
--- Indexes for table `tasks`
+-- Indexes for table `TASKS`
 --
-ALTER TABLE `tasks`
-  ADD PRIMARY KEY (`task_id`),
-  ADD KEY `FK_abilities_users` (`mission_id`);
+ALTER TABLE `TASKS`
+  ADD PRIMARY KEY (`ID_TASK`),
+  ADD KEY `FK_TIENE` (`ID_MISSION`);
 
 --
--- Indexes for table `problems`
+-- Indexes for table `TASK_PROBLEMS`
 --
-ALTER TABLE `problems`
-  ADD PRIMARY KEY (`problem_id`),
-  ADD KEY `FK_SURGE` (`task_id`);
+ALTER TABLE `TASK_PROBLEMS`
+  ADD PRIMARY KEY (`ID_PROBLEM`),
+  ADD KEY `FK_SURGE` (`ID_TASK`);
 
 --
--- Indexes for table `abilities_users`
+-- Indexes for table `TIENE`
 --
-ALTER TABLE `abilities_users`
-  ADD PRIMARY KEY (`user_id`,`ability_id`),
-  ADD KEY `FK_RELATIONSHIP_6` (`ability_id`);
+ALTER TABLE `TIENE`
+  ADD PRIMARY KEY (`ID_USER`,`ID_ABILITY`),
+  ADD KEY `FK_RELATIONSHIP_6` (`ID_ABILITY`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `USERS`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `FK_RELATIONSHIP_7` (`commune_id`);
+ALTER TABLE `USERS`
+  ADD PRIMARY KEY (`ID_USER`),
+  ADD KEY `FK_RELATIONSHIP_7` (`ID_COMMUNE`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `abilities`
+-- AUTO_INCREMENT for table `ABILITIES`
 --
-ALTER TABLE `abilities`
-  MODIFY `ability_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `ABILITIES`
+  MODIFY `ID_ABILITY` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `communes`
+-- AUTO_INCREMENT for table `COMMUNES`
 --
-ALTER TABLE `communes`
-  MODIFY `commune_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
+ALTER TABLE `COMMUNES`
+  MODIFY `ID_COMMUNE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
 --
--- AUTO_INCREMENT for table `docs`
+-- AUTO_INCREMENT for table `DOCUMENTATIONS`
 --
-ALTER TABLE `docs`
-  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `DOCUMENTATIONS`
+  MODIFY `ID_DOC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `emergencies`
+-- AUTO_INCREMENT for table `EMERGENCIES`
 --
-ALTER TABLE `emergencies`
-  MODIFY `emergency_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `EMERGENCIES`
+  MODIFY `ID_EMERGENCY` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `messages`
+-- AUTO_INCREMENT for table `MESSAGES`
 --
-ALTER TABLE `messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `MESSAGES`
+  MODIFY `ID_MESSAGE` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `missions`
+-- AUTO_INCREMENT for table `MISSIONS`
 --
-ALTER TABLE `missions`
-  MODIFY `mission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `MISSIONS`
+  MODIFY `ID_MISSION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `notifications`
+-- AUTO_INCREMENT for table `NOTIFICATIONS`
 --
-ALTER TABLE `notifications`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `NOTIFICATIONS`
+  MODIFY `ID_NOTIFICATION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `regions`
+-- AUTO_INCREMENT for table `REALIZA`
 --
-ALTER TABLE `regions`
-  MODIFY `region_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+ALTER TABLE `REALIZA`
+  MODIFY `ID_EVALUATION` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `requests`
+-- AUTO_INCREMENT for table `REGIONS`
 --
-ALTER TABLE `requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `REGIONS`
+  MODIFY `ID_REGION` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
--- AUTO_INCREMENT for table `tasks`
+-- AUTO_INCREMENT for table `REQUESTS`
 --
-ALTER TABLE `tasks`
-  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `REQUESTS`
+  MODIFY `ID_APPLICATION` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `problems`
+-- AUTO_INCREMENT for table `TASKS`
 --
-ALTER TABLE `problems`
-  MODIFY `problem_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `TASKS`
+  MODIFY `ID_TASK` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `TASK_PROBLEMS`
 --
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+ALTER TABLE `TASK_PROBLEMS`
+  MODIFY `ID_PROBLEM` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `USERS`
+--
+ALTER TABLE `USERS`
+  MODIFY `ID_USER` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `communes`
+-- Constraints for table `COMMUNES`
 --
-ALTER TABLE `communes`
-  ADD CONSTRAINT `FK_RELATIONSHIP_12` FOREIGN KEY (`region_id`) REFERENCES `regions` (`region_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `COMMUNES`
+  ADD CONSTRAINT `FK_RELATIONSHIP_12` FOREIGN KEY (`ID_REGION`) REFERENCES `REGIONS` (`ID_REGION`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `emails`
+-- Constraints for table `EMAILS`
 --
-ALTER TABLE `emails`
-  ADD CONSTRAINT `FK_POSEE2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `EMAILS`
+  ADD CONSTRAINT `FK_POSEE2` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `emergencies`
+-- Constraints for table `EMERGENCIES`
 --
-ALTER TABLE `emergencies`
-  ADD CONSTRAINT `FK_SE_ENCARGA__ENCARGADO_DE_EMERGENCIA_` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_UBICADO` FOREIGN KEY (`commune_id`) REFERENCES `communes` (`commune_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `EMERGENCIES`
+  ADD CONSTRAINT `FK_SE_ENCARGA__ENCARGADO_DE_EMERGENCIA_` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID_USER`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_UBICADO` FOREIGN KEY (`ID_COMMUNE`) REFERENCES `COMMUNES` (`ID_COMMUNE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `GENERA`
 --
-ALTER TABLE `docs_tasks`
-  ADD CONSTRAINT `FK_GENERA` FOREIGN KEY (`doc_id`) REFERENCES `docs` (`doc_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_GENERA2` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`task_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `GENERA`
+  ADD CONSTRAINT `FK_GENERA` FOREIGN KEY (`ID_DOC`) REFERENCES `DOCUMENTATIONS` (`ID_DOC`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_GENERA2` FOREIGN KEY (`ID_TASK`) REFERENCES `TASKS` (`ID_TASK`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `missions`
+-- Constraints for table `MISSIONS`
 --
-ALTER TABLE `missions`
-  ADD CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`emergency_id`) REFERENCES `emergencies` (`emergency_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_TRABAJAN` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `MISSIONS`
+  ADD CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`ID_EMERGENCY`) REFERENCES `EMERGENCIES` (`ID_EMERGENCY`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_TRABAJAN` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `phone_numbers`
+-- Constraints for table `PHONE_NUMBERS`
 --
-ALTER TABLE `phone_numbers`
-  ADD CONSTRAINT `FK_POSEE` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `PHONE_NUMBERS`
+  ADD CONSTRAINT `FK_POSEE` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tasks_users`
+-- Constraints for table `REALIZA`
 --
-ALTER TABLE `tasks_users`
-  ADD CONSTRAINT `FK_RELATIONSHIP_22` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`task_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_RELATIONSHIP_23` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `REALIZA`
+  ADD CONSTRAINT `FK_RELATIONSHIP_22` FOREIGN KEY (`ID_TASK`) REFERENCES `TASKS` (`ID_TASK`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_RELATIONSHIP_23` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `RECIBE`
 --
-ALTER TABLE `messages_users`
-  ADD CONSTRAINT `FK_RELATIONSHIP_20` FOREIGN KEY (`message_id`) REFERENCES `messages` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_RELATIONSHIP_21` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `RECIBE`
+  ADD CONSTRAINT `FK_RELATIONSHIP_20` FOREIGN KEY (`ID_MESSAGE`) REFERENCES `MESSAGES` (`ID_MESSAGE`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_RELATIONSHIP_21` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `notifications_users`
+-- Constraints for table `RECIBE_NOTIFICACION`
 --
-ALTER TABLE `notifications_users`
-  ADD CONSTRAINT `FK_notifications_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_notifications_users2` FOREIGN KEY (`notification_id`) REFERENCES `notifications` (`notification_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `RECIBE_NOTIFICACION`
+  ADD CONSTRAINT `FK_RECIBE_NOTIFICACION` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_RECIBE_NOTIFICACION2` FOREIGN KEY (`ID_NOTIFICATION`) REFERENCES `NOTIFICATIONS` (`ID_NOTIFICATION`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `requests`
+-- Constraints for table `REQUESTS`
 --
-ALTER TABLE `requests`
-  ADD CONSTRAINT `FK_RECIBE` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_RELATIONSHIP_8` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`task_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `REQUESTS`
+  ADD CONSTRAINT `FK_RECIBE` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_RELATIONSHIP_8` FOREIGN KEY (`ID_TASK`) REFERENCES `TASKS` (`ID_TASK`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `abilities_tasks`
+-- Constraints for table `REQUIERE`
 --
-ALTER TABLE `abilities_tasks`
-  ADD CONSTRAINT `FK_RELATIONSHIP_3` FOREIGN KEY (`ability_id`) REFERENCES `abilities` (`ability_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_RELATIONSHIP_5` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`task_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `REQUIERE`
+  ADD CONSTRAINT `FK_RELATIONSHIP_3` FOREIGN KEY (`ID_ABILITY`) REFERENCES `ABILITIES` (`ID_ABILITY`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_RELATIONSHIP_5` FOREIGN KEY (`ID_TASK`) REFERENCES `TASKS` (`ID_TASK`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tasks`
+-- Constraints for table `TASKS`
 --
-ALTER TABLE `tasks`
-  ADD CONSTRAINT `FK_abilities_users` FOREIGN KEY (`mission_id`) REFERENCES `missions` (`mission_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `TASKS`
+  ADD CONSTRAINT `FK_TIENE` FOREIGN KEY (`ID_MISSION`) REFERENCES `MISSIONS` (`ID_MISSION`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `problems`
+-- Constraints for table `TASK_PROBLEMS`
 --
-ALTER TABLE `problems`
-  ADD CONSTRAINT `FK_SURGE` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`task_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `TASK_PROBLEMS`
+  ADD CONSTRAINT `FK_SURGE` FOREIGN KEY (`ID_TASK`) REFERENCES `TASKS` (`ID_TASK`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `abilities_users`
+-- Constraints for table `TIENE`
 --
-ALTER TABLE `abilities_users`
-  ADD CONSTRAINT `FK_RELATIONSHIP_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_RELATIONSHIP_6` FOREIGN KEY (`ability_id`) REFERENCES `abilities` (`ability_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `TIENE`
+  ADD CONSTRAINT `FK_RELATIONSHIP_4` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_RELATIONSHIP_6` FOREIGN KEY (`ID_ABILITY`) REFERENCES `ABILITIES` (`ID_ABILITY`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `users`
+-- Constraints for table `USERS`
 --
-ALTER TABLE `users`
-  ADD CONSTRAINT `FK_RELATIONSHIP_7` FOREIGN KEY (`commune_id`) REFERENCES `communes` (`commune_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `USERS`
+  ADD CONSTRAINT `FK_RELATIONSHIP_7` FOREIGN KEY (`ID_COMMUNE`) REFERENCES `COMMUNES` (`ID_COMMUNE`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
