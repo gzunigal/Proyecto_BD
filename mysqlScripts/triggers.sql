@@ -1,0 +1,84 @@
+--
+-- Triggers `USERS`
+--
+DELIMITER $$
+CREATE TRIGGER `notificacion_delete_user` BEFORE DELETE ON `USERS` FOR EACH ROW BEGIN
+
+IF OLD.ADMIN=1 THEN
+
+SET @bool = 
+(SELECT COUNT(*)
+FROM ENCARGADO_EMERGENCIA
+WHERE ENCARGADO_EMERGENCIA.id_user=OLD.id_user);
+
+IF @bool>0 THEN
+
+INSERT INTO NOTIFICATIONS(URL, CONTENIDO, FECHA) 
+SELECT '', 'Se necesita un administrador de emergencia', NOW();
+
+SET @id_notificacion_2 = 
+( SELECT ID_NOTIFICATION 
+FROM NOTIFICATIONS
+ORDER BY ID_NOTIFICATION DESC 
+LIMIT 1);
+
+INSERT INTO RECIBE_NOTIFICACION(ID_USER, ID_NOTIFICATION) SELECT ID_USER, @id_notificacion_2 FROM ADMINS;
+
+END IF;
+
+ELSE 
+
+SET @bool = 
+(SELECT COUNT(*)
+FROM ENCARGADOS_MISSION
+WHERE ENCARGADOS_MISSION.id_user=OLD.id_user);
+
+IF @bool>0 THEN
+
+INSERT INTO NOTIFICATIONS(URL, CONTENIDO, FECHA) 
+SELECT '', 'Se necesita un encargado de mision', NOW();
+
+SET @id_notificacion_2 = 
+( SELECT ID_NOTIFICATION 
+FROM NOTIFICATIONS
+ORDER BY ID_NOTIFICATION DESC 
+LIMIT 1);
+
+INSERT INTO RECIBE_NOTIFICACION(ID_USER, ID_NOTIFICATION) SELECT DISTINCT(ID_USER), @id_notificacion_2 FROM ENCARGADOS_MISSION;
+
+END IF;
+
+END IF;
+
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Triggers `REQUESTS`
+--
+DELIMITER $$
+CREATE TRIGGER `notificacion_request` AFTER INSERT ON `REQUESTS` FOR EACH ROW BEGIN 
+
+SET @id_user_2 = (SELECT NEW.id_user);
+SET @cont_notif = (SELECT NEW.nombre_solicitud);
+
+INSERT INTO NOTIFICATIONS(URL, CONTENIDO, FECHA)
+SELECT '', @cont_notif, NOW();
+
+SET @id_notificacion_2 = 
+( SELECT ID_NOTIFICATION 
+FROM NOTIFICATIONS
+ORDER BY ID_NOTIFICATION DESC 
+LIMIT 1);
+
+INSERT INTO RECIBE_NOTIFICACION(ID_USER, ID_NOTIFICATION)
+SELECT @id_user_2, @id_notificacion_2;
+
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
