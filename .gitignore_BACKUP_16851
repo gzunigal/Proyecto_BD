@@ -1,5 +1,11 @@
+<<<<<<< HEAD
+/config/app.php
+/tmp/*
+/logs/*
+=======
 # CakePHP 3
 
+/vendor/*
 /config/app.php
 
 /tmp/cache/models/*
@@ -14,8 +20,12 @@
 !/tmp/tests/empty
 
 /logs/*
-<<<<<<< HEAD
 !/logs/empty
-=======
-!/logs/empty
->>>>>>> 825aba6a680b82d05d2d42d2446779a7b8838518
+
+# CakePHP 2
+
+/app/tmp/*
+/app/Config/core.php
+/app/Config/database.php
+/vendors/*
+>>>>>>> 95d908c2ab833683c2892c5636e5625f8abacd53

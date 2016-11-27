@@ -45,11 +45,19 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
     /**
+<<<<<<< HEAD
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+=======
+     * Here, we are connecting '/' (base path) to a controller called '',
+     * its action called 'display', and we pass a param to select the view file
+     * to use (in this case, src/Template/Pages/home.ctp)...
+     */
+    $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
+>>>>>>> 825aba6a680b82d05d2d42d2446779a7b8838518
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
