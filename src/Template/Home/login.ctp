@@ -35,13 +35,21 @@
 	<link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style type="text/css">
+      .scrollable {
+        height: 100px;
+        overflow-y: scroll;
+      }
+	</style>
 </head>
 
 
-<body class="design">
+
+<body class="scrollable">
 
 <img style="border:2px solid grey" src="http://www.smartienda.cl/estampados/clientes/11388/MENSAJE_CENTRO_FOTO1.jpg" class="img-responsive center-block">
-<div class="btn-group"></div>
+<!--<div class="btn-group"></div>-->
 <div class="panel panel-default">
 	<div class="panel-heading">
     	<h1>Iniciar sesión</h1>
