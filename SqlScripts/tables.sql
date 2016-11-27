@@ -3,12 +3,12 @@ SET time_zone = "+00:00";
 
 
 CREATE TABLE IF NOT EXISTS `regions` (
-  `region_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_region` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`region_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `regions` (`region_id`, `nombre_region`) VALUES
+INSERT INTO `regions` (`id`, `nombre_region`) VALUES
 (1, 'Arica y parinacota'),
 (2, 'Tarapacá'),
 (3, 'Antofagasta'),
@@ -29,13 +29,13 @@ INSERT INTO `regions` (`region_id`, `nombre_region`) VALUES
 
 
 CREATE TABLE IF NOT EXISTS `docs` (
-  `doc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_doc` varchar(100) NOT NULL,
   `url_doc` varchar(100) NOT NULL,
-  PRIMARY KEY (`doc_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `docs` (`doc_id`, `nombre_doc`, `url_doc`) VALUES
+INSERT INTO `docs` (`id`, `nombre_doc`, `url_doc`) VALUES
 (1, 'Documento 0', 'www.asd.com/doc0'),
 (2, 'Documento 1', 'www.asd.com/doc1'),
 (3, 'Documento 2', 'www.asd.com/doc2');
@@ -44,14 +44,14 @@ INSERT INTO `docs` (`doc_id`, `nombre_doc`, `url_doc`) VALUES
 
 
 CREATE TABLE IF NOT EXISTS `notifications` (
-  `notification_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` text,
   `contenido` text NOT NULL,
   `fecha` datetime NOT NULL,
-  PRIMARY KEY (`notification_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `notifications` (`notification_id`, `url`, `contenido`, `fecha`) VALUES
+INSERT INTO `notifications` (`id`, `url`, `contenido`, `fecha`) VALUES
 (1, 'https://www.jaidefinichon.com/', 'Buenos videos :D', '0001-01-01 00:00:00'),
 (2, 'https://www.google.cl/', 'Toda la wea que te imagines', '1701-10-27 05:40:26'),
 (3, 'https://www.youtube.com/', 'Videos de todo tipo, especialmente muchos de gatitos', '0973-06-14 03:43:12'),
@@ -62,13 +62,13 @@ INSERT INTO `notifications` (`notification_id`, `url`, `contenido`, `fecha`) VAL
 
 
 CREATE TABLE IF NOT EXISTS `abilities` (
-  `ability_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_habilidad` varchar(100) NOT NULL,
   `descripcion_actividad` text,
-  PRIMARY KEY (`ability_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-INSERT INTO `abilities` (`ability_id`, `nombre_habilidad`, `descripcion_actividad`) VALUES
+INSERT INTO `abilities` (`id`, `nombre_habilidad`, `descripcion_actividad`) VALUES
 (1, 'Cavar', 'Se cava mas rapido con una super pala'),
 (2, 'Picar', 'Pica mas rapido la tierra con un super pico'),
 (3, 'Recoger basura', 'Se puede recoger la basura mas rapido, con una super aspiradora'),
@@ -80,17 +80,17 @@ INSERT INTO `abilities` (`ability_id`, `nombre_habilidad`, `descripcion_activida
 
 
 CREATE TABLE IF NOT EXISTS `communes` (
-  `commune_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `region_id` int(11) NOT NULL,
   `nombre_comuna` varchar(100) NOT NULL,
-  PRIMARY KEY (`commune_id`),
+  PRIMARY KEY (`id`),
   INDEX (`region_id`),
   FOREIGN KEY (`region_id`)
-    REFERENCES `regions` (`region_id`)
+    REFERENCES `regions` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `communes` (`commune_id`, `region_id`, `nombre_comuna`) VALUES
+INSERT INTO `communes` (`id`, `region_id`, `nombre_comuna`) VALUES
 (1, 1, 'ARICA'),
 (2, 1, 'IQUIQUE'),
 (3, 1, 'HUARA'),
@@ -439,20 +439,20 @@ INSERT INTO `communes` (`commune_id`, `region_id`, `nombre_comuna`) VALUES
 
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `commune_id` int(11) NOT NULL,
   `nombre_usuario` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `disponibilidad` tinyint(1) NOT NULL,
   `admin` tinyint(1) NOT NULL,
-  PRIMARY KEY (`user_id`),
+  PRIMARY KEY (`id`),
   INDEX (`commune_id`),
   FOREIGN KEY (`commune_id`)
-    REFERENCES `communes` (`commune_id`)
-    ON UPDATE CASCADE ON DELETE CASCADE
+    REFERENCES `communes` (`id`)
+    ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`user_id`, `commune_id`, `nombre_usuario`, `password`, `disponibilidad`, `ADMIN`) VALUES
+INSERT INTO `users` (`id`, `commune_id`, `nombre_usuario`, `password`, `disponibilidad`, `admin`) VALUES
 (1, 2, 'Ichigo', 'ichigo', 2, 0),
 (2, 1, 'Richard', 'richard', 0, 1),
 (3, 7, 'shrek', 'getouttamyswamp', 1, 0),
@@ -474,10 +474,10 @@ CREATE TABLE IF NOT EXISTS `notifications_users` (
   INDEX (`user_id`),
   INDEX (`notification_id`),
   FOREIGN KEY (`notification_id`)
-    REFERENCES `notifications`(`notification_id`)
+    REFERENCES `notifications`(`id`)
     ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
+    REFERENCES `users` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -489,18 +489,18 @@ INSERT INTO `notifications_users` (`id`, `user_id`, `notification_id`) VALUES
 
 
 CREATE TABLE IF NOT EXISTS `emails` (
-  `email_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`email_id`),
+  PRIMARY KEY (`id`),
   UNIQUE (`email`),
   INDEX (`user_id`),
   FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
+    REFERENCES `users` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
-INSERT INTO `emails` (`email_id`, `email`, `user_id`) VALUES
+INSERT INTO `emails` (`id`, `email`, `user_id`) VALUES
 (1, 'gonzalo.estay@usach.cl', 1),
 (2, 'julio.vasquez@usach.cl', 2),
 (3, 'dwdew@fefre.cl', 2),
@@ -513,17 +513,17 @@ INSERT INTO `emails` (`email_id`, `email`, `user_id`) VALUES
 
 
 CREATE TABLE IF NOT EXISTS `phones` (
-  `phone_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `phone` varchar(16) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`phone_id`),
+  PRIMARY KEY (`id`),
   INDEX (`user_id`),
   FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
+    REFERENCES `users` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
-INSERT INTO `phones` (`phone_id`, `phone`, `user_id`) VALUES
+INSERT INTO `phones` (`id`, `phone`, `user_id`) VALUES
 (1, '0', 1),
 (2, '11111111', 2),
 (3, '+56 9 1234 1234', 3),
@@ -535,16 +535,16 @@ INSERT INTO `phones` (`phone_id`, `phone`, `user_id`) VALUES
 
 
 CREATE TABLE IF NOT EXISTS `messages` (
-  `message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `contenido` text NOT NULL,
   `fecha` datetime NOT NULL,
   `asunto` varchar(100) NOT NULL,
-  PRIMARY KEY (`message_id`),
+  PRIMARY KEY (`id`),
   INDEX (`fecha`),
   INDEX (`user_id`),
   FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
+    REFERENCES `users` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -552,7 +552,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 
 
 CREATE TABLE IF NOT EXISTS `emergencies` (
-  `emergency_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `commune_id` int(11) DEFAULT NULL,
   `nombre_emergencia` varchar(20) NOT NULL,
@@ -560,21 +560,21 @@ CREATE TABLE IF NOT EXISTS `emergencies` (
   `gravedad_emergencia` int(11) NOT NULL,
   `estado_emergencia` int(11) NOT NULL,
   `descripcion_emergencia` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`emergency_id`),
+  PRIMARY KEY (`id`),
   INDEX (`fecha_emergencia`),
   INDEX (`gravedad_emergencia`),
   INDEX (`estado_emergencia`),
   INDEX (`commune_id`),
   INDEX (`user_id`),
   FOREIGN KEY (`commune_id`)
-    REFERENCES `communes` (`commune_id`)
-    ON UPDATE CASCADE ON DELETE CASCADE,
+    REFERENCES `communes` (`id`)
+    ON UPDATE CASCADE ON DELETE SET NULL,
   FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
-    ON UPDATE CASCADE ON DELETE CASCADE
+    REFERENCES `users` (`id`)
+    ON UPDATE CASCADE ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
-INSERT INTO `emergencies` (`emergency_id`, `user_id`, `commune_id`, `nombre_emergencia`, `fecha_emergencia`, `gravedad_emergencia`, `estado_emergencia`, `descripcion_emergencia`) VALUES
+INSERT INTO `emergencies` (`id`, `user_id`, `commune_id`, `nombre_emergencia`, `fecha_emergencia`, `gravedad_emergencia`, `estado_emergencia`, `descripcion_emergencia`) VALUES
 (1, 1, 2, 'Terremoto en Iquique', '2020-01-23 10:18:39', 3, 1, 'Terremoto grado 7.\r\nMultiples derrumbes.\r\nEs necesario reconstruir varios edificios de la zona afectada.'),
 (3, 3, 2, 'Incendio en Iquique', '2017-06-23 12:06:49', 1, 1, 'Incendio afecta tres cuadras de la comuna.\r\nEs necesario realizar una limpieza en el área y reconstruir viviendas.'),
 (4, 4, 7, 'Derrumbe en Cañete', '2016-11-01 00:00:00', 3, 1, 'Derrumbe en la comuna de Cañete.\r\nAlgunas viviendas se ven afectadas, por lo que se necesita una limpieza en el área y ayuda a las familias afectadas.'),
@@ -584,22 +584,22 @@ INSERT INTO `emergencies` (`emergency_id`, `user_id`, `commune_id`, `nombre_emer
 
 
 CREATE TABLE IF NOT EXISTS `missions` (
-  `mission_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `emergency_id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `nombre_mision` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`mission_id`),
+  PRIMARY KEY (`id`),
   INDEX (`emergency_id`),
   INDEX (`user_id`),
   FOREIGN KEY (`emergency_id`)
-    REFERENCES `emergencies` (`emergency_id`)
+    REFERENCES `emergencies` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
-    ON UPDATE CASCADE ON DELETE CASCADE
+    REFERENCES `users` (`id`)
+    ON UPDATE CASCADE ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-INSERT INTO `missions` (`mission_id`, `emergency_id`, `user_id`, `nombre_mision`) VALUES
+INSERT INTO `missions` (`id`, `emergency_id`, `user_id`, `nombre_mision`) VALUES
 (2, 1, 3, 'Limpieza del área'),
 (3, 1, 1, 'Ayuda a damnificados'),
 (4, 3, 2, 'Limpieza del área'),
@@ -609,18 +609,18 @@ INSERT INTO `missions` (`mission_id`, `emergency_id`, `user_id`, `nombre_mision`
 
 
 CREATE TABLE IF NOT EXISTS `tasks` (
-  `task_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `mission_id` int(11) NOT NULL,
   `nombre_tarea` varchar(100) DEFAULT NULL,
   `descripcion_tarea` text,
-  PRIMARY KEY (`task_id`),
+  PRIMARY KEY (`id`),
   INDEX (`mission_id`),
   FOREIGN KEY (`mission_id`)
-    REFERENCES `missions` (`mission_id`)
+    REFERENCES `missions` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
-INSERT INTO `tasks` (`task_id`, `mission_id`, `nombre_tarea`, `descripcion_tarea`) VALUES
+INSERT INTO `tasks` (`id`, `mission_id`, `nombre_tarea`, `descripcion_tarea`) VALUES
 (1, 2, 'Remover escombros', 'Se deben remover todos los escombros del área que representen un riesgo para la población del área o que obstruyan la reconstrucción de la zona afectada.'),
 (2, 3, 'Repartir alimentos', 'Se debe entregar una caja de alimentos por familia la que ha sido preparada previamente.'),
 (3, 4, 'Remover escombros', 'Se deben remover todos los escombros del área que representen un riesgo para la población del área o que obstruyan la reconstrucción de la zona afectada.'),
@@ -638,10 +638,10 @@ CREATE TABLE IF NOT EXISTS `abilities_tasks` (
   INDEX (`ability_id`),
   INDEX (`task_id`),
   FOREIGN KEY (`ability_id`)
-    REFERENCES `abilities` (`ability_id`)
+    REFERENCES `abilities` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (`task_id`)
-    REFERENCES `tasks` (`task_id`)
+    REFERENCES `tasks` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -657,10 +657,10 @@ CREATE TABLE IF NOT EXISTS `abilities_users` (
   INDEX (`ability_id`),
   INDEX (`user_id`),
   FOREIGN KEY (`ability_id`)
-    REFERENCES `abilities` (`ability_id`)
+    REFERENCES `abilities` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
+    REFERENCES `users` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
@@ -686,10 +686,10 @@ CREATE TABLE IF NOT EXISTS `docs_tasks` (
   INDEX (`doc_id`),
   INDEX (`task_id`),
   FOREIGN KEY (`doc_id`)
-    REFERENCES `docs` (`doc_id`)
+    REFERENCES `docs` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (`task_id`)
-    REFERENCES `tasks` (`task_id`)
+    REFERENCES `tasks` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -704,10 +704,10 @@ CREATE TABLE IF NOT EXISTS `messages_users` (
   INDEX (`message_id`),
   INDEX (`user_id`),
   FOREIGN KEY (`message_id`)
-    REFERENCES `messages` (`message_id`)
+    REFERENCES `messages` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
+    REFERENCES `users` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -715,15 +715,15 @@ CREATE TABLE IF NOT EXISTS `messages_users` (
 
 
 CREATE TABLE IF NOT EXISTS `problems` (
-  `problem_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `task_id` int(11) NOT NULL,
   `descripcion_problema` text,
   `gravedad_problema` int(11) NOT NULL,
-  PRIMARY KEY (`problem_id`),
+  PRIMARY KEY (`id`),
   INDEX (`task_id`),
   INDEX (`gravedad_problema`),
   FOREIGN KEY (`task_id`)
-    REFERENCES `tasks` (`task_id`)
+    REFERENCES `tasks` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -731,19 +731,19 @@ CREATE TABLE IF NOT EXISTS `problems` (
 
 
 CREATE TABLE IF NOT EXISTS `requests` (
-  `request_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `task_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `nombre_solicitud` varchar(100) DEFAULT NULL,
   `estado` int(11) NOT NULL,
-  PRIMARY KEY (`request_id`),
+  PRIMARY KEY (`id`),
   INDEX (`task_id`),
   INDEX (`user_id`),
   FOREIGN KEY (`task_id`)
-    REFERENCES `tasks` (`task_id`)
+    REFERENCES `tasks` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
+    REFERENCES `users` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -761,10 +761,10 @@ CREATE TABLE IF NOT EXISTS `tasks_users` (
   INDEX (`user_id`),
   INDEX (`valoracion`),
   FOREIGN KEY (`task_id`)
-    REFERENCES `tasks` (`task_id`)
+    REFERENCES `tasks` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`user_id`)
+    REFERENCES `users` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
