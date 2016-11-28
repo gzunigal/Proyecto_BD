@@ -1,11 +1,25 @@
+<?php
+/**
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @since         0.10.0
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ */
+
+$cakeDescription = 'Sistema de administración de voluntarios';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <?php $this->Html->charset() ?>
-	<title><?= h($this->fetch('title')) ?></title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	
-	<!-- Aquí se llama a bootstrap -->
+    <?= $this->Html->charset() ?>
+     <!-- Aquí se llama a bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?= $cakeDescription ?>:
@@ -50,20 +64,6 @@
         height: 100px;
         overflow-y: scroll;
       }
-      ::-webkit-input-placeholder { /* Chrome */
-        color: red;
-      }
-      :-ms-input-placeholder { /* IE 10+ */
-        color: red;
-      }
-      ::-moz-placeholder { /* Firefox 19+ */
-        color: red;
-        opacity: 1;
-      }
-      :-moz-placeholder { /* Firefox 4 - 18 */
-        color: red;
-        opacity: 1;
-      }
     </style>
     <!-- Aquí continúa el código normal -->
 
@@ -75,25 +75,24 @@
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
-
 </head>
 <body class="scrollable">
-<nav  class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Handy-Hand</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Mensajes</a></li>
-      <li><a href="#">Notificaciones</a></li>
-      <li><a href="https://www.youtube.com/watch?v=9Q7mHG9t0Js">Click me?</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- Here's where I want my views to be displayed -->
-<?= $this->Flash->render() ?>
+<!--
+    <nav class="top-bar expanded" data-topbar role="navigation">
+        <ul class="title-area large-3 medium-4 columns">
+            <li class="name">
+                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+            </li>
+        </ul>
+        <div class="top-bar-section">
+            <ul class="right">
+                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
+                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
+            </ul>
+        </div>
+    </nav>
+-->
+    <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
@@ -101,4 +100,3 @@
     </footer>
 </body>
 </html>
-

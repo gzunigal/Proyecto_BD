@@ -1,4 +1,4 @@
-<?php $this->layout = 'user'; ?>
+<?php $this->layout = 'login'; ?>
 <head>
     <title>Login</title>
 </head>
