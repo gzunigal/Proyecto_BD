@@ -18,35 +18,23 @@ use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 
-class HomeController extends AppController
+class LoginController extends AppController
 {
 
     public function index()
     {
         $session = $this->request->session();
         if ($session->check('User')) {
-            $rol = $session->read('User.Role');
-            if($rol = 'admin'){
-                $this->setAction('admin');
-            }elseif ($rol = 'encargado') {
-                $this->setAction('encargado');
-            }else{
-                $this->setAction('voluntario');
-            }
-        }else{
-            return $this->redirect(['controller' => 'Login', 'action' => 'index']);
+            return $this->redirect(['controller' => 'Home', 'action' => 'index']);
         }
     }
 
-    public function admin(){
-
+    public function login(){
+        if ($this->request->is('post')) {
+            print_r($this->request->data);
+            
+        }
     }
 
-    public function encargado(){
-
-    }
-
-    public function voluntario(){
-
-    }
+    public function logout(){}
 }
