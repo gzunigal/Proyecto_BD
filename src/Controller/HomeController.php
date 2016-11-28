@@ -24,22 +24,31 @@ class HomeController extends AppController
     public function index()
     {
         $session = $this->request->session();
-        if (!$session->check('User')) {
-            $this->setAction('login');
-        }else{
-
-            try {
-                $this->render(implode('/', $path));
-            } catch (MissingTemplateException $e) {
-                if (Configure::read('debug')) {
-                    throw $e;
-                }
-                throw new NotFoundException();
+        if ($session->check('User')) {
+            $rol = $session->read('User.Role');
+            if($rol = 'admin'){
+                $this->setAction('admin');
+            }elseif ($rol = 'encargado') {
+                $this->setAction('encargado');
+            }else{
+                $this->setAction('voluntario');
             }
+        }else{
+            $this->setAction('login');
         }
     }
 
-    public function login(){
+    public function login(){}
+
+    public function admin(){
+
+    }
+
+    public function encargado(){
+
+    }
+
+    public function voluntario(){
 
     }
 }
