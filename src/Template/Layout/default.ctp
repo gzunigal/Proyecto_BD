@@ -19,11 +19,53 @@ $cakeDescription = 'Sistema de administración de voluntarios';
 <html>
 <head>
     <?= $this->Html->charset() ?>
+     <!-- Aquí se llama a bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://s3.amazonaws.com/jetstrap-site/css/frame.css?10">
+    <style id="custom-css">#jumbo 
+        {
+          background-color: #333;
+          color: #eee;
+        }
+
+        #jumbo p 
+        {
+          font-size: 16px;
+        }
+        #try-header {
+          margin: 30px 0px;
+        }
+        #try-more {
+          margin: 30px 0px;
+          font-style: italic;
+        }
+    </style>
+
+    <script>
+      parent.FrameWindow = window;
+      parent.FrameDocument = document;
+    </script>
+
+    <script id="custom-js"></script>
+    <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+      .scrollable {
+        height: 100px;
+        overflow-y: scroll;
+      }
+    </style>
+    <!-- Aquí continúa el código normal -->
+
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css('base.css') ?>
