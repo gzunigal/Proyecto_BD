@@ -14,7 +14,7 @@
 
   	<div class="panel-body">
 		<?php 
-			echo $this->Form->create($user);
+			echo $this->Form->create($user, ['url' => ['controller' => 'Login', 'action' => 'login']]);
     		echo $this->Form->input('Nombre de usuario');
     		echo $this->Form->input('Contraseña');
     		echo $this->Form->button('Log in', ['type' => 'submit', 'class' => 'btn btn-primary']);
