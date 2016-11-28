@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scrollable">
 <head>
 	<title><?= h($this->fetch('title')) ?></title>
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -51,8 +51,8 @@
     </style>
     <!-- Aquí continúa el código normal -->
 </head>
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<body class="scrollable">
+<nav  class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     
     <div class="navbar-header">
@@ -69,8 +69,6 @@
 <!-- Here's where I want my views to be displayed -->
 <?= $this->fetch('content') ?>
 
-<!-- Add a footer to each displayed page -->
-<div id="footer"></div>
 
 </body>
 </html>
