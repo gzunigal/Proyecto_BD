@@ -6,7 +6,6 @@
 
 <body class="scrollable">
 
-<img style="border:2px solid grey" src="http://www.smartienda.cl/estampados/clientes/11388/MENSAJE_CENTRO_FOTO1.jpg" class="img-responsive center-block">
 <!--<div class="btn-group"></div>-->
 <div class="panel panel-default">
 	<div class="panel-heading">
