@@ -49,6 +49,20 @@
         height: 100px;
         overflow-y: scroll;
       }
+      ::-webkit-input-placeholder { /* Chrome */
+        color: red;
+      }
+      :-ms-input-placeholder { /* IE 10+ */
+        color: red;
+      }
+      ::-moz-placeholder { /* Firefox 19+ */
+        color: red;
+        opacity: 1;
+      }
+      :-moz-placeholder { /* Firefox 4 - 18 */
+        color: red;
+        opacity: 1;
+      }
     </style>
     <!-- Aquí continúa el código normal -->
 
