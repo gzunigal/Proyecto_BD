@@ -75,7 +75,7 @@ $cakeDescription = 'Sistema de administración de voluntarios';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
+<body class="scrollable">
 <!--
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
