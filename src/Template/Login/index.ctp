@@ -1,3 +1,4 @@
+<?php $this->layout = 'user'; ?>
 <head>
     <title>Login</title>
 </head>
@@ -15,8 +16,8 @@
   	<div class="panel-body">
 		<?php 
 			echo $this->Form->create(null, ['url' => ['controller' => 'Login', 'action' => 'login']]);
-    		echo $this->Form->input('Nombre de usuario');
-    		echo $this->Form->input('Contraseña');
+    		echo $this->Form->input('', ["placeholder" => "Nombre de usuario"]);
+    		echo $this->Form->input('', ["placeholder" => "Contraseña"]);
     		echo $this->Form->button('Log in', ['type' => 'submit', 'class' => 'btn btn-primary']);
     		echo $this->Form->end();
 		?>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <?php $this->Html->charset() ?>
 	<title><?= h($this->fetch('title')) ?></title>
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	
@@ -50,6 +51,16 @@
       }
     </style>
     <!-- Aquí continúa el código normal -->
+
+    <?= $this->Html->meta('icon') ?>
+
+    <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('cake.css') ?>
+
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
+
 </head>
 <body class="scrollable">
 <nav  class="navbar navbar-inverse navbar-fixed-top">
@@ -67,9 +78,12 @@
 </nav>
 
 <!-- Here's where I want my views to be displayed -->
-<?= $this->fetch('content') ?>
-
-
+<?= $this->Flash->render() ?>
+    <div class="container clearfix">
+        <?= $this->fetch('content') ?>
+    </div>
+    <footer>
+    </footer>
 </body>
 </html>
 
