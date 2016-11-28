@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scrollable">
+<html lang="en">
 <head>
 	<title><?= h($this->fetch('title')) ?></title>
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
