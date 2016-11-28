@@ -1,12 +1,4 @@
-#logoLogin{
-
-}
-
-#form-center{
-	width: 80%;
-	margin: auto;
-}
-
+<<<<<<< HEAD
 ::-webkit-input-placeholder { /* Chrome */
   color: red;
 }
@@ -20,4 +12,13 @@
 :-moz-placeholder { /* Firefox 4 - 18 */
   color: red;
   opacity: 1;
+=======
+#logoLogin{
+
+}
+
+#form-center{
+	width: 80%;
+	margin: auto;
+>>>>>>> 48e6f869e14a2e1bb134cef06197587ea2f49d0d
 }
