@@ -20,7 +20,6 @@
     		echo $this->Form->button('Log in', ['type' => 'submit', 'class' => 'btn btn-primary']);
     		echo $this->Form->end();
 		?>
-		<hr>
 		<?php 
 			echo $this->Html->link('Quiero registrarme', 'http://www.google.cl', ['class' => 'btn btn-success']); 
 		?>
