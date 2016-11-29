@@ -43,7 +43,6 @@
     <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
 
     <style type="text/css">
       .scrollable {

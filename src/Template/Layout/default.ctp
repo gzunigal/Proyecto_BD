@@ -57,7 +57,7 @@ $cakeDescription = 'Sistema de administración de voluntarios';
     <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
+    
 
     <style type="text/css">
       .scrollable {
@@ -76,22 +76,7 @@ $cakeDescription = 'Sistema de administración de voluntarios';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body class="scrollable">
-<!--
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
-            </ul>
-        </div>
-    </nav>
--->
+<body ">
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>

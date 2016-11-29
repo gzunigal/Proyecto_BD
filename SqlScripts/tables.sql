@@ -444,7 +444,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `nombre_usuario` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `disponibilidad` tinyint(1) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX (`commune_id`),
   FOREIGN KEY (`commune_id`)
