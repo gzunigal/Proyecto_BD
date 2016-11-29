@@ -1,66 +1,36 @@
-<body class="design">
+<?php $this->layout = 'login'; ?>
+<head>
+    <title>Login</title>
+</head>
 
-<img style="border:2px solid grey" src="https://userscontent2.emaze.com/images/0dca5196-0bee-457a-aa14-01b69d4fc44e/e33d76ff78b9f524fdcc9a5440746117.jpg" class="img-responsive center-block">
-<div class="btn-group"></div>
-  	<div class="container">
-  		<div class="row">
-  				
-		  	<div class="panel-body">
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<h1>Nuevo usuario</h1>
-		  		</div>
+<body class="scrollable">
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nickname">
-		  		</div>
+<!--<div class="btn-group"></div>-->
+<div class="panel panel-default">
+	<div class="panel-heading">
+    	<h1>Nuevo usuario</h1>
+  	</div>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nombre">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Apellido">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Contraseña">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Correo">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Teléfono">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Comuna">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
-						<option value="0">Selecciona una región</option>
-					</select>
-				</div>
-
-				<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
-			  			<option>¿Estás disponible?</option>
-			  			<option>Sí</option>	
-			  			<option>No</option>
-			  		</select>
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-					<a href="#" class="btn btn-primary" target="">Registrarme</a>
-					<a href="#" class="btn pull-right btn-danger" target="">Cancelar</a>
-				</div>
-			</div>
-		</div>
+  	<div class="panel-body">
+		<?php 
+			echo $this->Form->create(null, ['url' => [/*aquí va la acción del controlador*/]]);
+    		echo $this->Form->input('', ["placeholder" => "Id de usuario"]);
+    		echo $this->Form->input('', ["placeholder" => "Contraseña"]);
+    		echo $this->Form->input('', ["placeholder" => "Nombre"]);
+    		echo $this->Form->input('', ["placeholder" => "Apellido"]);
+    		echo $this->Form->input('', ["placeholder" => "Correo"]);
+    		echo $this->Form->input('', ["placeholder" => "Teléfono"]);
+    		// Regions sale del controlador, al hacer una consulta al modelo por todas las regiones.
+			// echo $this->Form->select('Region', $regions);
+			// Estos valores se entregan como enteros?
+    		$disponibilidad = ['0' => 'Sí', '1' => 'No'];
+    		echo $this->Form->select('¿Estás disponible?', $disponibilidad);
+    		echo $this->Form->button('Registrarme', ['type' => 'submit', 'class' => 'btn btn-primary']);
+    		echo $this->Html->link('Cancelar', ['controller' => 'Login', 'action' => 'index'], ['class' => 'btn pull-right btn-danger']);
+    		echo $this->Form->end();
+		?>
 	</div>
-
-	
+</div>
 </body>
 </html>

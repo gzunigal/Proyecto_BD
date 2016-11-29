@@ -37,4 +37,9 @@ class LoginController extends AppController
     }
 
     public function logout(){}
+
+    public function add()
+    {
+        //echo 'vacio';
+    }
 }

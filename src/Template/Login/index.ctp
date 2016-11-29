@@ -21,7 +21,7 @@
     		echo $this->Form->end();
 		?>
 		<?php 
-			echo $this->Html->link('Quiero registrarme', 'http://www.google.cl', ['class' => 'btn btn-success']); 
+			echo $this->Html->link('Quiero registrarme', ['controller' => 'Login', 'action' => 'add'], ['class' => 'btn btn-success']); 
 		?>
 	</div>
 </div>
