@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<?php //$this->layout = 'user'; ?>
+=======
 <?php $this->layout = 'login'; ?>
+>>>>>>> 700ae1f2a39307002ced89f5be581e1ba1e69116
 <head>
     <title>Login</title>
     <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
@@ -22,8 +26,15 @@
     		echo $this->Html->link('Quiero registrarme', ['controller'=>'Login', 'action'=>'register'], 
     			['class' => 'btn btn-success pull-right']);
     		echo $this->Form->end();
+<<<<<<< HEAD
     	?>
     		
+=======
+		?>
+		<?php 
+			echo $this->Html->link('Quiero registrarme', 'http://www.google.cl', ['class' => 'btn btn-success']); 
+		?>
+>>>>>>> 700ae1f2a39307002ced89f5be581e1ba1e69116
 	</div>
 </div>
 </body>

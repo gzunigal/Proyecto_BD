@@ -16,13 +16,10 @@
 $cakeDescription = 'Sistema de administración de voluntarios';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <?php $this->Html->charset() ?>
-	<title><?= h($this->fetch('title')) ?></title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	
-	<!-- Aquí se llama a bootstrap -->
+    <?= $this->Html->charset() ?>
+     <!-- Aquí se llama a bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?= $cakeDescription ?>:
@@ -60,7 +57,13 @@ $cakeDescription = 'Sistema de administración de voluntarios';
     <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
+
+    <style type="text/css">
+      .scrollable {
+        height: 100px;
+        overflow-y: scroll;
+      }
+    </style>
     <!-- Aquí continúa el código normal -->
 
     <?= $this->Html->meta('icon') ?>
@@ -73,22 +76,22 @@ $cakeDescription = 'Sistema de administración de voluntarios';
     <?= $this->fetch('script') ?>
 </head>
 <body class="scrollable">
-<nav  class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Handy-Hand</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Mensajes</a></li>
-      <li><a href="#">Notificaciones</a></li>
-      <li><a href="https://www.youtube.com/watch?v=9Q7mHG9t0Js">Click me?</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- Here's where I want my views to be displayed -->
-<?= $this->Flash->render() ?>
+<!--
+    <nav class="top-bar expanded" data-topbar role="navigation">
+        <ul class="title-area large-3 medium-4 columns">
+            <li class="name">
+                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+            </li>
+        </ul>
+        <div class="top-bar-section">
+            <ul class="right">
+                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
+                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
+            </ul>
+        </div>
+    </nav>
+-->
+    <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>

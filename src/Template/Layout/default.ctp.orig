@@ -43,6 +43,8 @@
     <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
+    
 
     <style type="text/css">
       .scrollable {
@@ -50,6 +52,9 @@
         overflow-y: scroll;
       }
     </style>
+=======
+    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
+>>>>>>> 700ae1f2a39307002ced89f5be581e1ba1e69116
     <!-- Aquí continúa el código normal -->
 
     <?= $this->Html->meta('icon') ?>
@@ -62,6 +67,10 @@
     <?= $this->fetch('script') ?>
 
 </head>
+<<<<<<< HEAD
+<body ">
+    <?= $this->Flash->render() ?>
+=======
 <body class="scrollable">
 <nav  class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -79,6 +88,7 @@
 
 <!-- Here's where I want my views to be displayed -->
 <?= $this->Flash->render() ?>
+>>>>>>> 700ae1f2a39307002ced89f5be581e1ba1e69116
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
