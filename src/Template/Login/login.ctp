@@ -1,18 +1,19 @@
-<?php $this->layout = 'login'; ?>
+<?php //$this->layout = 'user'; ?>
 <head>
     <title>Login</title>
+    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
 </head>
 
 
-<body class="scrollable">
+<body>
 
 <!--<div class="btn-group"></div>-->
-<div class="panel panel-default">
-	<div class="panel-heading">
+<div class="panel panel-default" style="margin-top: 50px">
+	<div class="panel-heading" style="text-align: center;">
     	<h1>Iniciar sesión</h1>
   	</div>
 
-  	<div class="panel-body">
+  	<div class="panel-body form-center">
 		<?php 
 			echo $this->Form->create(NULL, ['url' => ['controller' => 'Login', 'action' => 'login']]);
     		echo $this->Form->input('username', ["name"=>"username", "placeholder" => "Nombre de usuario"]);

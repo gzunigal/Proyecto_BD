@@ -21,6 +21,14 @@ use Cake\View\Exception\MissingTemplateException;
 class LoginController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->Auth->allow();
+    }
+
+
     public function index()
     {
         $session = $this->request->session();
@@ -30,6 +38,10 @@ class LoginController extends AppController
     }
 
     public function login(){
+        $session = $this->request->session();
+        if ($session->check('User')) {
+            return $this->redirect(['controller' => 'Login', 'action' => 'logout']);
+        }
         if ($this->request->is('post')) {
             //print_r($this->request->data);
             $user = $this->Auth->identify();
@@ -40,14 +52,26 @@ class LoginController extends AppController
                 echo "EXISTE!!!";
             }
             
+        }else {
+            echo "QUE HAGO AQUI?";
         }
+
+        // return $this->redirect(['controller' => 'Login', 'action' => 'index']);
     }
 
+<<<<<<< HEAD
+    public function logout(){}
+
+    public function add()
+    {
+        //echo 'vacio';
+=======
     public function logout(){
         return $this->redirect($this->Auth->logout());
     }
 
     public function register(){
         echo "HEY!";
+>>>>>>> 140637aaa53b944b4994c87dbabc824caacda012
     }
 }
