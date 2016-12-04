@@ -1,9 +1,5 @@
-<?php $this->layout = 'login'; ?>
-<head>
-    <title>Login</title>
-    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
-</head>
 
+<title>Sistema de administración de voluntarios: Login</title>
 
 <body>
 
