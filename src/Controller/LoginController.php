@@ -20,6 +20,12 @@ use Cake\View\Exception\MissingTemplateException;
 
 class LoginController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->Auth->allow();
+    }   
 
     public function index()
     {
@@ -39,7 +45,6 @@ class LoginController extends AppController
             if ($user) {
                 echo "EXISTE!!!";
             }
-            
         }
     }
 
