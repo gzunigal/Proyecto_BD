@@ -50,28 +50,24 @@
 
 		  		<div class="col-md-offset-3 col-md-6">
 		  			<?php 
-		  				echo $this->Form->input(NULL, ["name"=>"phone", "type" => "tel", "placeholder" => "Teléfono",'required' => true, 'allowEmpty' => false]);
+		  				echo $this->Form->input(NULL, ["name"=>"user_phone", "type" => "tel", "placeholder" => "Teléfono",'required' => true, 'allowEmpty' => false]);
 		  			?>
 		  		</div>
-		  		<!--
+		  		
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="commune" placeholder="Comuna">
-		  		</div>
-				-->
-		  		<div class="col-md-offset-3 col-md-6">
-					 <select name="regions" required>
+					 <select name="communes" required>
 					 	<?php
-					 		echo '<option value=0>Elige una region</option>';
-					 		foreach ($regions as $region) {
-					 			echo '<option value='.$region->id.'>'.$region->nombre_region.'</option>';
+					 		echo '<option value="">Elige una comuna</option>';
+					 		foreach ($communes as $commune) {
+					 			echo '<option value='.$commune->id.'>'.$commune->nombre_comuna.'</option>';
 					 		}
 					 	?>
 					 </select>
 				</div>
 
 				<div class="col-md-offset-3 col-md-6">
-					<select class="form-control" name="availability">
-			  			<option>¿Estás disponible?</option>
+					<select class="form-control" name="availability" required>
+			  			<option value="">¿Estás disponible?</option>
 			  			<option value=1>Sí</option>	
 			  			<option value=0>No</option>
 			  		</select>

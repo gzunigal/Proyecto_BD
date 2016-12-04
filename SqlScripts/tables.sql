@@ -456,7 +456,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `commune_id`, `nombre_usuario`, name, surname, `password`, `disponibilidad`, `admin`) VALUES
 (1, 2, 'Ichigo', 'name_1', 'surname_1', 'ichigo', 2, 0),
-(2, 1, 'Richard', 'name_2', 'surname_2', 'richard', 0, 1),
+(2, 1, 'Richard', 'name_2', 'surname_2', 'richard', 0, 1),  
 (3, 7, 'shrek', 'name_3', 'surname_3', 'getouttamyswamp', 1, 0),
 (4, 10, 'Elber Gon Freecs', 'name_4', 'surname_4', 'prntscr', 1, 0),
 (5, 11,  'Elber Gon', 'name_5', 'surname_5', 'lalalele', 1, 1),
