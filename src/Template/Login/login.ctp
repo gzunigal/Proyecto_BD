@@ -1,4 +1,4 @@
-<?php //$this->layout = 'user'; ?>
+<?php $this->layout = 'login'; ?>
 <head>
     <title>Login</title>
     <link type="text/css" rel="stylesheet" href="/css/handyhand.css">

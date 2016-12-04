@@ -41,7 +41,7 @@ class LoginController extends AppController
             $user = $this->Auth->identify();
             print_r($user);
             echo $user;
-            debug($user);
+            debug($user);   
             if ($user) {
                 echo "EXISTE!!!";
             }
@@ -53,6 +53,6 @@ class LoginController extends AppController
     }
 
     public function register(){
-        echo "HEY!";
+        
     }
 }

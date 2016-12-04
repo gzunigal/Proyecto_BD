@@ -1,3 +1,4 @@
+<?php $this->layout = 'login'; ?>
 <head>
     <title>Registro</title>
     <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
@@ -18,41 +19,41 @@
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nickname">
+		  			<input type="text" class="form-control" name="nickname" placeholder="Nickname">
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nombre">
+		  			<input type="text" class="form-control" name="name" placeholder="Nombre">
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Apellido">
+		  			<input type="text" class="form-control" name="surname" placeholder="Apellido">
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Contraseña">
+		  			<input type="text" class="form-control" name="password" placeholder="Contraseña">
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Correo">
+		  			<input type="text" class="form-control" name="email" placeholder="Correo">
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Teléfono">
+		  			<input type="text" class="form-control" name="phone" placeholder="Teléfono">
 		  		</div>
-
+		  		<!--
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Comuna">
+		  			<input type="text" class="form-control" name="commune" placeholder="Comuna">
 		  		</div>
-
+				-->
 		  		<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
+					<select class="form-control" name="region">
 						<option value="0">Selecciona una región</option>
 					</select>
 				</div>
 
 				<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
+					<select class="form-control" name="availability">
 			  			<option>¿Estás disponible?</option>
 			  			<option>Sí</option>	
 			  			<option>No</option>
@@ -60,8 +61,10 @@
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-					<a href="#" class="btn btn-primary" target="">Registrarme</a>
-					<a href="#" class="btn pull-right btn-danger" target="">Cancelar</a>
+					<a href="#" class="btn btn-primary" >Registrarme</a>
+					<?php
+						echo $this->Html->link('Cancelar', ['controller' => 'login', 'action' => 'index'], ['class' => 'btn pull-right btn-danger']);
+					?>
 				</div>
 			</div>
 		</div>
