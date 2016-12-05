@@ -36,9 +36,10 @@ class LoginController extends AppController
             $this->loadModel('Users');
             $user = $this->Users->login();
                 if ($user){
-                    $user = $user->toArray();
-                    $session->write('User.isAdmin','propietario');
-                    $session->write('User',$user);
+                    $isEncargado = $user->isEncargado();
+                    $session->write('User.isEncargado',$user->hasMissions());
+                    $session->write('User.Entity',$user);
+                    $session->write('User',$user.toArray());
 
                     return $this->redirect(['controller' => 'Home', 'action' => 'index']);
                 }else{

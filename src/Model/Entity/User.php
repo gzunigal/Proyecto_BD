@@ -28,6 +28,38 @@ class User extends Entity
 {
 
     /**
+     * Funcion que obtiene la lista de misiones asociadas a un usuario
+     *
+     * @return Lista de Entity Mission asociadas a Usuario, NULL si no existen.
+     */
+    public function getMissions(){
+        $missionsTable = TableRegistry::get('Missions');
+        
+        $result = $missionsTable->find()->where(['user_id'=>$this->id]);
+
+        return $result;
+    }
+
+    /**
+     * Funcion que obtiene la lista de misiones asociadas a un usuario
+     *
+     * @return Lista de Entity Mission asociadas a Usuario, NULL si no existen.
+     */
+    public function hasMissions(){
+        $missionsTable = TableRegistry::get('Missions');
+        
+        $result = $missionsTable->find()->where(['user_id'=>$this->id])->first();
+
+        return ($result)? 1 : 0;
+    }
+
+
+
+    /********************************/
+    /*** METODOS CREADOS POR BAKE ***/
+    /********************************/
+
+    /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
      * Note that when '*' is set to true, this allows all unspecified fields to
