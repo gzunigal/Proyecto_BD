@@ -35,6 +35,7 @@ class LoginController extends AppController
         if ($session->check('User')) {
             return $this->redirect(['controller' => 'Home', 'action' => 'index']);
         }
+        return $this->redirect(['controller' => 'Login', 'action' => 'login']);
     }
 
     public function login(){
@@ -52,8 +53,6 @@ class LoginController extends AppController
                 echo "EXISTE!!!";
             }
             
-        }else {
-            echo "QUE HAGO AQUI?";
         }
 
         // return $this->redirect(['controller' => 'Login', 'action' => 'index']);
