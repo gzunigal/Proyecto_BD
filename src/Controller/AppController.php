@@ -52,10 +52,8 @@ class AppController extends Controller
                 ]
             ],
             'authError' => 'Did you really think you are allowed to see that?',
-            'loginAction' => [
-                'controller' => 'Login',
-                'action' => 'login'
-            ],
+            'loginAction' => ['controller' => 'Login','action' => 'login'],
+            'logoutRedirect' => ['controller' => 'Login', 'action' => 'login'],
             'storage'=>'Session'
         ]);
 

@@ -2,6 +2,8 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * User Entity
@@ -26,6 +28,49 @@ use Cake\ORM\Entity;
  */
 class User extends Entity
 {
+
+    /**
+     * Funcion que obtiene la lista de misiones asociadas a un usuario
+     *
+     * @return Lista de Entity Mission asociadas a Usuario, NULL si no existen.
+     */
+    public function getMissions(){
+        $missionsTable = TableRegistry::get('Missions');
+        
+        $result = $missionsTable->find()->where(['user_id'=>$this->id]);
+
+        return $result;
+    }
+
+    /**
+     * Funcion que obtiene la lista de misiones asociadas a un usuario
+     *
+     * @return Lista de Entity Mission asociadas a Usuario, NULL si no existen.
+     */
+    public function hasMissions(){
+        $missionsTable = TableRegistry::get('Missions');
+        
+        $result = $missionsTable->find()->where(['user_id'=>$this->id])->first();
+
+        return ($result)? 1 : 0;
+    }
+
+    /**
+     * Funcion que verifica si coincide una password ingresada
+     *
+     * @return Lista de Entity Mission asociadas a Usuario, NULL si no existen.
+     */
+    public function checkPass($pass){
+        $valid = (new DefaultPasswordHasher)->check($pass,$this->password);
+
+        return $valid;
+    }
+
+
+
+    /********************************/
+    /*** METODOS CREADOS POR BAKE ***/
+    /********************************/
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

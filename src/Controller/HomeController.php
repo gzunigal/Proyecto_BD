@@ -21,17 +21,18 @@ use Cake\View\Exception\MissingTemplateException;
 class HomeController extends AppController
 {
 
+
     public function index()
     {
         $session = $this->request->session();
         if ($session->check('User')) {
-            $rol = $session->read('User.Role');
-            if($rol = 'admin'){
-                $this->setAction('admin');
-            }elseif ($rol = 'encargado') {
-                $this->setAction('encargado');
+            echo "Existo";
+            if($session->read('User.admin') == '1'){
+                return $this->redirect(['controller' => 'Administrator', 'action' => 'index']);
+            }elseif ($session->read('User.isEncargado') == 1) {
+                return $this->redirect(['controller' => 'Manager', 'action' => 'index']);
             }else{
-                $this->setAction('voluntario');
+                return $this->redirect(['controller' => 'Volunteer', 'action' => 'index']);
             }
         }else{
             return $this->redirect(['controller' => 'Login', 'action' => 'index']);
