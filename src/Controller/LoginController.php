@@ -30,17 +30,13 @@ class LoginController extends AppController
         if ($session->check('User')) {
             return $this->redirect(['controller' => 'Login', 'action' => 'logout']);
         }
+
+        $formData = $this->request->data;
         if ($this->request->is('post')) {
             $this->loadModel('Users');
-            $query = $this->Users->find()
-                    ->where([
-                        'username'=>$formData['username'],
-                        'password'=>(new DefaultPasswordHasher)->hash($formData['password']);
-                    ])
-                    ->first();
-
-                if ($query){
-                    $user = $query->toArray();
+            $user = $this->Users->login();
+                if ($user){
+                    $user = $user->toArray();
                     $session->write('User.isAdmin','propietario');
                     $session->write('User',$user);
 
@@ -86,7 +82,7 @@ class LoginController extends AppController
             $user->run              = $datosUsuario['user_rut'];
             $user->disponibilidad   = $datosUsuario['availability'];
             $user->admin            = 0;
-            if(is_numeric($user->))
+            //if(is_numeric($user->))
             if($usersTable->save($user))
             {
                 $phone->phone   = $datosUsuario['user_phone'];

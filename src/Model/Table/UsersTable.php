@@ -33,6 +33,30 @@ class UsersTable extends Table
 {
 
     /**
+     * Metodo para comparar username y password contra la BD y verificar los datos de login
+     * @param Nombre de usuario y password
+     * @return Entity User si verifica usuario, NULL si no se verifican datos.
+     */
+    public function login($username,$password){
+        $user = $this->find()
+            ->where([
+                'username'=>$username,
+                'password'=>(new DefaultPasswordHasher)->hash($password)
+            ])
+            ->first();
+        return $user;
+    }
+
+
+
+
+
+
+    /********************************/
+    /*** METODOS CREADOS POR BAKE ***/
+    /********************************/
+
+    /**
      * Initialize method
      *
      * @param array $config The configuration for the Table.
