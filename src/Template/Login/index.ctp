@@ -10,7 +10,7 @@
 <!--<div class="btn-group"></div>-->
 <div class="panel panel-default">
 	<div class="panel-heading">
-    	<h1>Iniciar sesión</h1>
+    	<h1 style="text-align: center;">Iniciar sesión</h1>
   	</div>
 
   	<div class="panel-body">
