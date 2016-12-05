@@ -34,9 +34,21 @@ class LoginController extends AppController
         $formData = $this->request->data;
         if ($this->request->is('post')) {
             $this->loadModel('Users');
+<<<<<<< HEAD
+            $query = $this->Users->find()
+                    ->where([
+                        'username'=>$formData['username'],
+                        'password'=>(new DefaultPasswordHasher)->hash($formData['password'])
+                    ])
+                    ->first();
+
+                if ($query){
+                    $user = $query->toArray();
+=======
             $user = $this->Users->login();
                 if ($user){
                     $user = $user->toArray();
+>>>>>>> 8070aed098a1df0e06b0e2b1554ebfc82e1c10c1
                     $session->write('User.isAdmin','propietario');
                     $session->write('User',$user);
 
@@ -59,12 +71,15 @@ class LoginController extends AppController
         $this->loadModel('Communes');
         $communes = $this->Communes->find('all');
         $this->set(compact('communes'));
+        $usersTable     = TableRegistry::get('Users');
+        
+        debug($usersTable->getUserByRun('18622421-3'));
         /*Aquí se "agarran" los datos del formulario*/
         if ($this->request->is('post')) 
         {
             $hasher = new DefaultPasswordHasher();
 
-            $usersTable     = TableRegistry::get('Users');
+            
             $phonesTable    = TableRegistry::get('Phones');
             $emailsTable    = TableRegistry::get('Emails');
             $user           = $usersTable->newEntity();
@@ -82,6 +97,7 @@ class LoginController extends AppController
             $user->run              = $datosUsuario['user_rut'];
             $user->disponibilidad   = $datosUsuario['availability'];
             $user->admin            = 0;
+<<<<<<< HEAD
             $rut = explode('-', $datosUsuario['user_rut']);
             print_r($rut);
 
@@ -89,6 +105,10 @@ class LoginController extends AppController
 
 
             if(count($rut) == 2 && is_numeric($rut[0]))
+=======
+            //if(is_numeric($user->))
+            if($usersTable->save($user))
+>>>>>>> 8070aed098a1df0e06b0e2b1554ebfc82e1c10c1
             {
                 if(strlen($rut[1]) && (is_numeric($rut[1]) || $rut[1] == 'k'))
                 {
