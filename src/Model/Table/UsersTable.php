@@ -4,7 +4,10 @@ namespace App\Model\Table;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
+use Cake\Auth\DefaultPasswordHasher;
+
 
 /**
  * Users Model
@@ -47,7 +50,61 @@ class UsersTable extends Table
         return $user;
     }
 
+    public function registerUser($datosUsuario)
+    {
+        $usersTable     = TableRegistry::get('Users');
+        $phonesTable    = TableRegistry::get('Phones');
+        $emailsTable    = TableRegistry::get('Emails');
+        $user->commune_id       = $datosUsuario['communes'];
+        $user->nombre_usuario   = $datosUsuario['user_nickname'];
+        $user->password         = (new DefaultPasswordHasher)->hash($datosUsuario['user_password']);
+        $user->name             = $datosUsuario['user_name'];
+        $user->surname          = $datosUsuario['user_surname'];
+        $user->run              = $datosUsuario['user_rut'];
+        $user->disponibilidad   = $datosUsuario['availability'];
+        $user->admin            = 0;
+        if($usersTable->save($user))
+        {
+            $phone->phone   = $datosUsuario['user_phone'];
+            $phone->user_id = $user->id;
+            if($phonesTable->save($phone))
+            {
+                $email->email   = $datosUsuario['user_email'];
+                $email->user_id = $user->id;
+                if($emailsTable->save($email))
+                {
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            return false;
+        }
 
+    }
+
+    public function getUserByData($run, $username)
+    {
+        $user = $this->find('all',
+            ['condition' => ['Users.run =' => $run]
+            ]);
+        if($user->count() > 0)
+        {
+            return 1;
+        }
+        else
+        {
+            $user = $this->find('all',
+            ['condition' => ['Users.nombre_usuario =' => $username]
+            ]);
+            if($user->count() > 0)
+            {
+                return 2;
+            }
+            return 0;
+        }
+    }
 
 
 
@@ -161,18 +218,5 @@ class UsersTable extends Table
         return $rules;
     }
 
-    public function getUserByRun($run)
-    {
-        $user = $this->Users->find('all',
-            ['condition' => ['Users.run =' => $run]
-            ]);
-        if($user->count() > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+
 }
