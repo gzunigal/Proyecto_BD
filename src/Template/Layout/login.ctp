@@ -19,10 +19,9 @@
     <?= $this->Html->charset() ?>
      <!-- Aquí se llama a bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://s3.amazonaws.com/jetstrap-site/css/frame.css?10">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
     <style id="custom-css">#jumbo 
         {
           background-color: #333;
@@ -47,11 +46,6 @@
       parent.FrameDocument = document;
     </script>
 
-    <script id="custom-js"></script>
-    <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
     <style type="text/css">
       .scrollable {
         height: 100px;
@@ -74,7 +68,7 @@
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>
-    <footer>
-    </footer>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
