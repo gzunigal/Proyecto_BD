@@ -9,6 +9,7 @@ use Cake\Auth\DefaultPasswordHasher;
 
 class LoginController extends AppController
 {
+
     public function initialize()
     {
         parent::initialize();
@@ -25,16 +26,33 @@ class LoginController extends AppController
     }
 
     public function login(){
-        if ($this->request->is('post')) {
-            //print_r($this->request->data);
-            $user = $this->Auth->identify();
-            print_r($user);
-            echo $user;
-            debug($user);   
-            if ($user) {
-                echo "EXISTE!!!";
-            }
+        $session = $this->request->session();
+        if ($session->check('User')) {
+            return $this->redirect(['controller' => 'Login', 'action' => 'logout']);
         }
+        if ($this->request->is('post')) {
+            $this->loadModel('Users');
+            $query = $this->Users->find()
+                    ->where([
+                        'username'=>$formData['username'],
+                        'password'=>(new DefaultPasswordHasher)->hash($formData['password']);
+                    ])
+                    ->first();
+
+                if ($query){
+                    $user = $query->toArray();
+                    $session->write('User.isAdmin','propietario');
+                    $session->write('User',$user);
+
+                    return $this->redirect(['controller' => 'Home', 'action' => 'index']);
+                }else{
+                    $this->Flash->set('Nombre de usuario o contraseña incorrecta');
+                }
+
+            
+        }
+
+        return $this->redirect(['controller' => 'Login', 'action' => 'index']);
     }
 
     public function logout(){

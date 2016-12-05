@@ -440,6 +440,7 @@ INSERT INTO `communes` (`id`, `region_id`, `nombre_comuna`) VALUES
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `run` varchar(10) NOT NULL,
   `commune_id` int(11) NOT NULL,
   `nombre_usuario` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -448,6 +449,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `disponibilidad` tinyint(1) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
+  UNIQUE KEY (`run`),
   INDEX (`commune_id`),
   FOREIGN KEY (`commune_id`)
     REFERENCES `communes` (`id`)
