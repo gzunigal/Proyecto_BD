@@ -34,26 +34,26 @@ class LoginController extends AppController
         $formData = $this->request->data;
         if ($this->request->is('post')) {
             $this->loadModel('Users');
-            $user = $this->Users->login();
-                if ($user){
-                    $isEncargado = $user->isEncargado();
-                    $session->write('User.isEncargado',$user->hasMissions());
-                    $session->write('User.Entity',$user);
-                    $session->write('User',$user.toArray());
+            debug($formData);
+            $user = $this->Users->login($formData['username'],$formData['password']);
+            debug($user);
+            if ($user){
+                $session->write('User.isEncargado',$user->hasMissions());
+                $session->write('User.Entity',$user);
+                $session->write('User',$user->toArray());
 
-                    return $this->redirect(['controller' => 'Home', 'action' => 'index']);
-                }else{
-                    $this->Flash->set('Nombre de usuario o contraseña incorrecta');
-                }
-
-            
+                return $this->redirect(['controller' => 'Home', 'action' => 'index']);
+            }else{
+                $this->Flash->set('Nombre de usuario o contraseña incorrecta');
+            }
         }
 
         return $this->redirect(['controller' => 'Login', 'action' => 'index']);
     }
 
     public function logout(){
-        return $this->redirect($this->Auth->logout());
+        $this->request->session()->destroy();
+        return $this->redirect(['controller' => 'Login', 'action' => 'index']);
     }
 
     public function register(){

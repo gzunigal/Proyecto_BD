@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Users Model
@@ -38,13 +39,21 @@ class UsersTable extends Table
      * @return Entity User si verifica usuario, NULL si no se verifican datos.
      */
     public function login($username,$password){
+        $hashedPass = (new DefaultPasswordHasher)->hash($password);
+
+        debug($hashedPass);
+
         $user = $this->find()
             ->where([
-                'username'=>$username,
-                'password'=>(new DefaultPasswordHasher)->hash($password)
+                'nombre_usuario'=>$username
             ])
             ->first();
-        return $user;
+        
+        if (!$user) return NULL;
+
+        $validPass = $user->checkPass($password);
+
+        return ($validPass)? $user : NULL;
     }
 
 

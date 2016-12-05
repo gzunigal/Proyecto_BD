@@ -77,6 +77,9 @@ $cakeDescription = 'Sistema de administración de voluntarios';
       <li><a href="#">Notificaciones</a></li>
       <li><a href="https://www.youtube.com/watch?v=9Q7mHG9t0Js">Click me?</a></li>
     </ul>
+    <div class="logout">
+      <a class="btn btn-warning" href="/Login/logout/">Cerrar Sesion</a>
+    </div>
   </div>
 </nav>
 

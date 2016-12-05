@@ -2,6 +2,8 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * User Entity
@@ -51,6 +53,17 @@ class User extends Entity
         $result = $missionsTable->find()->where(['user_id'=>$this->id])->first();
 
         return ($result)? 1 : 0;
+    }
+
+    /**
+     * Funcion que verifica si coincide una password ingresada
+     *
+     * @return Lista de Entity Mission asociadas a Usuario, NULL si no existen.
+     */
+    public function checkPass($pass){
+        $valid = (new DefaultPasswordHasher)->check($pass,$this->password);
+
+        return $valid;
     }
 
 
