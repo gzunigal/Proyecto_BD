@@ -49,8 +49,6 @@ class LoginController extends AppController
         if ($this->request->is('post')) 
         {
             $hasher = new DefaultPasswordHasher();
-            //$hasher->hash($password);
-
 
             $usersTable     = TableRegistry::get('Users');
             $phonesTable    = TableRegistry::get('Phones');
@@ -59,15 +57,18 @@ class LoginController extends AppController
             $phone          = $phonesTable->newEntity();
             $email          = $emailsTable->newEntity();
             $datosUsuario   = $this->request->data;
+
             /*VERIFICAR SI YA EXISTE UN USUARIO*/
             /*Se cargan datos del usuario en las entidades*/
             $user->commune_id       = $datosUsuario['communes'];
             $user->nombre_usuario   = $datosUsuario['user_nickname'];
+            $user->password         = $hasher->hash($datosUsuario['user_password']);
             $user->name             = $datosUsuario['user_name'];
             $user->surname          = $datosUsuario['user_surname'];
-            $user->password         = $hasher->hash($datosUsuario['user_password']);
+            $user->run              = $datosUsuario['user_rut'];
             $user->disponibilidad   = $datosUsuario['availability'];
             $user->admin            = 0;
+            if(is_numeric($user->))
             if($usersTable->save($user))
             {
                 $phone->phone   = $datosUsuario['user_phone'];

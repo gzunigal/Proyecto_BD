@@ -20,37 +20,43 @@
 		  		<?php echo $this->Form->create(NULL, ['url' => ['controller' => 'Login', 'action' => 'register']]); ?>
 		  		<div class="col-md-offset-3 col-md-6">
 		  			<?php 
-		  				echo $this->Form->input(NULL, ["name"=>"user_nickname", "placeholder" => "Nickname",'required' => true, 'allowEmpty' => false]);
+		  				echo $this->Form->input('Nombre de Usuario', ["name"=>"user_nickname", "placeholder" => "Nickname",'required' => true, 'allowEmpty' => false]);
 		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
 		  			<?php 
-		  				echo $this->Form->input(NULL, ["name"=>"user_name", "placeholder" => "Nombre",'required' => true, 'allowEmpty' => false]);
+		  				echo $this->Form->input('Contraseña', ["name"=>"user_password", "type" => "password", "placeholder" => "Contraseña",'required' => true, 'allowEmpty' => false]);
 		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
 		  			<?php 
-		  				echo $this->Form->input(NULL, ["name"=>"user_surname", "placeholder" => "Apellido",'required' => true, 'allowEmpty' => false]);
+		  				echo $this->Form->input('Nombre', ["name"=>"user_name", "placeholder" => "Nombre",'required' => true, 'allowEmpty' => false]);
 		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
 		  			<?php 
-		  				echo $this->Form->input(NULL, ["name"=>"user_password", "type" => "password", "placeholder" => "Contraseña",'required' => true, 'allowEmpty' => false]);
+		  				echo $this->Form->input('Apellido', ["name"=>"user_surname", "placeholder" => "Apellido",'required' => true, 'allowEmpty' => false]);
 		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
 		  			<?php 
-		  				echo $this->Form->input(NULL, ["name"=>"user_email", "placeholder" => "Correo",'required' => true, 'allowEmpty' => false]);
+		  				echo $this->Form->input('Rut', ["name"=>"user_rut", "placeholder" => "12345678-9",'required' => true, 'allowEmpty' => false]);
 		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
 		  			<?php 
-		  				echo $this->Form->input(NULL, ["name"=>"user_phone", "type" => "tel", "placeholder" => "Teléfono",'required' => true, 'allowEmpty' => false]);
+		  				echo $this->Form->input('Correo', ["name"=>"user_email", "placeholder" => "correo@host.cl",'required' => true, 'allowEmpty' => false]);
+		  			?>
+		  		</div>
+
+		  		<div class="col-md-offset-3 col-md-6">
+		  			<?php 
+		  				echo $this->Form->input('Teléfono', ["name"=>"user_phone", "type" => "tel", "placeholder" => "123456789",'required' => true, 'allowEmpty' => false]);
 		  			?>
 		  		</div>
 		  		
