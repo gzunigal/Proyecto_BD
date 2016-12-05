@@ -1,5 +1,6 @@
-<head>
-    <title>Registro</title>
+<?php $this->layout = 'login'; ?>
+
+    <title>Sistema de administración de voluntarios: Registro</title>
     <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
 </head>
 
@@ -16,52 +17,67 @@
 		  		<div class="col-md-offset-3 col-md-6">
 		  			<h1>Nuevo usuario</h1>
 		  		</div>
-
+		  		<?php echo $this->Form->create(NULL, ['url' => ['controller' => 'Login', 'action' => 'register']]); ?>
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nickname">
+		  			<?php 
+		  				echo $this->Form->input(NULL, ["name"=>"user_nickname", "placeholder" => "Nickname",'required' => true, 'allowEmpty' => false]);
+		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nombre">
+		  			<?php 
+		  				echo $this->Form->input(NULL, ["name"=>"user_name", "placeholder" => "Nombre",'required' => true, 'allowEmpty' => false]);
+		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Apellido">
+		  			<?php 
+		  				echo $this->Form->input(NULL, ["name"=>"user_surname", "placeholder" => "Apellido",'required' => true, 'allowEmpty' => false]);
+		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Contraseña">
+		  			<?php 
+		  				echo $this->Form->input(NULL, ["name"=>"user_password", "type" => "password", "placeholder" => "Contraseña",'required' => true, 'allowEmpty' => false]);
+		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Correo">
+		  			<?php 
+		  				echo $this->Form->input(NULL, ["name"=>"user_email", "placeholder" => "Correo",'required' => true, 'allowEmpty' => false]);
+		  			?>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Teléfono">
+		  			<?php 
+		  				echo $this->Form->input(NULL, ["name"=>"user_phone", "type" => "tel", "placeholder" => "Teléfono",'required' => true, 'allowEmpty' => false]);
+		  			?>
 		  		</div>
-
+		  		
 		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Comuna">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
-						<option value="0">Selecciona una región</option>
-					</select>
+					 <select name="communes" required>
+					 	<?php
+					 		echo '<option value="">Elige una comuna</option>';
+					 		foreach ($communes as $commune) {
+					 			echo '<option value='.$commune->id.'>'.$commune->nombre_comuna.'</option>';
+					 		}
+					 	?>
+					 </select>
 				</div>
 
 				<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
-			  			<option>¿Estás disponible?</option>
-			  			<option>Sí</option>	
-			  			<option>No</option>
+					<select class="form-control" name="availability" required>
+			  			<option value="">¿Estás disponible?</option>
+			  			<option value=1>Sí</option>	
+			  			<option value=0>No</option>
 			  		</select>
 		  		</div>
 
 		  		<div class="col-md-offset-3 col-md-6">
-					<a href="#" class="btn btn-primary" target="">Registrarme</a>
-					<a href="#" class="btn pull-right btn-danger" target="">Cancelar</a>
+					<?php
+						echo $this->Form->button('Registrarme', ['type' => 'submit', 'class' => 'btn btn-primary']);
+						echo $this->Html->link('Cancelar', ['controller' => 'login', 'action' => 'index'], ['class' => 'btn pull-right btn-danger']);
+					?>
 				</div>
 			</div>
 		</div>

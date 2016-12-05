@@ -1,22 +1,10 @@
 <?php
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link      http://cakephp.org CakePHP(tm) Project
- * @since     0.2.9
- * @license   http://www.opensource.org/licenses/mit-license.php MIT License
- */
 namespace App\Controller;
 
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\ORM\TableRegistry;
 
 class LoginController extends AppController
 {
@@ -26,8 +14,7 @@ class LoginController extends AppController
         parent::initialize();
 
         $this->Auth->allow();
-    }
-
+    }   
 
     public function index()
     {
@@ -63,6 +50,42 @@ class LoginController extends AppController
     }
 
     public function register(){
-        echo "HEY!";
+        $this->loadModel('Communes');
+        $communes = $this->Communes->find('all');
+        $this->set(compact('communes'));
+        if ($this->request->is('post')) 
+        {
+            $usersTable     = TableRegistry::get('Users');
+            $phonesTable    = TableRegistry::get('Phones');
+            $emailsTable    = TableRegistry::get('Emails');
+            $user           = $usersTable->newEntity();
+            $phone          = $phonesTable->newEntity();
+            $email          = $emailsTable->newEntity();
+            $datosUsuario   = $this->request->data;
+            /*VERIFICAR SI YA EXISTE UN USUARIO*/
+            /*Se cargan datos del usuario en las entidades*/
+            $user->commune_id       = $datosUsuario['communes'];
+            $user->nombre_usuario   = $datosUsuario['user_nickname'];
+            $user->name             = $datosUsuario['user_name'];
+            $user->surname          = $datosUsuario['user_surname'];
+            $user->password         = $datosUsuario['user_password'];
+            $user->disponibilidad   = $datosUsuario['availability'];
+            $user->admin            = 0;
+            if($usersTable->save($user))
+            {
+                $phone->phone   = $datosUsuario['user_phone'];
+                $phone->user_id = $user->id;
+                if($phonesTable->save($phone))
+                {
+                    $email->email   = $datosUsuario['user_email'];
+                    $email->user_id = $user->id;
+                    if($emailsTable->save($email))
+                    {
+                        $this->redirect(['controller' => 'Login', 'action' => 'index']);
+                        $this->Flash->success('Se ha registrado con éxito');
+                    }
+                }
+            }
+        }
     }
 }

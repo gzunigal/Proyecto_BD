@@ -1,9 +1,3 @@
-<?php $this->layout = 'login'; ?>
-<head>
-    <title>Login</title>
-</head>
-
-
 <body class="scrollable">
 
 <!--<div class="btn-group"></div>-->
@@ -21,7 +15,7 @@
     		echo $this->Form->input('', ["placeholder" => "Apellido"]);
     		echo $this->Form->input('', ["placeholder" => "Correo"]);
     		echo $this->Form->input('', ["placeholder" => "Teléfono"]);
-    		// Regions sale del controlador, al hacer una consulta al modelo por todas las regiones.
+    		// regions (o comunas? de una comuna aparentemente se puede determinar la región) sale del controlador, al hacer una consulta al modelo por todas las regiones.
 			// echo $this->Form->select('Region', $regions);
 			// Estos valores se entregan como enteros?
     		$disponibilidad = ['0' => 'Sí', '1' => 'No'];

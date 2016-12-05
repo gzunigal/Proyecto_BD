@@ -1,9 +1,8 @@
-<?php $this->layout = 'login'; ?>
+<?php //$this->layout = 'user'; ?>
 <head>
-    <title>Login</title>
+    <title>Login - Handy Hand</title>
     <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
 </head>
-
 
 <body>
 
