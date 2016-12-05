@@ -5,6 +5,7 @@ use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\TableRegistry;
+use Cake\Auth\DefaultPasswordHasher;
 
 class LoginController extends AppController
 {
@@ -42,12 +43,15 @@ class LoginController extends AppController
 
     public function register(){
         $this->loadModel('Communes');
-        $communes = $this->Communes->find('all',
-            ['conditions' => ['Communes.id =' => 0]]);
+        $communes = $this->Communes->find('all');
         $this->set(compact('communes'));
         /*Aquí se "agarran" los datos del formulario*/
         if ($this->request->is('post')) 
         {
+            $hasher = new DefaultPasswordHasher();
+            //$hasher->hash($password);
+
+
             $usersTable     = TableRegistry::get('Users');
             $phonesTable    = TableRegistry::get('Phones');
             $emailsTable    = TableRegistry::get('Emails');
@@ -61,7 +65,7 @@ class LoginController extends AppController
             $user->nombre_usuario   = $datosUsuario['user_nickname'];
             $user->name             = $datosUsuario['user_name'];
             $user->surname          = $datosUsuario['user_surname'];
-            $user->password         = $datosUsuario['user_password'];
+            $user->password         = $hasher->hash($datosUsuario['user_password']);
             $user->disponibilidad   = $datosUsuario['availability'];
             $user->admin            = 0;
             if($usersTable->save($user))
@@ -75,7 +79,7 @@ class LoginController extends AppController
                     if($emailsTable->save($email))
                     {
                         $this->redirect(['controller' => 'Login', 'action' => 'index']);
-                        $this->Flash->success('Se ha registrado con éxito');
+                        $this->Flash->success('Se ha registrado con éxito!');
                     }
                 }
             }
