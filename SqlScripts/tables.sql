@@ -456,15 +456,15 @@ CREATE TABLE IF NOT EXISTS `users` (
     ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`id`, `commune_id`, `nombre_usuario`, name, surname, `password`, `disponibilidad`, `admin`) VALUES
-(1, 2, 'Ichigo', 'name_1', 'surname_1', 'ichigo', 2, 0),
-(2, 1, 'Richard', 'name_2', 'surname_2', 'richard', 0, 1),  
-(3, 7, 'shrek', 'name_3', 'surname_3', 'getouttamyswamp', 1, 0),
-(4, 10, 'Elber Gon Freecs', 'name_4', 'surname_4', 'prntscr', 1, 0),
-(5, 11,  'Elber Gon', 'name_5', 'surname_5', 'lalalele', 1, 1),
-(6, 328, 'Arturo Prat', 'name_6', 'surname_6', 'pass123', 1, 1),
-(7, 201, 'Michael Jackson', 'name_7', 'surname_7', '123asd', 1, 1),
-(8, 13, 'Steve Jobs', 'name_8', 'surname_8', 'passtest', 1, 1);
+INSERT INTO `users` (`id`, run, `commune_id`, `nombre_usuario`, name, surname, `password`, `disponibilidad`, `admin`) VALUES
+(1, 2, '18622421-3', 'Ichigo', 'name_1', 'surname_1', 'ichigo', 2, 0),
+(2, 1, '17845123-2', 'Richard', 'name_2', 'surname_2', 'richard', 0, 1),  
+(3, 7, '12354666-3', 'shrek', 'name_3', 'surname_3', 'getouttamyswamp', 1, 0),
+(4, 10, '4578621-3', 'Elber Gon Freecs', 'name_4', 'surname_4', 'prntscr', 1, 0),
+(5, 11,  '45612321-9', 'Elber Gon', 'name_5', 'surname_5', 'lalalele', 1, 1),
+(6, 328, '100-1', 'Arturo Prat', 'name_6', 'surname_6', 'pass123', 1, 1),
+(7, 201, '7894561-2','Michael Jackson', 'name_7', 'surname_7', '123asd', 1, 1),
+(8, 13, '14875236-9','Steve Jobs', 'name_8', 'surname_8', 'passtest', 1, 1);
 
 
 
