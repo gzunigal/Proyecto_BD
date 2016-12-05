@@ -456,7 +456,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`id`, run, `commune_id`, `nombre_usuario`, name, surname, `password`, `disponibilidad`, `admin`) VALUES
+INSERT INTO `users` (`id`, `commune_id`, run, `nombre_usuario`, name, surname, `password`, `disponibilidad`, `admin`) VALUES
 (1, 2, '18622421-3', 'Ichigo', 'name_1', 'surname_1', 'ichigo', 2, 0),
 (2, 1, '17845123-2', 'Richard', 'name_2', 'surname_2', 'richard', 0, 1),  
 (3, 7, '12354666-3', 'shrek', 'name_3', 'surname_3', 'getouttamyswamp', 1, 0),
