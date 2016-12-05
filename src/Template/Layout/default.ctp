@@ -24,13 +24,13 @@ $cakeDescription = 'Sistema de administración de voluntarios';
 	
 	<!-- Aquí se llama a bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
+
     <title>
         <?= $cakeDescription ?>
     </title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://s3.amazonaws.com/jetstrap-site/css/frame.css?10">
     <style id="custom-css">#jumbo 
         {
           background-color: #333;
@@ -54,12 +54,6 @@ $cakeDescription = 'Sistema de administración de voluntarios';
       parent.FrameWindow = window;
       parent.FrameDocument = document;
     </script>
-
-    <script id="custom-js"></script>
-    <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
     <!-- Aquí continúa el código normal -->
 
     <?= $this->Html->meta('icon') ?>
@@ -79,7 +73,7 @@ $cakeDescription = 'Sistema de administración de voluntarios';
       <a class="navbar-brand" href="#">Handy-Hand</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Mensajes</a></li>
+      <li><a href="#">Mensajes</a></li>
       <li><a href="#">Notificaciones</a></li>
       <li><a href="https://www.youtube.com/watch?v=9Q7mHG9t0Js">Click me?</a></li>
     </ul>
@@ -89,9 +83,9 @@ $cakeDescription = 'Sistema de administración de voluntarios';
 <!-- Here's where I want my views to be displayed -->
 <?= $this->Flash->render() ?>
     <div class="container clearfix">
-        <?= $this->fetch('content') ?>
+      <?= $this->fetch('content') ?>
     </div>
-    <footer>
-    </footer>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

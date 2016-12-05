@@ -51,8 +51,10 @@ class LoginController extends AppController
 
     public function register(){
         $this->loadModel('Communes');
-        $communes = $this->Communes->find('all');
+        $communes = $this->Communes->find('all',
+            ['conditions' => ['Communes.id =' => 0]]);
         $this->set(compact('communes'));
+        /*Aquí se "agarran" los datos del formulario*/
         if ($this->request->is('post')) 
         {
             $usersTable     = TableRegistry::get('Users');
