@@ -49,4 +49,19 @@ class User extends Entity
     protected $_hidden = [
         'password'
     ];
+
+    public function getUserByRun($run)
+    {
+        $user = $this->Users->find('all',
+            ['condition' => ['Users.run =' => $run]
+            ]);
+        if($user->count() > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

@@ -35,7 +35,7 @@ class LoginController extends AppController
             $query = $this->Users->find()
                     ->where([
                         'username'=>$formData['username'],
-                        'password'=>(new DefaultPasswordHasher)->hash($formData['password']);
+                        'password'=>(new DefaultPasswordHasher)->hash($formData['password'])
                     ])
                     ->first();
 
@@ -63,12 +63,15 @@ class LoginController extends AppController
         $this->loadModel('Communes');
         $communes = $this->Communes->find('all');
         $this->set(compact('communes'));
+        $usersTable     = TableRegistry::get('Users');
+        
+        debug($usersTable->getUserByRun('18622421-3'));
         /*Aquí se "agarran" los datos del formulario*/
         if ($this->request->is('post')) 
         {
             $hasher = new DefaultPasswordHasher();
 
-            $usersTable     = TableRegistry::get('Users');
+            
             $phonesTable    = TableRegistry::get('Phones');
             $emailsTable    = TableRegistry::get('Emails');
             $user           = $usersTable->newEntity();
@@ -86,21 +89,40 @@ class LoginController extends AppController
             $user->run              = $datosUsuario['user_rut'];
             $user->disponibilidad   = $datosUsuario['availability'];
             $user->admin            = 0;
-            if(is_numeric($user->))
-            if($usersTable->save($user))
+            $rut = explode('-', $datosUsuario['user_rut']);
+            print_r($rut);
+
+            
+
+
+            if(count($rut) == 2 && is_numeric($rut[0]))
             {
-                $phone->phone   = $datosUsuario['user_phone'];
-                $phone->user_id = $user->id;
-                if($phonesTable->save($phone))
+                if(strlen($rut[1]) && (is_numeric($rut[1]) || $rut[1] == 'k'))
                 {
-                    $email->email   = $datosUsuario['user_email'];
-                    $email->user_id = $user->id;
-                    if($emailsTable->save($email))
+                    if($usersTable->save($user))
                     {
-                        $this->redirect(['controller' => 'Login', 'action' => 'index']);
-                        $this->Flash->success('Se ha registrado con éxito!');
-                    }
+                        $phone->phone   = $datosUsuario['user_phone'];
+                        $phone->user_id = $user->id;
+                        if($phonesTable->save($phone))
+                        {
+                            $email->email   = $datosUsuario['user_email'];
+                            $email->user_id = $user->id;
+                            if($emailsTable->save($email))
+                            {
+                                $this->redirect(['controller' => 'Login', 'action' => 'index']);
+                                $this->Flash->success('Se ha registrado con éxito!');
+                            }
+                        }
+                    }           
                 }
+                else
+                {
+                    $this->Flash->error('Formato de rut incorrecto');
+                }
+            }
+            else
+            {
+                    $this->Flash->error('Formato de rut incorrecto');
             }
         }
     }
