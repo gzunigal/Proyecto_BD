@@ -12,25 +12,16 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
-$cakeDescription = 'Sistema de administración de voluntarios';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <?php $this->Html->charset() ?>
-	<title><?= h($this->fetch('title')) ?></title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	
-	<!-- Aquí se llama a bootstrap -->
+    <?= $this->Html->charset() ?>
+     <!-- Aquí se llama a bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
-
-    <title>
-        <?= $cakeDescription ?>
-    </title>
     <style id="custom-css">#jumbo 
         {
           background-color: #333;
@@ -54,6 +45,13 @@ $cakeDescription = 'Sistema de administración de voluntarios';
       parent.FrameWindow = window;
       parent.FrameDocument = document;
     </script>
+
+    <style type="text/css">
+      .scrollable {
+        height: 100px;
+        overflow-y: scroll;
+      }
+    </style>
     <!-- Aquí continúa el código normal -->
 
     <?= $this->Html->meta('icon') ?>
@@ -65,28 +63,10 @@ $cakeDescription = 'Sistema de administración de voluntarios';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body class="scrollable">
-<nav  class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Handy-Hand</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="#">Mensajes</a></li>
-      <li><a href="#">Notificaciones</a></li>
-      <li><a href="https://www.youtube.com/watch?v=9Q7mHG9t0Js">Click me?</a></li>
-    </ul>
-    <div class="logout">
-      <a class="btn btn-warning" href="/Login/logout/">Cerrar Sesion</a>
-    </div>
-  </div>
-</nav>
-
-<!-- Here's where I want my views to be displayed -->
-<?= $this->Flash->render() ?>
+<body>
+    <?= $this->Flash->render() ?>
     <div class="container clearfix">
-      <?= $this->fetch('content') ?>
+        <?= $this->fetch('content') ?>
     </div>
   <script src="/js/jquery.js"></script>
   <script src="/js/bootstrap.min.js"></script>

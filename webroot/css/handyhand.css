@@ -1,0 +1,21 @@
+#logoLogin{
+
+}
+
+.form-center{
+	width: 80%;
+	margin: auto;
+}
+
+::-webkit-input-placeholder { /* Chrome */
+  opacity: 1;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  opacity: 1;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  opacity: 1;
+}

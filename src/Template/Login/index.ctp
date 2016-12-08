@@ -1,29 +1,30 @@
+<?php $this->layout = 'login'; ?>
 <head>
-    <title>Login</title>
+    <title>Login: Handy Hand</title>
+    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
 </head>
 
 
-<body class="scrollable">
+<body style="padding-top: 100px">
 
-<img style="border:2px solid grey" src="http://www.smartienda.cl/estampados/clientes/11388/MENSAJE_CENTRO_FOTO1.jpg" class="img-responsive center-block">
 <!--<div class="btn-group"></div>-->
 <div class="panel panel-default">
 	<div class="panel-heading">
-    	<h1>Iniciar sesión</h1>
+    	<h1 style="text-align: center;">Iniciar sesión</h1>
   	</div>
 
   	<div class="panel-body">
-		<?php 
-			echo $this->Form->create(null, ['url' => ['controller' => 'Login', 'action' => 'login']]);
-    		echo $this->Form->input('Nombre de usuario');
-    		echo $this->Form->input('Contraseña');
-    		echo $this->Form->button('Log in', ['type' => 'submit', 'class' => 'btn btn-primary']);
-    		echo $this->Form->end();
-		?>
-		<hr>
-		<?php 
-			echo $this->Html->link('Quiero registrarme', 'http://www.google.cl', ['class' => 'btn btn-success']); 
-		?>
+        <div class="col-md-offset-2 col-md-8">
+    		<?php 
+    			echo $this->Form->create(NULL, ['url' => ['controller' => 'Login', 'action' => 'login']]);
+        		echo $this->Form->input('username', ["name"=>"username", "placeholder" => "Nombre de usuario"]);
+        		echo $this->Form->input('password', ["name"=>"password", "type"=>"password", "placeholder" => "Contraseña"]);
+        		echo $this->Form->button('Log in', ['type' => 'submit', 'class' => 'btn btn-primary']);
+        		echo $this->Html->link('Quiero registrarme', ['controller'=>'Login', 'action'=>'register'], 
+        			['class' => 'btn btn-success pull-right']);
+        		echo $this->Form->end();
+        	?>
+        </div>		
 	</div>
 </div>
 </body>

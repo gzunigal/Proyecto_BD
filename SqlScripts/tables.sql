@@ -440,27 +440,31 @@ INSERT INTO `communes` (`id`, `region_id`, `nombre_comuna`) VALUES
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `run` varchar(10) NOT NULL,
   `commune_id` int(11) NOT NULL,
   `nombre_usuario` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `surname` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `disponibilidad` tinyint(1) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
+  UNIQUE KEY (`run`),
   INDEX (`commune_id`),
   FOREIGN KEY (`commune_id`)
     REFERENCES `communes` (`id`)
     ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`id`, `commune_id`, `nombre_usuario`, `password`, `disponibilidad`, `admin`) VALUES
-(1, 2, 'Ichigo', 'ichigo', 2, 0),
-(2, 1, 'Richard', 'richard', 0, 1),
-(3, 7, 'shrek', 'getouttamyswamp', 1, 0),
-(4, 10, 'Elber Gon Freecs', 'prntscr', 1, 0),
-(5, 11,  'Elber Gon', 'lalalele', 1, 1),
-(6, 328, 'Arturo Prat', 'pass123', 1, 1),
-(7, 201, 'Michael Jackson', '123asd', 1, 1),
-(8, 13, 'Steve Jobs', 'passtest', 1, 1);
+INSERT INTO `users` (`id`, `commune_id`, run, `nombre_usuario`, name, surname, `password`, `disponibilidad`, `admin`) VALUES
+(1, 2, '18622421-3', 'Ichigo', 'name_1', 'surname_1', 'ichigo', 2, 0),
+(2, 1, '17845123-2', 'Richard', 'name_2', 'surname_2', 'richard', 0, 1),  
+(3, 7, '12354666-3', 'shrek', 'name_3', 'surname_3', 'getouttamyswamp', 1, 0),
+(4, 10, '4578621-3', 'Elber Gon Freecs', 'name_4', 'surname_4', 'prntscr', 1, 0),
+(5, 11,  '45612321-9', 'Elber Gon', 'name_5', 'surname_5', 'lalalele', 1, 1),
+(6, 328, '100-1', 'Arturo Prat', 'name_6', 'surname_6', 'pass123', 1, 1),
+(7, 201, '7894561-2','Michael Jackson', 'name_7', 'surname_7', '123asd', 1, 1),
+(8, 13, '14875236-9','Steve Jobs', 'name_8', 'surname_8', 'passtest', 1, 1);
 
 
 
