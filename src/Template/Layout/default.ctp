@@ -70,16 +70,23 @@ $cakeDescription = 'Sistema de administración de voluntarios';
   <div class="container-fluid">
     
     <div class="navbar-header">
+      <!--
+      <img hspace="0" vspace="10" src="/img/handy_hand_logo.png" width="200px">
+      -->
+      
       <a class="navbar-brand" href="#">Handy-Hand</a>
+      
     </div>
     <ul class="nav navbar-nav">
       <li><a href="#">Mensajes</a></li>
       <li><a href="#">Notificaciones</a></li>
       <li><a href="https://www.youtube.com/watch?v=9Q7mHG9t0Js">Click me?</a></li>
     </ul>
-    <div class="logout">
-      <a class="btn btn-warning" href="/Login/logout/">Cerrar Sesion</a>
-    </div>
+    <ul class="nav navbar-nav pull-right">
+    <li class="logout">
+      <a class="pull-right" href="/Login/logout/">Cerrar Sesion</a>
+    </li>
+    </ul>
   </div>
 </nav>
 
