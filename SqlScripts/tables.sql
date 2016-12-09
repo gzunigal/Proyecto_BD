@@ -656,7 +656,7 @@ CREATE TABLE IF NOT EXISTS `abilities_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ability_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `nivel_requerido` int(11) NOT NULL,
+  `nivel_habilidad` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX (`ability_id`),
   INDEX (`user_id`),
@@ -668,7 +668,7 @@ CREATE TABLE IF NOT EXISTS `abilities_users` (
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
-INSERT INTO `abilities_users` (`id`, `user_id`, `ability_id`, `nivel_requerido`) VALUES
+INSERT INTO `abilities_users` (`id`, `user_id`, `ability_id`, `nivel_habilidad`) VALUES
 (1, 1, 3, 2),
 (2, 2, 1, 0),
 (3, 3, 3, 3),
