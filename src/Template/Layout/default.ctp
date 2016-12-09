@@ -70,10 +70,6 @@ $cakeDescription = 'Sistema de administración de voluntarios';
   <div class="container-fluid">
     
     <div class="navbar-header">
-      <!--
-      <img hspace="0" vspace="10" src="/img/handy_hand_logo.png" width="200px">
-      -->
-      
       <a class="navbar-brand" href="#">Handy-Hand</a>
       
     </div>
