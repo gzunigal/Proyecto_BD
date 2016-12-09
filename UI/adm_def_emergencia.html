@@ -1,106 +1,123 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="es" class="full">
 <head>
+
     <meta charset="utf-8">
-    <title>Administrador: definir emergencia</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <link rel="stylesheet" href="https://s3.amazonaws.com/jetstrap-site/css/frame.css?10">
-    <style id="custom-css">#jumbo 
-	    {
-		  background-color: #333;
-		  color: #eee;
-		}
+    <title>Administrador - Definir Emergencia</title>
 
-		#jumbo p 
-		{
-		  font-size: 16px;
-		}
-		#try-header {
-		  margin: 30px 0px;
-		}
-		#try-more {
-		  margin: 30px 0px;
-		  font-style: italic;
-		}
-	</style>
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
 
-    <script>
-      parent.FrameWindow = window;
-      parent.FrameDocument = document;
-    </script>
+    <!-- Material Design Iconic -->
+    <link rel="stylesheet" href="../assets/css/material-design-iconic-font.min.css">
 
-    <script id="custom-js"></script>
-	<link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
+
+    <!-- Legit Ripple CSS -->
+    <link rel="stylesheet" href="../assets/css/ripple.min.css">
+
+    <!-- Hover CSS -->
+    <link rel="stylesheet" href="../assets/css/hover.css">
+
+    <!-- Social Buttons CSS -->
+    <link rel="stylesheet" href="../assets/css/social-buttons.css">
+
+    <!-- Deluxe Custom CSS -->
+    <link href="../assets/css/deluxe-admin.css" rel="stylesheet">
+    <!-- Legit Scrollbar CSS -->
+    <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css"> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
+<body id="pages">
 
-<body class="design">
+	<article>
+    		<div id="pages-form" class="container animated fadeIn">
+    			<section>
+    				<div class="row">
+    					<div class="col-md-13 col-md-offset-13">
+    						<div class="panel box-shadow">
+    							<div class="panel-body center-block">
+    								<div class="pages-header text-center">
+    									<div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
+    									<h4>Administrador - Definir Emergencia</h4>
+    								</div>
+    		                        <form role="form">
+    		                            <fieldset>
+    		                                <div class="form-group">
+                                                <label for="emergency">Nombre de la emergencia</label>
+    		                                    <input class="form-control" placeholder="Ej: Incendio/Derrumbe en..." id="emergency" name="emergency" type="text" required autofocus>
+    		                                </div>
+                                            <div class="form-group">
+                                                <label for="commune">Comuna</label>
+                                                <select class="form-control" id="commune">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="datetime">Fecha</label>
+    		                                    <input class="form-control" placeholder="Ej: 2016-05-02 07:05:07" id="datetime" name="datetime" type="datetime" required autofocus>
+    		                                </div>
+                                            <div class="form-group">
+                                                <label for="gravity">Gravedad</label>
+                                                <select class="form-control" id="gravity">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="state">Estado</label>
+                                                <select class="form-control" id="state">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description">Descripción</label>
+                                                <textarea class="form-control" rows="5" name="description" id="description" placeholder="Escriba una descripción de la emergencia aquí..."></textarea>
+                                            </div>
+    		                                <!-- Change this to a button or input when using this as a form -->
+    		                                <button class="btn btn-success btn-block" type="submit">Definir</button>
+                                            </div>
+    		                            </fieldset>
+    		                        </form>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</section>
+    		</div>
+	</article>
 
-<img style="border:2px solid grey" src="http://cvclavoz.com/wp-content/uploads/2016/06/Administrador.jpg" class="img-responsive center-block">
-<div class="btn-group"></div>
-  	<div class="container">
-  		<div class="row">
-  				
-		  	<div class="panel-body">
+    <!-- jQuery -->
+    <script src="../assets/js/jquery-2.2.4.min.js"></script>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<h1>Nuevo usuario</h1>
-		  		</div>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../assets/js/bootstrap.min.js"></script>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nickname">
-		  		</div>
+    <!-- Legit Ripple JavaScript -->
+    <script src="../assets/js/ripple.min.js"></script>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nombre">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Apellido">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Contraseña">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Correo">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Teléfono">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Comuna">
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
-						<option value="0">Selecciona una región</option>
-					</select>
-				</div>
-
-				<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
-			  			<option>¿Estás disponible?</option>
-			  			<option>Sí</option>	
-			  			<option>No</option>
-			  		</select>
-		  		</div>
-
-		  		<div class="col-md-offset-3 col-md-6">
-					<a href="#" class="btn btn-primary" target="">Registrarme</a>
-					<a href="#" class="btn pull-right btn-danger" target="">Cancelar</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	
+    <!-- Pages JavaScript -->
+    <script src="../assets/js/pages.js"></script>
 </body>
 </html>

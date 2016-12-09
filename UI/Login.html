@@ -1,74 +1,93 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="es" class="full">
 <head>
+
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://s3.amazonaws.com/jetstrap-site/css/frame.css?10">
-    <style id="custom-css">#jumbo 
-	    {
-		  background-color: #333;
-		  color: #eee;
-		}
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
 
-		#jumbo p 
-		{
-		  font-size: 16px;
-		}
-		#try-header {
-		  margin: 30px 0px;
-		}
-		#try-more {
-		  margin: 30px 0px;
-		  font-style: italic;
-		}
-	</style>
+    <!-- Material Design Iconic -->
+    <link rel="stylesheet" href="../assets/css/material-design-iconic-font.min.css">
 
-    <script>
-      parent.FrameWindow = window;
-      parent.FrameDocument = document;
-    </script>
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
 
-    <script id="custom-js"></script>
-	<link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Legit Ripple CSS -->
+    <link rel="stylesheet" href="../assets/css/ripple.min.css">
+
+    <!-- Hover CSS -->
+    <link rel="stylesheet" href="../assets/css/hover.css">
+   
+    <!-- Social Buttons CSS -->
+    <link rel="stylesheet" href="../assets/css/social-buttons.css">
+
+    <!-- Deluxe Custom CSS -->
+    <link href="../assets/css/deluxe-admin.css" rel="stylesheet">
+    <!-- Legit Scrollbar CSS -->
+    <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css"> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
+<body id="pages">
 
-<body class="design">
+	<article>
+    		<div id="pages-form" class="container animated fadeIn">
+    			<section>
+    				<div class="row">
+    					<div class="col-md-4 col-md-offset-4">
+    						<div class="panel box-shadow">
+    							<div class="panel-body center-block">
+    								<div class="pages-header text-center">
+    									<div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
+    									<h4>Iniciar sesión</h4>
+    								</div>
+    		                        <form role="form">
+    		                            <fieldset>
+    		                                <div class="form-group">
+    		                                    <input class="form-control" placeholder="Nombre de Usuario" name="user" type="text" required autofocus>
+    		                                </div>
+    		                                <div class="form-group">
+    		                                    <input class="form-control" placeholder="Contraseña" name="password" type="password" value="" required>
+    		                                </div>
 
-<img style="border:2px solid grey" src="http://www.smartienda.cl/estampados/clientes/11388/MENSAJE_CENTRO_FOTO1.jpg" class="img-responsive center-block">
-<div class="btn-group"></div>
+    		                                <!-- Change this to a button or input when using this as a form -->
+    		                                <button class="btn btn-success btn-block" type="submit">Login</button>
+    		                                <p class="text-center pages-padtop"><span>¿No tienes cuenta?</span> <span><a href="Register.html">Registrate aquí</a>.</span></p>
+    	                                 
+                                            </div>
+    		                            </fieldset>
+    		                        </form>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</section>
+    		</div>
+	</article>
 
-<div class="container">
-  	<div class="row">
-  		<div class="panel-body">
-			<div class="col-md-offset-3 col-md-6">
-		    	<h1>Iniciar sesión</h1>
-		  	</div>
+    <!-- jQuery -->
+    <script src="../assets/js/jquery-2.2.4.min.js"></script>
 
-		  	<div class="col-md-offset-3 col-md-6">
-	  		<input type="text" class="form-control" name="" placeholder="Username">
-	  		</div>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../assets/js/bootstrap.min.js"></script>
 
-			<div class="col-md-offset-3 col-md-6">
-				<input type="text" class="form-control" placeholder="Password">
-			</div>
+    <!-- Legit Ripple JavaScript -->
+    <script src="../assets/js/ripple.min.js"></script> 
 
-			<div class="col-md-offset-3 col-md-6">
-			<a href="#" class="btn btn-primary" target="">Iniciar sesión</a>
-			<a href="#" class="btn btn-link">¿Olvidaste tu contraseña?</a>
-			</div>
-
-		</div>
-	</div>
-
-	<div class="col-md-offset-3 col-md-6">
-		<a href="#" type="button" class="btn btn-success" target="">Quiero registrarme</a>
-	</div>
-</div>
+    <!-- Pages JavaScript -->
+    <script src="../assets/js/pages.js"></script>
 </body>
 </html>
