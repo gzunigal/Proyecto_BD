@@ -4,8 +4,13 @@ namespace App\Model\Table;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 use Cake\Auth\DefaultPasswordHasher;
+<<<<<<< HEAD
+
+=======
+>>>>>>> be806c940df840614e5c34b1ced87537459e9408
 
 /**
  * Users Model
@@ -223,4 +228,6 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+
 }
