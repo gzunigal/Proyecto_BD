@@ -1,106 +1,149 @@
+
 <!DOCTYPE html>
+<html lang="en">
 
-<html lang="es" class="full">
 <head>
+
     <meta charset="utf-8">
-    <title>Registro</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <link rel="stylesheet" href="https://s3.amazonaws.com/jetstrap-site/css/frame.css?10">
-    <style id="custom-css">#jumbo 
-	    {
-		  background-color: #333;
-		  color: #eee;
-		}
+    <title>Register | Deluxe</title>
 
-		#jumbo p 
-		{
-		  font-size: 16px;
-		}
-		#try-header {
-		  margin: 30px 0px;
-		}
-		#try-more {
-		  margin: 30px 0px;
-		  font-style: italic;
-		}
-	</style>
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
 
-    <script>
-      parent.FrameWindow = window;
-      parent.FrameDocument = document;
-    </script>
+    <!-- Material Design Iconic -->
+    <link rel="stylesheet" href="../assets/css/material-design-iconic-font.min.css">
 
-    <script id="custom-js"></script>
-	<link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-glyphicons.css">
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</head>
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
 
+    <!-- Legit Ripple CSS -->
+    <link rel="stylesheet" href="../assets/css/ripple.min.css">
 
-<body class="design">
+    <!-- Hover CSS -->
+    <link rel="stylesheet" href="../assets/css/hover.css">
 
-<img style="border:2px solid grey" src="https://userscontent2.emaze.com/images/0dca5196-0bee-457a-aa14-01b69d4fc44e/e33d76ff78b9f524fdcc9a5440746117.jpg" class="img-responsive center-block">
-<div class="btn-group"></div>
-  	<div class="container">
-  		<div class="row">
-  				
-		  	<div class="panel-body">
+    <!-- Social Buttons CSS -->
+    <link rel="stylesheet" href="../assets/css/social-buttons.css">
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<h1>Nuevo usuario</h1>
-		  		</div>
+    <!-- Deluxe Custom CSS -->
+    <link href="../assets/css/deluxe-admin.css" rel="stylesheet">
+    <!-- Legit Scrollbar CSS -->
+    <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css"> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nickname">
-		  		</div>
+    <body id="pages">
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Nombre">
-		  		</div>
+       <article>
+          <div id="pages-form" class="container animated fadeIn">
+             <section>
+                <div class="row">
+                   <div class="col-md-6 col-md-offset-3">
+                      <div class="panel box-shadow">
+                         <div class="panel-body center-block">
+                            <div class="pages-header text-center">
+                               <div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
+                               <h4>Crear Cuenta</h4>
+                           </div>
+                           <form role="form">
+                              <fieldset>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" name="" placeholder="Apellido">
-		  		</div>
+                                <div class="form-group col-lg-12">
+                                    <label>Nombre de usuario</label>
+                                    <input type="text" class="form-control" placeholder="user" required autofocus>
+                                </div>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Contraseña">
-		  		</div>
+                                <div class="form-group col-lg-6">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" placeholder="nombre" required>
+                                </div>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Correo">
-		  		</div>
+                                <div class="form-group col-lg-6">
+                                    <label>Apellido</label>
+                                    <input type="text" class="form-control" placeholder="apellido" required>
+                                </div>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Teléfono">
-		  		</div>
+                                <div class="form-group col-lg-6">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="form-control" placeholder="password" required>
+                                </div>
 
-		  		<div class="col-md-offset-3 col-md-6">
-		  			<input type="text" class="form-control" placeholder="Comuna">
-		  		</div>
+                                <div class="form-group col-lg-6">
+                                    <label>Correo</label>
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" required>
+                                </div>
 
-		  		<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
-						<option value="0">Selecciona una región</option>
-					</select>
-				</div>
+                                <div class="form-group col-lg-6">
+                                    <label>Teléfono</label>
+                                    <input class="form-control" placeholder="telefono" type="number" required>
+                                </div>
 
-				<div class="col-md-offset-3 col-md-6">
-					<select class="form-control">
-			  			<option>¿Estás disponible?</option>
-			  			<option>Sí</option>	
-			  			<option>No</option>
-			  		</select>
-		  		</div>
+                                <div class="form-group">
+                                    <label>Seleccione su región</label>
+                                    <select class="form-control">
+                                        <option>Región 1</option>
+                                        <option>Región 2</option>
+                                        <option>Región 3</option>
+                                        <option>Región 4</option>
+                                        <option>Región 5</option>
+                                    </select>
+                                </div>
 
-		  		<div class="col-md-offset-3 col-md-6">
-					<a href="#" class="btn btn-primary" target="">Registrarme</a>
-					<a href="#" class="btn pull-right btn-danger" target="">Cancelar</a>
-				</div>
-			</div>
-		</div>
-	</div>
+                                <div class="form-group">
+                                    <label>Seleccione su comuna</label>
+                                    <select class="form-control">
+                                        <option>Comuna 1</option>
+                                        <option>Comuna 2</option>
+                                        <option>Comuna 3</option>
+                                        <option>Comuna 4</option>
+                                        <option>Comuna 5</option>
+                                    </select>
+                                </div>
 
-	
+                                <div class="col-sm-12">
+                                    <div class="checkbox">
+                                        <label>
+                                            <span>
+                                                <input type="checkbox">
+                                                <a>Disponible?</a>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Change this to a button or input when using this as a form -->
+                                <button class="btn btn-success btn-block" type="submit">Register</button>
+                                <p class="text-center pages-padtop"><span>Already an account?</span> <span><a href="Login.html">Login now</a>.</span></p>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</article>
+
+<!-- jQuery -->
+<script src="../assets/js/jquery-2.2.4.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../assets/js/bootstrap.min.js"></script>
+
+<!-- Legit Ripple JavaScript -->
+<script src="../assets/js/ripple.min.js"></script> 
+
+<!-- Pages JavaScript -->
+<script src="../assets/js/pages.js"></script>
 </body>
 </html>
