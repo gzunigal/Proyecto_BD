@@ -1,49 +1,5 @@
 <?php $this->layout = 'login'; ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Register | Deluxe</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Material Design Iconic -->
-    <link rel="stylesheet" href="../assets/css/material-design-iconic-font.min.css">
-
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="../assets/css/animate.min.css">
-
-    <!-- Legit Ripple CSS -->
-    <link rel="stylesheet" href="../assets/css/ripple.min.css">
-
-    <!-- Hover CSS -->
-    <link rel="stylesheet" href="../assets/css/hover.css">
-
-    <!-- Social Buttons CSS -->
-    <link rel="stylesheet" href="../assets/css/social-buttons.css">
-
-    <!-- Deluxe Custom CSS -->
-    <link href="../assets/css/deluxe-admin.css" rel="stylesheet">
-    <!-- Legit Scrollbar CSS -->
-    <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css"> -->
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-
     <body id="pages">
 
        <article>
@@ -62,27 +18,27 @@
 
                                 <div class="form-group col-lg-12">
                                     <label>Nombre de usuario</label>
-                                    <input type="text" class="form-control" placeholder="user" name="user_nickname" required autofocus>
+                                    <input type="text" class="form-control" placeholder="User" name="user_nickname" required autofocus>
                                 </div>
 
                                 <div class="form-group col-lg-6">
                                     <label>Nombre</label>
-                                    <input type="text" class="form-control" placeholder="nombre" name="user_name" required>
+                                    <input type="text" class="form-control" placeholder="Nombre" name="user_name" required>
                                 </div>
 
                                 <div class="form-group col-lg-6">
                                     <label>Apellido</label>
-                                    <input type="text" class="form-control" placeholder="apellido" name="user_surname" required>
+                                    <input type="text" class="form-control" placeholder="Apellido" name="user_surname" required>
                                 </div>
 
                                 <div class="form-group col-lg-6">
                                     <label>Contraseña</label>
-                                    <input type="password" class="form-control" placeholder="password" name="user_password" required>
+                                    <input type="password" class="form-control" placeholder="Password" name="user_password" required>
                                 </div>
 
                                 <div class="form-group col-lg-6">
                                     <label>Correo</label>
-                                    <input class="form-control" placeholder="E-mail" name="user_email" type="email" required>
+                                    <input class="form-control" placeholder="E-mail@direccion.com" name="user_email" type="email" required>
                                 </div>
 
                                 <div class="form-group col-lg-6">
@@ -92,7 +48,7 @@
 
                                 <div class="form-group col-lg-6">
                                     <label>Run</label>
-                                    <input class="form-control" placeholder="run" name="user_rut" required>
+                                    <input class="form-control" placeholder="12345678-9" name="user_rut" required>
                                 </div>
 
                                 <div class="form-group col-lg-12">
@@ -133,7 +89,7 @@
 
                                 <!-- Change this to a button or input when using this as a form -->
                                 
-                                <p class="text-center pages-padtop"><span>¿Ya tienes una cuenta?</span> <span><a href="Login.html">Inicia sesión acá</a>.</span></p>
+                                <p class="text-center pages-padtop"><span>¿Ya tienes una cuenta?</span> <span><a href="/Login/index">Inicia sesión acá</a>.</span></p>
                             </fieldset>
                         </form>
                     </div>
