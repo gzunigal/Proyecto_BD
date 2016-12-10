@@ -89,7 +89,7 @@
 
                                 <!-- Change this to a button or input when using this as a form -->
                                 
-                                <p class="text-center pages-padtop"><span>¿Ya tienes una cuenta?</span> <span><a href="/Login/index">Inicia sesión acá</a>.</span></p>
+                                <p class="text-center pages-padtop"><span>¿Ya tienes una cuenta?</span> <span><a href="/login/login">Inicia sesión acá</a>.</span></p>
                             </fieldset>
                         </form>
                     </div>
