@@ -65,7 +65,7 @@ class LoginController extends AppController
         if ($this->request->is('post')) 
         {
             $datosUsuario   = $this->request->data;
-            
+
             $exists = $this->Users->getUserByData($datosUsuario['user_rut'], $datosUsuario['user_nickname']); 
             if($exists == 1)
             {
@@ -83,6 +83,7 @@ class LoginController extends AppController
                 {
                     if(strlen($rut[1]) && (is_numeric($rut[1]) || $rut[1] == 'k'))
                     {
+                        $this->User->registerUser($datosUsuario);
                         $this->redirect(['controller' => 'Login', 'action' => 'index']);
                         $this->Flash->success('Se ha registrado con éxito!');
                     }
