@@ -1,46 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php $this->layout = 'login'; ?>
-<head>
-    <?php $this->layout = 'login'; ?>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Login</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Material Design Iconic -->
-    <link rel="stylesheet" href="../assets/css/material-design-iconic-font.min.css">
-
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="../assets/css/animate.min.css">
-
-    <!-- Legit Ripple CSS -->
-    <link rel="stylesheet" href="../assets/css/ripple.min.css">
-
-    <!-- Hover CSS -->
-    <link rel="stylesheet" href="../assets/css/hover.css">
-   
-    <!-- Social Buttons CSS -->
-    <link rel="stylesheet" href="../assets/css/social-buttons.css">
-
-    <!-- Deluxe Custom CSS -->
-    <link href="../assets/css/deluxe-admin.css" rel="stylesheet">
-    <!-- Legit Scrollbar CSS -->
-    <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css"> -->
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
+<title>Sistema de Voluntarios - Login</title>
 <body id="pages">
 
     <article>
@@ -66,10 +25,10 @@
                                             <!-- Change this to a button or input when using this as a form -->
                                             <button class="btn btn-success btn-block" type="submit">Login</button>
                                             <p class="text-center pages-padtop">
+
                                             <span>¿No tienes cuenta?</span> 
                                             <span><a href="/login/register">Registrate aquí</a>.</span>
                                             </p>
-                                         
                                             </div>
                                         </fieldset>
                                     </form>
@@ -80,17 +39,4 @@
                 </section>
             </div>
     </article>
-
-    <!-- jQuery -->
-    <script src="../assets/js/jquery-2.2.4.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../assets/js/bootstrap.min.js"></script>
-
-    <!-- Legit Ripple JavaScript -->
-    <script src="../assets/js/ripple.min.js"></script> 
-
-    <!-- Pages JavaScript -->
-    <script src="../assets/js/pages.js"></script>
 </body>
-</html>

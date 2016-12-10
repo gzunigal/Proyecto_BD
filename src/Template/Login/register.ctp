@@ -1,7 +1,7 @@
 <?php $this->layout = 'login'; ?>
 
     <body id="pages">
-
+    <title>Registro</title>
        <article>
           <div id="pages-form" class="container animated fadeIn">
              <section>
@@ -62,24 +62,13 @@
 									 	?>
 									</select>
 								</div>
-
-								<div class="form-group">
+								<div class="form-group col-lg-12">
+                                    <label>Disponibilidad</label>
                                     <select class="form-control" name="availability" required>
 							  			<option value="">¿Estás disponible?</option>
 							  			<option value=1>Sí</option>	
 							  			<option value=0>No</option>
 							  		</select>
-                                </div>
-
-                                <div class="col-sm-12">
-                                    <div class="checkbox">
-                                        <label>
-                                            <span>
-                                                <input type="checkbox">
-                                                <a>¿Disponible?</a>
-                                            </span>
-                                        </label>
-                                    </div>
                                 </div>
 
                                 <?php
@@ -99,18 +88,4 @@
     </section>
 </div>
 </article>
-
-<!-- jQuery -->
-<script src="../assets/js/jquery-2.2.4.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="../assets/js/bootstrap.min.js"></script>
-
-<!-- Legit Ripple JavaScript -->
-<script src="../assets/js/ripple.min.js"></script> 
-
-<!-- Pages JavaScript -->
-<script src="../assets/js/pages.js"></script>
 </body>
-</html>
-

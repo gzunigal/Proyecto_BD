@@ -1,30 +1,66 @@
-<body class="scrollable">
-
-<!--<div class="btn-group"></div>-->
-<div class="panel panel-default">
-	<div class="panel-heading">
-    	<h1>Nuevo usuario</h1>
-  	</div>
-
-  	<div class="panel-body">
-		<?php 
-			echo $this->Form->create(null, ['url' => [/*aquí va la acción del controlador*/]]);
-    		echo $this->Form->input('', ["placeholder" => "Id de usuario"]);
-    		echo $this->Form->input('', ["placeholder" => "Contraseña"]);
-    		echo $this->Form->input('', ["placeholder" => "Nombre"]);
-    		echo $this->Form->input('', ["placeholder" => "Apellido"]);
-    		echo $this->Form->input('', ["placeholder" => "Correo"]);
-    		echo $this->Form->input('', ["placeholder" => "Teléfono"]);
-    		// regions (o comunas? de una comuna aparentemente se puede determinar la región) sale del controlador, al hacer una consulta al modelo por todas las regiones.
-			// echo $this->Form->select('Region', $regions);
-			// Estos valores se entregan como enteros?
-    		$disponibilidad = ['0' => 'Sí', '1' => 'No'];
-    		echo $this->Form->select('¿Estás disponible?', $disponibilidad);
-    		echo $this->Form->button('Registrarme', ['type' => 'submit', 'class' => 'btn btn-primary']);
-    		echo $this->Html->link('Cancelar', ['controller' => 'Login', 'action' => 'index'], ['class' => 'btn pull-right btn-danger']);
-    		echo $this->Form->end();
-		?>
-	</div>
-</div>
+<body id="pages">
+    <article>
+            <div id="pages-form" class="container animated fadeIn">
+                <section>
+                    <div class="row">
+                        <div class="col-md-13 col-md-offset-13">
+                            <div class="panel box-shadow">
+                                <div class="panel-body center-block">
+                                    <div class="pages-header text-center">
+                                        <div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
+                                        <h4>Administrador - Definir Emergencia</h4>
+                                    </div>
+                                    <form role="form">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label for="emergency">Nombre de la emergencia</label>
+                                                <input class="form-control" placeholder="Ej: Incendio/Derrumbe en..." id="emergency" name="emergency" type="text" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="commune">Comuna</label>
+                                                <select class="form-control" id="commune">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="datetime">Fecha</label>
+                                                <input class="form-control" placeholder="Ej: 2016-05-02 07:05:07" id="datetime" name="datetime" type="datetime" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="gravity">Gravedad</label>
+                                                <select class="form-control" id="gravity">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="state">Estado</label>
+                                                <select class="form-control" id="state">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description">Descripción</label>
+                                                <textarea class="form-control" rows="5" name="description" id="description" placeholder="Escriba una descripción de la emergencia aquí..."></textarea>
+                                            </div>
+                                            <!-- Change this to a button or input when using this as a form -->
+                                            <button class="btn btn-success btn-block" type="submit">Definir</button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+    </article>
 </body>
-</html>
