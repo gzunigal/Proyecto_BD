@@ -4,6 +4,7 @@ namespace App\Model\Table;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 use Cake\Auth\DefaultPasswordHasher;
 
@@ -58,9 +59,12 @@ class UsersTable extends Table
 
     public function registerUser($datosUsuario)
     {
-        $usersTable     = TableRegistry::get('Users');
         $phonesTable    = TableRegistry::get('Phones');
         $emailsTable    = TableRegistry::get('Emails');
+        $user = $this->newEntity();
+        $phone = $this->Phones->newEntity();
+        $email = $this->Emails->newEntity();
+        
         $user->commune_id       = $datosUsuario['communes'];
         $user->nombre_usuario   = $datosUsuario['user_nickname'];
         $user->password         = (new DefaultPasswordHasher)->hash($datosUsuario['user_password']);
@@ -69,7 +73,7 @@ class UsersTable extends Table
         $user->run              = $datosUsuario['user_rut'];
         $user->disponibilidad   = $datosUsuario['availability'];
         $user->admin            = 0;
-        if($usersTable->save($user))
+        if($this->save($user))
         {
             $phone->phone   = $datosUsuario['user_phone'];
             $phone->user_id = $user->id;
@@ -92,9 +96,14 @@ class UsersTable extends Table
 
     public function getUserByData($run, $username)
     {
+
         $user = $this->find('all',
-            ['condition' => ['Users.run =' => $run]
+            ['conditions' => ['Users.run =' => $run]
             ]);
+        
+        foreach ($user as $u) {
+            print_r($u);
+        }
         if($user->count() > 0)
         {
             return 1;
@@ -102,7 +111,7 @@ class UsersTable extends Table
         else
         {
             $user = $this->find('all',
-            ['condition' => ['Users.nombre_usuario =' => $username]
+            ['conditions' => ['Users.nombre_usuario =' => $username]
             ]);
             if($user->count() > 0)
             {
