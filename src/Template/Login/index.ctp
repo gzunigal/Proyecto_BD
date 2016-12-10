@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php $this->layout = 'login'; ?>
 <head>
     <?php $this->layout = 'login'; ?>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
                                         <div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
                                         <h4>Iniciar sesión</h4>
                                     </div>
-                                    <form role="form" method="post">
+                                    <form role="form" method="post" action="/login/login">
                                         <fieldset>
                                             <div class="form-group">
                                                 <input class="form-control" placeholder="Nombre de Usuario" name="username" type="text" required autofocus>
