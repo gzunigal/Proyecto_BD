@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Register | Deluxe</title>
+    <title>Register</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -130,10 +130,8 @@
 									echo $this->Form->button('Registrarme', ['type' => 'submit', 'class' => 'btn btn-primary']);
 									echo $this->Html->link('Cancelar', ['controller' => 'login', 'action' => 'index'], ['class' => 'btn pull-right btn-danger']);
 								?>
-
-                                <!-- Change this to a button or input when using this as a form -->
                                 
-                                <p class="text-center pages-padtop"><span>¿Ya tienes una cuenta?</span> <span><a href="Login.html">Inicia sesión acá</a>.</span></p>
+                                <p class="text-center pages-padtop"><span>¿Ya tienes una cuenta?</span> <span><a href="/login/login">Inicia sesión acá</a>.</span></p>
                             </fieldset>
                         </form>
                     </div>
