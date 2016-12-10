@@ -37,6 +37,7 @@ class HomeController extends AppController
         }else{
             return $this->redirect(['controller' => 'Login', 'action' => 'index']);
         }
+        echo "caca";
     }
 
     public function admin(){

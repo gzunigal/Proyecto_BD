@@ -1,31 +1,96 @@
-<?php $this->layout = 'login'; ?>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Login: Handy Hand</title>
-    <link type="text/css" rel="stylesheet" href="/css/handyhand.css">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Material Design Iconic -->
+    <link rel="stylesheet" href="../assets/css/material-design-iconic-font.min.css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
+
+    <!-- Legit Ripple CSS -->
+    <link rel="stylesheet" href="../assets/css/ripple.min.css">
+
+    <!-- Hover CSS -->
+    <link rel="stylesheet" href="../assets/css/hover.css">
+   
+    <!-- Social Buttons CSS -->
+    <link rel="stylesheet" href="../assets/css/social-buttons.css">
+
+    <!-- Deluxe Custom CSS -->
+    <link href="../assets/css/deluxe-admin.css" rel="stylesheet">
+    <!-- Legit Scrollbar CSS -->
+    <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css"> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
+<body id="pages">
 
-<body style="padding-top: 100px">
+    <article>
+            <div id="pages-form" class="container animated fadeIn">
+                <section>
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="panel box-shadow">
+                                <div class="panel-body center-block">
+                                    <div class="pages-header text-center">
+                                        <div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
+                                        <h4>Iniciar sesión</h4>
+                                    </div>
+                                    <form role="form" method="post">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <input class="form-control" placeholder="Nombre de Usuario" name="username" type="text" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" placeholder="Contraseña" name="password" type="password" value="" required>
+                                            </div>
 
-<!--<div class="btn-group"></div>-->
-<div class="panel panel-default">
-	<div class="panel-heading">
-    	<h1 style="text-align: center;">Iniciar sesión</h1>
-  	</div>
+                                            <!-- Change this to a button or input when using this as a form -->
+                                            <button class="btn btn-success btn-block" type="submit">Login</button>
+                                            <p class="text-center pages-padtop">
+                                            <span>¿No tienes cuenta?</span> 
+                                            <span><a href="/login/register">Registrate aquí</a>.</span>
+                                            </p>
+                                         
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+    </article>
 
-  	<div class="panel-body">
-        <div class="col-md-offset-2 col-md-8">
-    		<?php 
-    			echo $this->Form->create(NULL, ['url' => ['controller' => 'Login', 'action' => 'login']]);
-        		echo $this->Form->input('username', ["name"=>"username", "placeholder" => "Nombre de usuario"]);
-        		echo $this->Form->input('password', ["name"=>"password", "type"=>"password", "placeholder" => "Contraseña"]);
-        		echo $this->Form->button('Log in', ['type' => 'submit', 'class' => 'btn btn-primary']);
-        		echo $this->Html->link('Quiero registrarme', ['controller'=>'Login', 'action'=>'register'], 
-        			['class' => 'btn btn-success pull-right']);
-        		echo $this->Form->end();
-        	?>
-        </div>		
-	</div>
-</div>
+    <!-- jQuery -->
+    <script src="../assets/js/jquery-2.2.4.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- Legit Ripple JavaScript -->
+    <script src="../assets/js/ripple.min.js"></script> 
+
+    <!-- Pages JavaScript -->
+    <script src="../assets/js/pages.js"></script>
 </body>
 </html>
