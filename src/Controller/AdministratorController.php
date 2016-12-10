@@ -10,12 +10,17 @@ class AdministratorController extends AppController
 {
     public function index()
     {
-    	$this->loadModel('Emergencies');
-    	$this->loadModel('Communes');
     	
+    }
+
+    public function view()
+    {
+        $this->loadModel('Emergencies');
+        $this->loadModel('Communes');
+        
         $emergencies = $this->Emergencies->find('all');
 
-    	$this->set(compact('comunes'));
+        $this->set(compact('comunes'));
         $this->set(compact('emergencies'));
     }
 

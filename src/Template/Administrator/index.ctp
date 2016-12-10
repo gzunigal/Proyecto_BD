@@ -17,7 +17,7 @@
                                     <form role="form">
                                         <fieldset>
                                             <!-- Change this to a button or input when using this as a form -->
-                                            <button class="btn btn-success btn-block" type="submit">Panel de emergencias</button>
+                                            <a class="btn btn-success btn-block" href="/administrator/view">Panel de emergencias</a>
                                             <button class="btn btn-success btn-block" type="submit">Editar perfil</button>
                                             </div>
                                         </fieldset>
@@ -30,3 +30,5 @@
             </div>
     </article>
 </body>
+
+
