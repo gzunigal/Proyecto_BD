@@ -18,7 +18,6 @@ class LoginController extends AppController
     public function index()
     {
         $session = $this->request->session();
-        print_r($this->request->data);
         if ($session->check('User')) {
             return $this->redirect(['controller' => 'Home', 'action' => 'index']);
         }
@@ -66,7 +65,7 @@ class LoginController extends AppController
         if ($this->request->is('post')) 
         {
             $datosUsuario   = $this->request->data;
-            /*VERIFICAR SI YA EXISTE UN USUARIO*/
+            
             $exists = $this->Users->getUserByData($datosUsuario['user_rut'], $datosUsuario['user_nickname']); 
             if($exists == 1)
             {
