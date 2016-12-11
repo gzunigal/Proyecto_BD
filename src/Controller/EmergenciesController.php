@@ -22,6 +22,8 @@ class EmergenciesController extends AppController
 {
 	public function add()
 	{
-		
+		$this->loadModel('Communes');
+		$comunas = $this->Communes->find('all');
+		$this->set(compact('comunas'));
 	}
 }

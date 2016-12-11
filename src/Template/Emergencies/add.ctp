@@ -18,11 +18,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="commune">Comuna</label>
-                                                <select class="form-control" id="commune">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                <select class="form-control" id="commune" required>
+                                                    <option value=0>Seleccione una comuna</option>
+                                                    <?php
+                                                        foreach ($comunas as $comuna) {
+                                                            echo '<option value='.$comuna->id.'>'.$comuna->nombre_comuna.'</option>';
+                                                        }
+                                                    ?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -32,6 +34,7 @@
                                             <div class="form-group">
                                                 <label for="gravity">Gravedad</label>
                                                 <select class="form-control" id="gravity">
+                                                    <option value=0>Indique la gravedad de la emergencia</option>>
                                                     <option value=1>Baja</option>
                                                     <option value=2>Media</option>
                                                     <option value=3>Alta</option>
@@ -41,6 +44,7 @@
                                             <div class="form-group">
                                                 <label for="state">Estado</label>
                                                 <select class="form-control" id="state">
+                                                    <option value=0>Indique el estado de la emergencia</option>>
                                                     <option value=1>Creada</option>
                                                     <option value=2>En progreso</option>
                                                     <option value=3>Finalizada</option>

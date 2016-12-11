@@ -13,6 +13,52 @@ END IF;
  
 END$$
 
+CREATE PROCEDURE `agregarRegion` (IN `nombre` VARCHAR(100))  NO SQL
+BEGIN
+SET @contador = (SELECT COUNT(*) FROM REGIONS WHERE REGIONS.NOMBRE_REGION = nombre);
+IF @contador = 0 THEN
+INSERT INTO REGIONS (REGIONS.NOMBRE_REGION) VALUES (nombre);
+END IF;
+END$$
+
+CREATE PROCEDURE `asigna_usuario_task` (IN `id_task_2` INT, IN `id_user_2` INT)  NO SQL
+BEGIN
+
+SET @disp_usr = (SELECT DISPONIBILIDAD
+		 		 FROM USERS
+		 		 WHERE USERS.ID = id_user_2);
+
+IF @disp_usr = 1 THEN
+
+-- obtengo el nivel requerido de todas las habilidades de una tarea.
+SET @nivel_tarea = (SELECT abilities_tasks.nivel_requerido
+					FROM abilities_tasks
+					WHERE abilities_tasks.task_id = id_task_2);
+
+-- obtengo el nivel de todas las habilidades de un usuario
+SET @nivel_usuario = (SELECT abilities_users.nivel_habilidad
+					  FROM abilities_users
+					  WHERE abilities_users.user_id = id_user_2);
+
+-- ¿?
+/*
+SET @habil_req = (SELECT COUNT(*)
+				  FROM REQUIERE, TIENE
+				  WHERE TIENE.ID_USER=id_user_2
+				  AND TIENE.ID_ABILITY=REQUIERE.ID_ABILITY);
+*/
+
+IF @nivel_tarea <= @nivel_usuario THEN
+    INSERT INTO tasks_users(task_id, user_id)
+    VALUES(id_task_2, id_user_2);
+    UPDATE USERS 
+    SET DISPONIBILIDAD=0
+    WHERE USERS.ID = id_user_2;
+END IF;
+END IF;
+
+END$$
+
 CREATE PROCEDURE `debug` (IN `msg` VARCHAR(255))  NO SQL
 BEGIN
    SELECT CONCAT("*** ", msg) AS '*** DEBUG:'; 
