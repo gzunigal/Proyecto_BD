@@ -53,7 +53,7 @@
 
                                 <div class="form-group col-lg-12">
                                     <label>Seleccione su comuna</label>
-                                    <select name="communes" required>
+                                    <select class="form-control" name="communes" required>
 									 	<?php
 									 		echo '<option value="">Elige una comuna</option>';
 									 		foreach ($communes as $commune) {

@@ -21,7 +21,7 @@
                                                     <div class="panel panel-primary">
                                                         <div class="panel-heading">
                                                             Listado de emergencias
-                                                            <button type="button" class="btn m-red btn-xs" style="float: right">Nueva Emergencia</button>
+                                                            <a href="/emergencies/add" class="btn m-red btn-xs" style="float: right">Nueva Emergencia</a>
                                                         </div>
                                                         <!-- .panel-heading -->
                                                         <div class="panel-body">
@@ -90,9 +90,11 @@
                                                                         </form>
                                                                     </div>
                                                                 </div>
+                                                                <a href="/administrator/index" class="btn btn-danger">Volver</a>
                                                             </div>
+                                                        <!-- cierra row -->
                                                         </div>
-                                                    </div>  <!-- cierra row -->
+                                                    </div>  
                                                 </div>  <!-- /.panel body-->
                                             </div> <!-- panel default -->
                                         </div>  <!-- /.col-lg-12 -->

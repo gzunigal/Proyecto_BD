@@ -32,19 +32,18 @@
                                             <div class="form-group">
                                                 <label for="gravity">Gravedad</label>
                                                 <select class="form-control" id="gravity">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                    <option value=1>Baja</option>
+                                                    <option value=2>Media</option>
+                                                    <option value=3>Alta</option>
+                                                    <option value=4>Urgente</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="state">Estado</label>
                                                 <select class="form-control" id="state">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                    <option value=1>Creada</option>
+                                                    <option value=2>En progreso</option>
+                                                    <option value=3>Finalizada</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -52,7 +51,8 @@
                                                 <textarea class="form-control" rows="5" name="description" id="description" placeholder="Escriba una descripción de la emergencia aquí..."></textarea>
                                             </div>
                                             <!-- Change this to a button or input when using this as a form -->
-                                            <button class="btn btn-success btn-block" type="submit">Definir</button>
+                                                <button class="btn btn-success btn-block" type="submit">Definir</button>
+                                                <a class="btn btn-danger btn-block"  href="/administrator/view">Volver</a>
                                             </div>
                                         </fieldset>
                                     </form>
