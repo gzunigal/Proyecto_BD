@@ -1,5 +1,4 @@
-    <body id="pages">
-        <article>
+    <article>
             <div id="pages-form" class="container animated fadeIn">
                 <section>
                     <div class="row">
@@ -20,6 +19,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                     <!-- .panel-body -->
+                                                    <?= '<form role="form" method="post" action="/missions/add/'.$idEmergencia.'">'?>
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="panel panel-primary">
@@ -31,18 +31,23 @@
                                                                       <fieldset>
                                                                         <div class="form-group col-lg-12">
                                                                         <label>Ingrese el nombre de la misión</label>
-                                                                            <input type="text" class="form-control" placeholder="Ej: Retirar todos los escombros en...">
+                                                                            <input type="text" name="mission_name" class="form-control" placeholder="Ej: Retirar todos los escombros en..." required> 
                                                                         </div>
                                                                         <div class="form-group col-lg-12">
-                                                                        <label>Ingrese el RUT del encargado</label>
-                                                                            <input type="number" class="form-control" placeholder="Ej: 17462772-k">
+                                                                        <label>Seleccione un encargado</label>
+                                                                            <select class="form-control" name="mission_manager" required>
+                                                                                <option value=0>Seleccione un voluntario como encargado</option>
+                                                                                <?php
+                                                                                    foreach ($users as $u) 
+                                                                                    {
+                                                                                        echo '<option value='.$u->id.'>'.$u->name.' '.$u->surname.'</option>';
+                                                                                    }
+                                                                                ?>
+                                                                            </select>
                                                                         </div>
                                                                         <div class="form-group col-lg-12">
-                                                                        <label>Ingrese el área de la misión</label>
-                                                                            <input type="text" class="form-control" placeholder="Ej: Reloj de Flores">
-                                                                        </div>
-                                                                        <div class="form-group col-lg-12">
-                                                                        <button type="submit" class="btn btn-primary">Definir</button>
+                                                                        <a type="submit" class="btn btn-danger pull-left" href="/administrator/view">Volver</a>
+                                                                        <button type="submit" class="btn btn-primary pull-right">Definir</button>
                                                                         </div>
                                                                     </fieldset>
                                                                 </form>
@@ -50,7 +55,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
+                                                </form>
                                             </div>
                                             <!-- /.panel -->
                                         </div>
