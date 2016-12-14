@@ -83,6 +83,7 @@ class LoginController extends AppController
                     if(strlen($rut[1]) && (is_numeric($rut[1]) || $rut[1] == 'k'))
                     {
                         $this->Users->registerUser($datosUsuario);
+                        $this->redirect(['controller' => 'Login', 'action' => 'index']);
                         $this->Flash->success('Se ha registrado con éxito!');
                     }
                     else

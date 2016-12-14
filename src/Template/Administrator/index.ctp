@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <?php $this->layout = 'login'; ?>
@@ -46,11 +47,21 @@
 
     <body id="pages">
         <article>
+=======
+<title>Administrador - Vista Principal</title>
+<br>
+<br>
+<br>
+<body id="pages">
+    <article>
+>>>>>>> a29ba30bb542d22f5b3c81a0362363361f4b5ee4
             <div id="pages-form" class="container animated fadeIn">
                 <section>
                     <div class="row">
-                        <div class="col-md-14 col-md-offset-14">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="panel box-shadow">
                                 <div class="panel-body center-block">
+<<<<<<< HEAD
 
                                     <!-- .row -->
                                     <div class="row">
@@ -156,15 +167,27 @@
                                 </div>  <!-- panel dody -->
                         </div>  <!-- col-md-14 col-md-offset-14 -->
                     </div>  <!-- row -->
+=======
+                                    <div class="pages-header text-center">
+                                        <div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
+                                        <h4>Administrador - Vista Principal</h4>
+                                    </div>
+                                    <form role="form">
+                                        <fieldset>
+                                            <!-- Change this to a button or input when using this as a form -->
+                                            <a class="btn btn-success btn-block" href="/administrator/view">Panel de emergencias</a>
+                                            <button class="btn btn-success btn-block" type="submit">Editar perfil</button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> a29ba30bb542d22f5b3c81a0362363361f4b5ee4
                 </section>
-            </div>  <!-- container fadeIn -->
-        </article>
+            </div>
+    </article>
+</body>
 
-    <!-- jQuery -->
-    <script src="../assets/js/jquery-2.2.4.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../assets/js/bootstrap.min.js"></script>
-
-    </body>
-</html>
