@@ -1,15 +1,19 @@
-<body class="design" style="padding-top: 80px">
+<?php $this->layout = 'login'; ?>
 
-<img style="border:2px solid grey" src="/img/Supervisor.jpg" class="img-responsive center-block">
+<body class="design" style="padding-top: 80px">
 
 <div class="btn-group"></div>
 
 <div class="container">
-<hr>
-      <a href="#" class="btn pull-left btn-primary" target="">Solicitudes</a>
-      <a href="#" class="btn pull-center btn-primary" target="">Seleccion de voluntarios</a>
-      <a href="#" class="btn pull-right btn-primary" target="">Definir tareas</a>
+	<select class="form-control" name="Misiones" required>
+	<?php
+		foreach($missions as $mision)
+		{
+			echo '<option value='.$mision->id.'>'.$mision->nombre_mision.'</option>';
+		}
+	?>
+	</select>
+
 </div>
 
-  
 </body>
