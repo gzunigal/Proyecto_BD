@@ -12,7 +12,7 @@ class AdministratorController extends AppController
     {
     	$this->loadModel('Emergencies');
     	$this->loadModel('Communes');
-    	
+
         $emergencies = $this->Emergencies->find('all');
 
     	$this->set(compact('comunes'));
@@ -21,6 +21,17 @@ class AdministratorController extends AppController
 
     public function logout(){
         return $this->redirect($this->Auth->logout());
+    }
+
+    public function addEmergency()
+    {
+    	echo "askdjhaksdhjkads";
+    	exit();
+    }
+
+    public function gestionarPersona($rut)
+    {
+    	exit();
     }
 
 }

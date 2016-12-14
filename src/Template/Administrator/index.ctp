@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php $this->layout = 'login'; ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,7 +67,9 @@
                                                             <div class="panel panel-primary">
                                                                 <div class="panel-heading">
                                                                     Listado de emergencia
-                                                                    <button type="button" class="btn m-red btn-xs" style="float: right">Nueva Emergencia</button>
+                                                                    <a href="/emergencies/add">
+                                                                    <button class="btn m-red btn-xs" style="float: right">Nueva Emergencia</button>
+                                                                    </a>
                                                                 </div>
 <!-- .panel-heading -->
 <div class="panel-body">
@@ -136,7 +138,9 @@
                                                                                 <label>Ingrese el RUT de la persona</label>
                                                                                     <input type="number" class="form-control" placeholder="">
                                                                                     <br></br>
+                                                                                    <a href="/administrator/gestionarPersona">
                                                                                     <button type="submit" class="btn btn-primary">Gestionar</button>
+                                                                                    </a>
                                                                                 </div>
                                                                             </fieldset>
                                                                         </form>
