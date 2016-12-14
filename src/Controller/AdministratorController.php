@@ -20,7 +20,12 @@ class AdministratorController extends AppController
         $this->loadModel('Emergencies');
         $this->loadModel('Communes');
         
-        $emergencies = $this->Emergencies->find('all');
+        $emergencies = $this->Emergencies->find('all')
+            ->contain(['Communes']);
+
+        foreach ($emergencies as $e) {
+            print_r($e->commune);
+        }
         $this->set(compact('comunes'));
         $this->set(compact('emergencies'));
     }

@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use Cake\Core\Configure;
+use Cake\ORM\TableRegistry;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 
@@ -25,5 +26,23 @@ class EmergenciesController extends AppController
 		$this->loadModel('Communes');
 		$comunas = $this->Communes->find('all');
 		$this->set(compact('comunas'));
+
+		$datos = $this->request->data;
+		$sesion = $this->request->session();
+		if($this->request->is('post'))
+		{
+			$tablaEmergencias  	= TableRegistry::get('Emergencies');
+	        $emergencies 		= $this->Emergencies->newEntity();
+
+	        $emergencies->user_id 					= $sesion->read('User.id');
+	        $emergencies->commune_id 				= $datos['emergency_commune'];
+	        $emergencies->nombre_emergencia 		= $datos['emergency_name'];
+	        $emergencies->fecha_emergencia 			= $datos['emergency_datetime'];
+	        $emergencies->gravedad_emergencia 		= $datos['emergency_gravity'];
+	        $emergencies->estado_emergencia 		= 0;
+	        $emergencies->descripcion_emergencia 	= $datos['emergency_description'];
+
+	        $tablaEmergencias->save($emergencies);
+		}
 	}
 }

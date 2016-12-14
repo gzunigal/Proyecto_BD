@@ -10,15 +10,15 @@
                                         <div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
                                         <h4>Administrador - Definir Emergencia</h4>
                                     </div>
-                                    <form role="form">
+                                    <form role="form" method="post" action="/emergencies/add">
                                         <fieldset>
                                             <div class="form-group">
                                                 <label for="emergency">Nombre de la emergencia</label>
-                                                <input class="form-control" placeholder="Ej: Incendio/Derrumbe en..." id="emergency" name="emergency" type="text" required autofocus>
+                                                <input class="form-control" placeholder="Ej: Incendio/Derrumbe en..." id="emergency" name="emergency_name" type="text" required autofocus>
                                             </div>
                                             <div class="form-group">
                                                 <label for="commune">Comuna</label>
-                                                <select class="form-control" id="commune" required>
+                                                <select class="form-control" id="commune" name="emergency_commune" required>
                                                     <option value=0>Seleccione una comuna</option>
                                                     <?php
                                                         foreach ($comunas as $comuna) {
@@ -29,11 +29,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="datetime">Fecha</label>
-                                                <input class="form-control" placeholder="Ej: 2016-05-02 07:05:07" id="datetime" name="datetime" type="datetime" required autofocus>
+                                                <input class="form-control" placeholder="Ej: 2016-05-02 07:05:07" id="datetime" name="emergency_datetime" type="datetime" required autofocus>
                                             </div>
                                             <div class="form-group">
-                                                <label for="gravity">Gravedad</label>
-                                                <select class="form-control" id="gravity">
+                                                <label for="gravity">Gravedad</label> 
+                                                <select class="form-control" id="gravity" name="emergency_gravity" required>
                                                     <option value=0>Indique la gravedad de la emergencia</option>>
                                                     <option value=1>Baja</option>
                                                     <option value=2>Media</option>
@@ -41,18 +41,21 @@
                                                     <option value=4>Urgente</option>
                                                 </select>
                                             </div>
+                                            <!-- Esto no es necesario, todas las emergencias parten con el estado "creada".
+                                            Por medio de la gestión de la misma se debería poder cambiar el estado. 
                                             <div class="form-group">
                                                 <label for="state">Estado</label>
-                                                <select class="form-control" id="state">
+                                                <select class="form-control" id="state" name="emergency_commune">
                                                     <option value=0>Indique el estado de la emergencia</option>>
                                                     <option value=1>Creada</option>
                                                     <option value=2>En progreso</option>
                                                     <option value=3>Finalizada</option>
                                                 </select>
                                             </div>
+                                            -->
                                             <div class="form-group">
                                                 <label for="description">Descripción</label>
-                                                <textarea class="form-control" rows="5" name="description" id="description" placeholder="Escriba una descripción de la emergencia aquí..."></textarea>
+                                                <textarea class="form-control" rows="5" name="emergency_description" id="description" placeholder="Escriba una descripción de la emergencia aquí..."></textarea>
                                             </div>
                                             <!-- Change this to a button or input when using this as a form -->
                                                 <button class="btn btn-success btn-block" type="submit">Definir</button>

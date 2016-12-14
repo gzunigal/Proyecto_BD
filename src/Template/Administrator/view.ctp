@@ -41,12 +41,12 @@
                                                                                             <label>Nombre: '.$emmergencie->nombre_emergencia.'</label>
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">
-                                                                                            <label>Fecha</label>
+                                                                                            <label>Fecha: </label>
                                                                                             <label>'.$emmergencie->fecha_emergencia.'</label>
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">
-                                                                                            <label>Lugar</label>
-                                                                                            <label>'.$emmergencie->commune_id.'</label>
+                                                                                            <label>Lugar: </label>
+                                                                                            <label>'.$emmergencie->commune->nombre_comuna.'</label>
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">
                                                                                             <button type="submit" class="btn btn-primary">Gestionar</button>
