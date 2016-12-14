@@ -23,9 +23,6 @@ class AdministratorController extends AppController
         $emergencies = $this->Emergencies->find('all')
             ->contain(['Communes']);
 
-        foreach ($emergencies as $e) {
-            print_r($e->commune);
-        }
         $this->set(compact('comunes'));
         $this->set(compact('emergencies'));
     }

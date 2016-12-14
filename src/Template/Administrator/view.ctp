@@ -48,9 +48,10 @@
                                                                                             <label>Lugar: </label>
                                                                                             <label>'.$emmergencie->commune->nombre_comuna.'</label>
                                                                                         </div>
-                                                                                        <div class="form-group col-lg-6">
-                                                                                            <button type="submit" class="btn btn-primary">Gestionar</button>
-                                                                                        </div>
+                                                                                        <div class="form-group col-lg-6">';
+                                                                        echo $this->Html->link('Gestionar', ['controller' => 'missions', 'action' => 'add', $emmergencie->id], ['class' => 'btn btn-primary']);
+                                                                        //<a type="submit" href="/missions/add/'.$emmergencie->id.'" class="btn btn-primary">Gestionar</a>
+                                                                        echo            '</div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>';

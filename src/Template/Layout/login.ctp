@@ -61,7 +61,9 @@
 
 <body>
   <?= $this->Flash->render() ?>
-  <div class="container clearfix"><?= $this->fetch('content') ?></div>
+  <div class="container clearfix">
+  <?= $this->fetch('content'); ?>
+  </div>
   <!-- jQuery -->
     <script src="/js/jquery-2.2.4.min.js"></script>
 
