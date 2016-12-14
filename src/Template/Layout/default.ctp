@@ -34,6 +34,9 @@
 
     <!-- Deluxe Custom CSS -->
     <link href="/css/deluxe-admin.css" rel="stylesheet">
+
+    <!-- Deluxe Custom CSS -->
+    <link href="/css/handyhand.css" rel="stylesheet">
     <!-- Legit Scrollbar CSS -->
     <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css"> -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
