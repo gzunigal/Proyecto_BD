@@ -26,7 +26,6 @@ class HomeController extends AppController
     {
         $session = $this->request->session();
         if ($session->check('User')) {
-            echo "Existo";
             if($session->read('User.admin') == '1'){
                 return $this->redirect(['controller' => 'Administrator', 'action' => 'index']);
             }elseif ($session->read('User.isEncargado') == 1) {
@@ -37,18 +36,5 @@ class HomeController extends AppController
         }else{
             return $this->redirect(['controller' => 'Login', 'action' => 'index']);
         }
-        echo "caca";
-    }
-
-    public function admin(){
-
-    }
-
-    public function encargado(){
-
-    }
-
-    public function voluntario(){
-
     }
 }

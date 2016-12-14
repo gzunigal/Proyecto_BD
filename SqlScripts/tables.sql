@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `url` text,
   `contenido` text NOT NULL,
   `fecha` datetime NOT NULL,
+  `visto` tinyint(1),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
