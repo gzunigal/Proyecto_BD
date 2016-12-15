@@ -81,7 +81,7 @@ class MissionsController extends AppController
 
             if($missionsTable->save($mission))
             {
-                $this->redirect("/administrators/view");
+                $this->redirect(["controller" => "emergencies", "action" => "view", $idEmergencia]);
             }
         }
     }
@@ -93,8 +93,19 @@ class MissionsController extends AppController
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit($idEm, $idM)
     {
+        $mision = $this->Missions->find('all')
+            ->where(['Missions.id' => $idM]);
+
+        $users = $this->Missions->Users->find('all');
+
+        foreach ($mision as $m) {}
+
+        $this->set(compact('idEm'));
+        $this->set(compact('idM'));
+        $this->set(compact('mision'));
+        $this->set(compact('users'));
     }
 
     /**

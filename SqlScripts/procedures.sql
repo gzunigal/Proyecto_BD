@@ -80,12 +80,9 @@ CREATE PROCEDURE `modificarUsuario` (IN `id_usuario` INT(11), IN `id_comuna` INT
 	IN `pass` VARCHAR(255), IN `disp` TINYINT(1), IN `administrador` TINYINT(1), 
 	IN `telefono` INT(11), IN `mail` VARCHAR(100))  NO SQL
 BEGIN
-SET @count_emails = (SELECT COUNT(email) FROM emails WHERE emails.email = mail);
 SET @count_users = (SELECT COUNT(id) FROM users WHERE users.id = id_usuario);
-IF @count_emails = 0 AND @count_users = 1 THEN
+IF @count_users = 1 THEN
 UPDATE users SET users.commune_id = id_comuna, users.nombre_usuario = nombre_usr, users.name = name_usr, users.surname = surname_usr, 
-users.password = pass, users.disponibilidad = disp, users.admin = administrador WHERE users.id = id_usuario;
-UPDATE emails SET emails.email = mail WHERE emails.user_id = id_usuario;
-UPDATE phones SET phones.phone = telefono WHERE phones.user_id = id_usuario;
+users.password = pass, users.disponibilidad = disp, users.admin = administrador, users.email = mail, users.phone = telefono WHERE users.id = id_usuario;
 END IF;
 END$$

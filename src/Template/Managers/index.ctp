@@ -18,7 +18,7 @@
                                         <fieldset>
                                             <!-- Change this to a button or input when using this as a form -->
                                             <a class="btn btn-success btn-block" href="/managers/manageMission">Panel de misiones</a>
-                                            <button class="btn btn-success btn-block" type="submit">Editar perfil</button>
+                                            <a class="btn btn-success btn-block" href="/abilities/add">Añadir Habilidades</a>
                                             </div>
                                         </fieldset>
                                     </form>

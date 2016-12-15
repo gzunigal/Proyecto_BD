@@ -29,9 +29,52 @@ class EmergenciesController extends AppController
 
 		$comunas  = $this->Emergencies->Communes->find('all');
 
+		$this->set(compact('id'));
 		$this->set(compact('emergency'));
 		$this->set(compact('comunas'));
 		
+		$datos = $this->request->data;
+		if($this->request->is('post'))
+		{
+			debug($datos);
+			$emergenciesTable = TableRegistry::get('Emergencies'); 
+			$emergency = $emergenciesTable->get($datos['id']);
+
+	        $emergency->commune_id 					= $datos['emergency_commune'];
+	        $emergency->nombre_emergencia 			= $datos['emergency_name'];
+	        $emergency->fecha_emergencia 			= $datos['emergency_datetime'];
+	        $emergency->gravedad_emergencia 		= $datos['emergency_gravity'];
+	        $emergency->descripcion_emergencia 		= $datos['emergency_description'];
+
+	        $emergenciesTable->save($emergency);
+	        return $this->redirect(["Controller" => "Emergencies", "Action" => "View", $datos['id']]);
+		}
+	}
+
+	public function view($id)
+	{
+		$emergency = $this->Emergencies->find('all')
+			->where(['Emergencies.id' => $id]);
+
+		foreach ($emergency as $e){}
+
+		if($e->estado_emergencia == 2)
+		{
+			return $this->redirect("/administrators/view");
+		}
+		else if($e->estado_emergencia == 0)
+		{
+			return $this->redirect("/administrators/view");
+		}
+		else
+		{
+			$missions = $this->Emergencies->Missions->find('all')
+				->where(['Missions.emergency_id' => $e->id]);
+
+			$this->set(compact('emergency'));
+			$this->set(compact('missions'));
+			$this->set(compact('id'));
+		}
 	}
 
 	public function add()

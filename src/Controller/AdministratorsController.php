@@ -14,6 +14,7 @@ class AdministratorsController extends AppController
     {
     }
 
+
     public function view()
     {
         $this->loadModel('Emergencies');
