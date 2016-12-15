@@ -20,6 +20,7 @@ class NotificationsUsersFixture extends TestFixture
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'notification_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'visto' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
             'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
             'notification_id_2' => ['type' => 'index', 'columns' => ['notification_id'], 'length' => []],
@@ -46,7 +47,8 @@ class NotificationsUsersFixture extends TestFixture
         [
             'id' => 1,
             'notification_id' => 1,
-            'user_id' => 1
+            'user_id' => 1,
+            'visto' => 1
         ],
     ];
 }

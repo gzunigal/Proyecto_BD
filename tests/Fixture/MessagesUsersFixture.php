@@ -20,6 +20,7 @@ class MessagesUsersFixture extends TestFixture
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'message_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'visto' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
             'message_id' => ['type' => 'index', 'columns' => ['message_id'], 'length' => []],
             'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
@@ -45,7 +46,8 @@ class MessagesUsersFixture extends TestFixture
         [
             'id' => 1,
             'message_id' => 1,
-            'user_id' => 1
+            'user_id' => 1,
+            'visto' => 1
         ],
     ];
 }

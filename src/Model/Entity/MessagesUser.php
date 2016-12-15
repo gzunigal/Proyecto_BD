@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $message_id
  * @property int $user_id
+ * @property bool $visto
  *
  * @property \App\Model\Entity\Message $message
  * @property \App\Model\Entity\User $user

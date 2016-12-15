@@ -48,7 +48,6 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `url` text,
   `contenido` text NOT NULL,
   `fecha` datetime NOT NULL,
-  `visto` tinyint(1),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -474,6 +473,7 @@ CREATE TABLE IF NOT EXISTS `notifications_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `notification_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `visto` tinyint(1),
   PRIMARY KEY (`id`),
   UNIQUE (`notification_id`,`user_id`),
   INDEX (`user_id`),
@@ -705,6 +705,7 @@ CREATE TABLE IF NOT EXISTS `messages_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `message_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `visto` tinyint(1),
   PRIMARY KEY (`id`),
   INDEX (`message_id`),
   INDEX (`user_id`),

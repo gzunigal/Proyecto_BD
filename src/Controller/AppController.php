@@ -59,6 +59,25 @@ class AppController extends Controller
 
         //$this->Auth->allow(['index', 'view', 'add', 'defineTask', 'manageTask']);
         $this->Auth->allow();
+
+        if($this->request->session()->check('User')){
+            $session = $this->request->session();
+            $user = $session->read('User.Entity');
+            if($user){
+                $session->write('User.hasNotifications',$user->hasNotifications());  
+                $session->write('User.hasMessages',$user->hasMessages());
+            }else{
+                $session->write('User.hasNotifications',0);  
+                $session->write('User.hasMessages',0);   
+            }
+            $User = $this->request->session()->read('User');
+            $this->set(compact('User'));
+        }else{
+            $this->set('User',["hasNotifications"=>false,"hasMessages"=>false]);  
+        }
+        
+
+        
     }
 
     /**

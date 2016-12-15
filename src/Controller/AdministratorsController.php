@@ -12,7 +12,6 @@ class AdministratorsController extends AppController
 {
     public function index()
     {
-        
     }
 
 
