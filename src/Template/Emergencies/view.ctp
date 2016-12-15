@@ -1,4 +1,4 @@
-<title>Administrar misiones</title>
+<title>Administrar emergencia</title>
 <body id="pages">
     <article>
         <div id="pages-form" class="container animated fadeIn">
@@ -12,7 +12,7 @@
                                 <div class="col-lg-12">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h2>Misiones</h2>
+                                            <h2>Administración - Gestionar emergencias</h2>
                                         </div>
                                         <div class="panel-body">
                                              <!-- .row -->
@@ -20,37 +20,41 @@
                                                 <div class="col-lg-12">
                                                     <div class="panel panel-primary">
                                                         <div class="panel-heading">
-                                                            Listado de misiones
+                                                            Emergencia actual:
+                                                            <?php
+                                                                foreach($emergency as $e){} 
+                                                                echo $e->nombre_emergencia;
+                                                            ?>
                                                         </div>
                                                         <!-- .panel-heading -->
                                                         <div class="panel-body">
                                                             <div class="panel-group" id="accordion">
                                                                 <?php
-                                                                    foreach($missions as $mission)
+                                                                    foreach($missions as $m)
                                                                     {
                                                                         echo'<div class="panel panel-default">
                                                                                 <div class="panel-heading">
                                                                                     <h4 class="panel-title">
-                                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$mission->id.'">Misión '.$mission->id.'</a>
+                                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$m->id.'">Misión '.$m->id.'</a>
                                                                                     </h4>
                                                                                 </div>
-                                                                                <div id="collapse'.$mission->id.'" class="panel-collapse collapse">
+                                                                                <div id="collapse'.$m->id.'" class="panel-collapse collapse">
                                                                                     <div class="panel-body">
                                                                                         <div class="form-group col-lg-6">
-                                                                                            <label>Nombre: '.$mission->emergency->nombre_emergencia.'</label>
-                                                                                        </div>
-                                                                                        <div class="form-group col-lg-6">
-                                                                                            <label>Lugar: </label>
-                                                                                            <label>'.$mission->emergency->commune->nombre_comuna.'</label>
+                                                                                            <label>Nombre: '.$m->nombre_mision.'</label>
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">';
-                                                                        echo $this->Html->link('Gestionar', ['controller' => 'missions', 'action' => 'view', $mission->id], ['class' => 'btn btn-primary']);
+                                                                        echo $this->Html->link('Gestionar', ['controller' => 'missions', 'action' => 'edit',$e->id, $m->id], ['class' => 'btn btn-primary']);
                                                                         echo            '</div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>';
                                                                     }
                                                                 ?>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <a <?= 'href="/missions/add/'.$e->id.'"' ?> class="btn btn-primary">Añadir misión</a>
+                                                                <a <?= 'href="/emergencies/edit/'.$e->id.'"' ?> class="btn btn-primary pull-right">Editar emergencia</a>
                                                             </div>
                                                         </div>
                                                             </div>
@@ -61,7 +65,7 @@
                                                         <!-- cierra row -->
                                                         </div>
                                                         <div class="col-lg-12">
-                                                                <a href="/managers/index" class="btn btn-danger">Volver</a>
+                                                                <a href="/administrators/view" class="btn btn-danger">Volver</a>
                                                         </div>
                                                     </div>  
                                                 </div>  <!-- /.panel body-->

@@ -10,7 +10,7 @@
                                         <div class="col-lg-12">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h2>Encargado - Misiones</h2>
+                                                    <h2>Encargado - Gestionar misión</h2>
                                                 </div>
 
                                                 <div class="panel-body">
