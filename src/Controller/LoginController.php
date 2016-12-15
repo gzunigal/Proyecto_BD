@@ -23,6 +23,14 @@ class LoginController extends AppController
         }
     }
 
+    public function role($rol){
+        if($rol == 'admin' ||$rol == 'encargado' ||$rol == "voluntario") 
+            $session = $this->request->session();
+            $session->write('User.rol',$rol);
+
+        return $this->redirect(["controller"=>"Home","action"=>"index"]);
+    }
+
     public function login(){
         $session = $this->request->session();
         if ($session->check('User')) {
@@ -37,6 +45,15 @@ class LoginController extends AppController
                 $session->write('User',$user->toArray());
                 $session->write('User.isEncargado',$user->hasMissions());
                 $session->write('User.Entity',$user);
+
+                $rol = "voluntario";
+                if($user->admin==1){
+                    $rol="admin";
+                }elseif($user->hasMissions()){
+                    $rol="encargado";
+                }
+                $session->write('User.rol',$rol);
+
 
                 return $this->redirect(['controller' => 'Home', 'action' => 'index']);
             }else{

@@ -25,10 +25,10 @@ class HomeController extends AppController
     public function index()
     {
         $session = $this->request->session();
-        if ($session->check('User')) {
-            if($session->read('User.admin') == '1'){
+        if ($session->check('User.id')) {
+            if($session->read('User.rol') == 'admin'){
                 return $this->redirect(['controller' => 'Administrators', 'action' => 'index']);
-            }elseif ($session->read('User.isEncargado') == 1) {
+            }elseif ($session->read('User.rol') == "encargado") {
                 return $this->redirect(['controller' => 'Managers', 'action' => 'index']);
             }else{
                 return $this->redirect(['controller' => 'Volunteers', 'action' => 'index']);

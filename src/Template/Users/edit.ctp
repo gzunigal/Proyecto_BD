@@ -22,7 +22,7 @@
                                                         <div class="col-sm-4 col-sm-offset-4 col-md-12 col-md-offset-0">
                                                             <img class="img-responsive center-block" src="/img/avatar.jpg" alt="">
                                                             <div class="profile-username text-center">
-                                                                <p><?=$User['name'].' '.$User['name']?></p>
+                                                                <p><?=$User['name'].' '.$User['surname']?></p>
                                                             </div>
                                                             <div class="profile-job text-center">
                                                                 <?php
