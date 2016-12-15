@@ -29,14 +29,6 @@ class MissionsController extends AppController
         $this->set('_serialize', ['missions']);
 
         $datos = $this->request->data;
-        if($this->request->is('post'))
-        {
-            print_r($datos);
-            if($datos['cambio'] == 'm_status_change')
-            {
-                echo '<br><br><br><br><br> ADASDASD <br><br><br><br>';
-            }
-        }
     }
 
     /**
@@ -89,7 +81,7 @@ class MissionsController extends AppController
 
             if($missionsTable->save($mission))
             {
-                $this->redirect("/administrator/view");
+                $this->redirect("/administrators/view");
             }
         }
     }

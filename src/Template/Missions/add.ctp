@@ -46,7 +46,7 @@
                                                                             </select>
                                                                         </div>
                                                                         <div class="form-group col-lg-12">
-                                                                        <a type="submit" class="btn btn-danger pull-left" href="/administrator/view">Volver</a>
+                                                                        <a type="submit" class="btn btn-danger pull-left" href="/administrators/view">Volver</a>
                                                                         <button type="submit" class="btn btn-primary pull-right">Definir</button>
                                                                         </div>
                                                                     </fieldset>

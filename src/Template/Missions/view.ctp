@@ -77,7 +77,7 @@
                                                             </form>
                                                         </div>
                                                     </div>
-                                                    <a href="/manager/manageMission " class="btn btn-danger">Volver</a>
+                                                    <a href="/managers/manageMission " class="btn btn-danger">Volver</a>
                                                     <!-- .panel-body -->                                                    
 												</div>
                                             <!-- /.panel -->

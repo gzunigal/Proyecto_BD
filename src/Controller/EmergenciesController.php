@@ -21,6 +21,19 @@ use Cake\View\Exception\MissingTemplateException;
 
 class EmergenciesController extends AppController
 {
+	public function edit($id)
+	{
+		$emergency  = $this->Emergencies->find('all')
+			->where(['Emergencies.id' => $id])
+			->contain(['Communes']);
+
+		$comunas  = $this->Emergencies->Communes->find('all');
+
+		$this->set(compact('emergency'));
+		$this->set(compact('comunas'));
+		
+	}
+
 	public function add()
 	{
 		$this->loadModel('Communes');

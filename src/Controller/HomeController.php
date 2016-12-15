@@ -27,11 +27,11 @@ class HomeController extends AppController
         $session = $this->request->session();
         if ($session->check('User')) {
             if($session->read('User.admin') == '1'){
-                return $this->redirect(['controller' => 'Administrator', 'action' => 'index']);
+                return $this->redirect(['controller' => 'Administrators', 'action' => 'index']);
             }elseif ($session->read('User.isEncargado') == 1) {
-                return $this->redirect(['controller' => 'Manager', 'action' => 'index']);
+                return $this->redirect(['controller' => 'Managers', 'action' => 'index']);
             }else{
-                return $this->redirect(['controller' => 'Volunteer', 'action' => 'index']);
+                return $this->redirect(['controller' => 'Volunteers', 'action' => 'index']);
             }
         }else{
             return $this->redirect(['controller' => 'Login', 'action' => 'index']);

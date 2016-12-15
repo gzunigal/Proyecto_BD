@@ -14,7 +14,8 @@
                                         <fieldset>
                                             <div class="form-group">
                                                 <label for="emergency">Nombre de la emergencia</label>
-                                                <input class="form-control" placeholder="Ej: Incendio/Derrumbe en..." id="emergency" name="emergency_name" type="text" required autofocus>
+                                                <?php foreach ($emergency as $e); ?>
+                                                <input class="form-control" <?= 'value="'.$e->nombre_emergencia.'"' ?> id="emergency" name="emergency_name" type="text" required autofocus>
                                             </div>
                                             <div class="form-group">
                                                 <label for="commune">Comuna</label>
