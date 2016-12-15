@@ -81,6 +81,13 @@ class User extends Entity
         return ($result)? 1 : 0;
     }
 
+    public function getAbilities(){
+        $tabla = $missionsTable = TableRegistry::get('AbilitiesUsers');
+
+        return $tabla->find()->where(['user_id'=>$this->id])->contain(['Abilities']);
+
+    }
+
     /**
      * Funcion que verifica si coincide una password ingresada
      *
