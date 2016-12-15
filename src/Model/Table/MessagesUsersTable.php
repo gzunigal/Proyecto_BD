@@ -59,6 +59,10 @@ class MessagesUsersTable extends Table
             ->integer('id')
             ->allowEmpty('id', 'create');
 
+        $validator
+            ->boolean('visto')
+            ->allowEmpty('visto');
+
         return $validator;
     }
 

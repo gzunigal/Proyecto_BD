@@ -12,8 +12,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrador - Definir Emergencia</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet">
 
@@ -47,25 +45,42 @@
     <![endif]-->
 </head>
 
-<body class="scrollable">
-  <nav  class="navbar navbar-dark bg-primary">
-    <div class="container-fluid">
-      
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Handy-Hand</a>
+<body id="pages">
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: black;">
+      <div class="container-fluid">
         
+        <div class="navbar-header">
+        <a class="navbar-left" href="/"><img style="max-height:30px;margin-top: 14px;" src="/img/handy_hand_logo.png"></a>
+        
+        </div>
+        <ul class="nav navbar-nav">
+        <li><a 
+          class="btn
+            <?=($User['hasMessages'])?'m-green':'m-gray'; ?>
+            pull-right" 
+          style="margin-left: 5px;padding-left:5px; padding-right:5px;"
+          href="/Messages/">
+          Mensajes
+          </a>
+        </li>
+        <li><a 
+          class="btn 
+            <?=($User['hasNotifications'])?'m-green':'m-gray'; ?> 
+            pull-right" 
+          style="margin-left: 5px;padding-left:5px; padding-right:5px;" 
+          href="/Notifications/">
+          Notificaciones
+          </a>
+        </li>
+        
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+        <li><a class="btn m-gray pull-right" style="margin-right: 5px;padding-left:10px; padding-right:10px;" href="/Users/edit/">Perfil</a></li>
+        <li class="logout">
+        <a class="btn m-red pull-right" style="padding-left:5px; padding-right:5px;" href="/Login/logout/">Cerrar Sesion</a>
+        </li>
+        </ul>
       </div>
-      <ul class="nav navbar-nav">
-        <li><a href="#">Mensajes</a></li>
-        <li><a href="#">Notificaciones</a></li>
-        <li><a href="#">Perfil</a></li>
-      </ul>
-      <ul class="nav navbar-nav pull-right">
-      <li class="logout">
-        <a class="pull-right" href="/Login/logout/">Cerrar Sesion</a>
-      </li>
-      </ul>
-    </div>
   </nav>
 
 

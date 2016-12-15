@@ -43,14 +43,40 @@ class User extends Entity
     }
 
     /**
-     * Funcion que obtiene la lista de misiones asociadas a un usuario
+     * Funcion que verifica si existen misiones asociadas a un usuario
      *
-     * @return Lista de Entity Mission asociadas a Usuario, NULL si no existen.
+     * @return 1 si existe, 0 si no
      */
     public function hasMissions(){
         $missionsTable = TableRegistry::get('Missions');
         
         $result = $missionsTable->find()->where(['user_id'=>$this->id])->first();
+
+        return ($result)? 1 : 0;
+    }
+
+    /**
+     * Funcion que verifica si existen mensajes no vistas asociadas a un usuario
+     *
+     * @return 1 si existe, 0 si no
+     */
+    public function hasMessages(){
+        $missionsTable = TableRegistry::get('MessagesUsers');
+        
+        $result = $missionsTable->find()->where(['user_id'=>$this->id,'visto'=>0])->first();
+
+        return ($result)? 1 : 0;
+    }
+
+    /**
+     * Funcion que verifica si existen notificaciones no vistas asociadas a un usuario
+     *
+     * @return 1 si existe, 0 si no
+     */
+    public function hasNotifications(){
+        $missionsTable = TableRegistry::get('NotificationsUsers');
+        
+        $result = $missionsTable->find()->where(['user_id'=>$this->id,'visto'=>0])->first();
 
         return ($result)? 1 : 0;
     }
