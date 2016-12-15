@@ -58,12 +58,23 @@ class EmergenciesController extends AppController
 
 		foreach ($emergency as $e){}
 
-		$missions = $this->Emergencies->Missions->find('all')
-			->where(['Missions.emergency_id' => $e->id]);
+		if($e->estado_emergencia == 2)
+		{
+			return $this->redirect("/administrators/view");
+		}
+		else if($e->estado_emergencia == 0)
+		{
+			return $this->redirect("/administrators/view");
+		}
+		else
+		{
+			$missions = $this->Emergencies->Missions->find('all')
+				->where(['Missions.emergency_id' => $e->id]);
 
-		$this->set(compact('emergency'));
-		$this->set(compact('missions'));
-		$this->set(compact('id'));
+			$this->set(compact('emergency'));
+			$this->set(compact('missions'));
+			$this->set(compact('id'));
+		}
 	}
 
 	public function add()

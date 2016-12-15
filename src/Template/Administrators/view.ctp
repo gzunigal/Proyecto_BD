@@ -67,7 +67,6 @@
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">';
                                                                         echo $this->Html->link('Gestionar', ['controller' => 'emergencies', 'action' => 'view', $emmergencie->id], ['class' => 'btn btn-primary']);
-                                                                        //<a type="submit" href="/missions/add/'.$emmergencie->id.'" class="btn btn-primary">Gestionar</a>
                                                                         echo            '</div>
                                                                                     </div>
                                                                                 </div>
@@ -75,7 +74,7 @@
                                                                     }
                                                                 ?>
                                                             </div>
-                                                            
+
                                                         </div>
                                                         </form>
                                                             </div>

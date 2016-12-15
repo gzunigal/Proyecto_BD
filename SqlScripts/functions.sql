@@ -13,16 +13,13 @@ END
 
 $$
 
-CREATE FUNCTION `agregarUsuario`(`run_user` INT, `id_comuna` INT(11), `nick_usr` VARCHAR(100), `name_usr` VARCHAR(100), `surname_usr` VARCHAR(100), `pass` VARCHAR(255), `disp` TINYINT(1), `administrador` TINYINT(1), `telefono` INT(11), `mail` VARCHAR(100)) RETURNS int(1)
+CREATE FUNCTION `agregarUsuario`(`run_user` INT, `id_comuna` INT(11), `nick_usr` VARCHAR(100), `name_usr` VARCHAR(100), `surname_usr` VARCHAR(100), `pass` VARCHAR(255), `disp` TINYINT(1), `administrador` TINYINT(1), `telefono` VARCHAR(15), `mail` VARCHAR(100)) RETURNS int(1)
     NO SQL
 BEGIN
 SET @count_users = (SELECT COUNT(*) FROM users WHERE users.run = run_user);
 SET @count_emails = (SELECT COUNT(*) FROM emails WHERE emails.email = mail);
 IF @count_emails = 0 && @count_users = 0 THEN 
-INSERT INTO users (users.run, users.commune_id, users.nombre_usuario, users.name, users.surname, users.password, users.disponibilidad, users.admin) VALUES (run_user, id_comuna, nick_usr, name_usr, surname_usr, pass, disp, administrador);
-SET @id_user = (SELECT id FROM users ORDER BY id DESC LIMIT 1);
-INSERT INTO emails (email, user_id) VALUES (mail, @id_user);
-INSERT INTO phones (phone, user_id) VALUES (telefono, @id_user);
+INSERT INTO users (users.run, users.commune_id, users.nombre_usuario, users.name, users.surname, users.password, users.disponibilidad, users.admin, users.phone, users.email) VALUES (run_user, id_comuna, nick_usr, name_usr, surname_usr, pass, disp, administrador, telefono, mail);
 RETURN 1;
 END IF;
 RETURN 0;

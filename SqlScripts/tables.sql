@@ -70,10 +70,10 @@ CREATE TABLE IF NOT EXISTS `abilities` (
 
 INSERT INTO `abilities` (`id`, `nombre_habilidad`, `descripcion_actividad`) VALUES
 (1, 'Cavar', 'Se cava mas rapido con una super pala'),
-(2, 'Picar', 'Pica mas rapido la tierra con un super pico'),
+(2, 'Picar', 'Remueve escombros con herramientas'),
 (3, 'Recoger basura', 'Se puede recoger la basura mas rapido, con una super aspiradora'),
 (4, 'Hablamiento', 'Puede dar charlas con gran poder de convencimiento'),
-(5, 'Barrer', 'Puede barrer con más agileza'),
+(5, 'Barrer', 'Puede barrer con más agilidad'),
 (6, 'Trapear', 'Puede trapear con más rapidez');
 
 
@@ -445,7 +445,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `nombre_usuario` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `surname` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password`  varchar(255) NOT NULL,
+  `email`     varchar(255) NOT NULL,
+  `phone`     varchar(15) NOT NULL,
   `disponibilidad` tinyint(1) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
@@ -455,16 +457,6 @@ CREATE TABLE IF NOT EXISTS `users` (
     REFERENCES `communes` (`id`)
     ON UPDATE CASCADE ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `users` (`id`, `commune_id`, run, `nombre_usuario`, name, surname, `password`, `disponibilidad`, `admin`) VALUES
-(1, 2, '18622421-3', 'Ichigo', 'name_1', 'surname_1', 'ichigo', 2, 0),
-(2, 1, '17845123-2', 'Richard', 'name_2', 'surname_2', 'richard', 0, 1),  
-(3, 7, '12354666-3', 'shrek', 'name_3', 'surname_3', 'getouttamyswamp', 1, 0),
-(4, 10, '4578621-3', 'Elber Gon Freecs', 'name_4', 'surname_4', 'prntscr', 1, 0),
-(5, 11,  '45612321-9', 'Elber Gon', 'name_5', 'surname_5', 'lalalele', 1, 1),
-(6, 328, '100-1', 'Arturo Prat', 'name_6', 'surname_6', 'pass123', 1, 1),
-(7, 201, '7894561-2','Michael Jackson', 'name_7', 'surname_7', '123asd', 1, 1),
-(8, 13, '14875236-9','Steve Jobs', 'name_8', 'surname_8', 'passtest', 1, 1);
 
 
 
@@ -485,57 +477,6 @@ CREATE TABLE IF NOT EXISTS `notifications_users` (
     REFERENCES `users` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-INSERT INTO `notifications_users` (`id`, `user_id`, `notification_id`) VALUES
-(1, 2, 1),
-(2, 2, 4);
-
-
-
-
-CREATE TABLE IF NOT EXISTS `emails` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(100) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE (`email`),
-  INDEX (`user_id`),
-  FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`id`)
-    ON UPDATE CASCADE ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-
-INSERT INTO `emails` (`id`, `email`, `user_id`) VALUES
-(1, 'gonzalo.estay@usach.cl', 1),
-(2, 'julio.vasquez@usach.cl', 2),
-(3, 'dwdew@fefre.cl', 2),
-(4, 'dwdew@fefre.com', 6),
-(5, 'correo@correo.cl', 8),
-(6, 'correo2@correo2.cl', 4),
-(7, 'correo3@correo3.cl', 7);
-
-
-
-
-CREATE TABLE IF NOT EXISTS `phones` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(16) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX (`user_id`),
-  FOREIGN KEY (`user_id`)
-    REFERENCES `users` (`id`)
-    ON UPDATE CASCADE ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
-INSERT INTO `phones` (`id`, `phone`, `user_id`) VALUES
-(1, '0', 1),
-(2, '11111111', 2),
-(3, '+56 9 1234 1234', 3),
-(4, '12345678', 4),
-(5, '45612378', 5),
-(6, '45213375', 6);
-
 
 
 
@@ -579,13 +520,6 @@ CREATE TABLE IF NOT EXISTS `emergencies` (
     ON UPDATE CASCADE ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
-INSERT INTO `emergencies` (`id`, `user_id`, `commune_id`, `nombre_emergencia`, `fecha_emergencia`, `gravedad_emergencia`, `estado_emergencia`, `descripcion_emergencia`) VALUES
-(1, 1, 2, 'Terremoto en Iquique', '2020-01-23 10:18:39', 3, 1, 'Terremoto grado 7.\r\nMultiples derrumbes.\r\nEs necesario reconstruir varios edificios de la zona afectada.'),
-(3, 3, 2, 'Incendio en Iquique', '2017-06-23 12:06:49', 1, 1, 'Incendio afecta tres cuadras de la comuna.\r\nEs necesario realizar una limpieza en el área y reconstruir viviendas.'),
-(4, 4, 7, 'Derrumbe en Cañete', '2016-11-01 00:00:00', 3, 1, 'Derrumbe en la comuna de Cañete.\r\nAlgunas viviendas se ven afectadas, por lo que se necesita una limpieza en el área y ayuda a las familias afectadas.'),
-(8, 2, 67, 'Inundación en Arica', '0001-02-01 00:00:00', 1, 2, 'Comuna de Arica afectada por inundación.\r\nUn gran número de viviendas se ha visto afectada por esta catástrofe. Se necesitan voluntarios para limpiar, reconstruir y ayudar familias.');
-
-
 
 
 CREATE TABLE IF NOT EXISTS `missions` (
@@ -604,12 +538,6 @@ CREATE TABLE IF NOT EXISTS `missions` (
     ON UPDATE CASCADE ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-INSERT INTO `missions` (`id`, `emergency_id`, `user_id`, `nombre_mision`) VALUES
-(2, 1, 3, 'Limpieza del área'),
-(3, 1, 1, 'Ayuda a damnificados'),
-(4, 3, 2, 'Limpieza del área'),
-(5, 8, 6, 'Construcción de viviendas');
-
 
 
 
@@ -624,12 +552,6 @@ CREATE TABLE IF NOT EXISTS `tasks` (
     REFERENCES `missions` (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
-INSERT INTO `tasks` (`id`, `mission_id`, `nombre_tarea`, `descripcion_tarea`) VALUES
-(1, 2, 'Remover escombros', 'Se deben remover todos los escombros del área que representen un riesgo para la población del área o que obstruyan la reconstrucción de la zona afectada.'),
-(2, 3, 'Repartir alimentos', 'Se debe entregar una caja de alimentos por familia la que ha sido preparada previamente.'),
-(3, 4, 'Remover escombros', 'Se deben remover todos los escombros del área que representen un riesgo para la población del área o que obstruyan la reconstrucción de la zona afectada.'),
-(4, 5, 'Estabilizar el terreno', 'Se debe nivelar el suelo de manera que posteriormente se pueda construir el radier de la casa.');
 
 
 
@@ -669,16 +591,6 @@ CREATE TABLE IF NOT EXISTS `abilities_users` (
     ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
-INSERT INTO `abilities_users` (`id`, `user_id`, `ability_id`, `nivel_habilidad`) VALUES
-(1, 1, 3, 2),
-(2, 2, 1, 0),
-(3, 3, 3, 3),
-(4, 3, 5, 5),
-(5, 4, 1, 5),
-(6, 5, 2, 4),
-(7, 6, 3, 4),
-(8, 7, 4, 1),
-(9, 8, 5, 2);
 
 
 
