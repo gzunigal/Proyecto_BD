@@ -11,6 +11,15 @@ use App\Controller\AppController;
  */
 class MissionsController extends AppController
 {
+    public function manage_mission()
+    {
+        $this->loadModel('Missions');
+
+        $dato = $this->request->session();
+
+        $missions = $this->Missions->find('all')
+            ->where(['Missions.user_id' => $dato->read('User.id')]);
+    }
 
     /**
      * Index method
@@ -37,12 +46,11 @@ class MissionsController extends AppController
      */
     public function view($id = null)
     {
-        $mission = $this->Missions->get($id, [
-            'contain' => ['Emergencies', 'Users', 'Tasks']
-        ]);
+        $this->loadModel('Tasks');
 
-        $this->set('mission', $mission);
-        $this->set('_serialize', ['mission']);
+        $tasks = $this->Tasks->find('all');
+
+
     }
 
     /**
@@ -52,8 +60,6 @@ class MissionsController extends AppController
      */
     public function add($idEmergencia)
     {
-        print_r($idEmergencia);
-
         $this->loadModel('Users');
 
         $users = $this->Users->find('all');

@@ -1,4 +1,4 @@
-<?php $this->layout = 'login'; ?>
+
 <title>Administrador - Vista Principal</title>
 <br>
 <br>

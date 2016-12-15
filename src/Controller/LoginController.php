@@ -32,9 +32,7 @@ class LoginController extends AppController
         $formData = $this->request->data;
         if ($this->request->is('post')) {
             $this->loadModel('Users');
-            debug($formData);
             $user = $this->Users->login($formData['username'],$formData['password']);
-            debug($user);
             if ($user){
                 $session->write('User.isEncargado',$user->hasMissions());
                 $session->write('User.Entity',$user);
