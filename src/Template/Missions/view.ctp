@@ -12,27 +12,22 @@
                                                 <div class="panel-heading">
                                                     <h2>Encargado - Misiones</h2>
                                                 </div>
+
                                                 <div class="panel-body">
                                                     <!-- .row -->
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="panel panel-primary">
                                                                 <div class="panel-heading">
-                                                                    Misión actual: (cargar el nombre desde la base de datos)
-                                                                    <button type="button" class="btn m-red btn-xs" style="float: right">Nueva Tarea</button>
+                                                                    Misión actual: 
+                                                                    <?php 
+                                                                        foreach($mission as $m){} 
+                                                                        echo $m->nombre_mision; 
+                                                                    ?>
+                                                                    <a <?= 'href="/tasks/add/'.$m->id.'"' ?> class="btn m-red btn-xs" style="float: right">Nueva Tarea</a>
                                                                 </div>
+                                                                <form id="formulario" method="post" <?= 'action="/missions/view/'.$m->id.'"' ?>>
 																<div class="panel-body">
-																	<div class="form-group col-lg-6">
-																		<div class="dropdown">
-																			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Actualizar estado misión
-																			<span class="caret"></span></button>
-																			<ul class="dropdown-menu">
-																				<li>0</li>
-																				<li>1</li>
-																				<li>2</li>
-																			</ul>
-																		</div>
-																	</div>
 																	<div class="form-group col-lg-6">
 																			<button type="submit" class="btn btn-primary">Solicitar voluntarios</button>
 																	</div>
@@ -40,123 +35,34 @@
                                                                 <!-- .panel-heading -->
                                                                 <div class="panel-body">
                                                                     <div class="panel-group" id="accordion">
+                                                                        <!-- desde aquí el foreach -->
+                                                                        <?php foreach($tasks as $t): ?>
                                                                         <div class="panel panel-default">
                                                                             <div class="panel-heading">
                                                                                 <h4 class="panel-title">
-                                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Tarea #1</a>
+                                                                                <?php
+                                                                                    echo '<a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$t->id.'">Tarea '.$t->id.'</a>';
+                                                                                ?>
                                                                                 </h4>
                                                                             </div>
-                                                                            <div id="collapseOne" class="panel-collapse collapse in">
-																				<div class="panel-body">
+                                                                            <?php
+                                                                                echo '<div id="collapse'.$t->id.'" class="panel-collapse collapse">'
+																			?>
+                                                                            	<div class="panel-body">
                                                                                     <div class="form-group col-lg-6">
                                                                                         <label>Nombre: </label>
-                                                                                        <label>Cosa Bonita</label>
+                                                                                        <label><?= $t->nombre_tarea ?></label>
                                                                                     </div>
-                                                                                    <div class="form-group col-lg-6">
-                                                                                        <label>Fecha</label>
-                                                                                        <label>123123123123</label>
-
-                                                                                    </div>
-                                                                                    <div class="form-group col-lg-6">
-                                                                                        <label>Lugar</label>
-                                                                                        <label>Por ahí</label>
-                                                                                    </div>												
-                                                                                    <div class="form-group col-lg-6">
-                                                                                        <div class="dropdown">
-																						  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Actualizar estado tarea
-																						  <span class="caret"></span></button>
-																						  <ul class="dropdown-menu">
-																							<li>0</li>
-																							<li>1</li>
-																							<li>2</li>
-																						  </ul>
-																						</div>
-																					</div>
 																					<div class="form-group col-lg-6">
-																						<button type="submit" class="btn btn-primary">Gestionar voluntarios</button>
+																						<a class="btn btn-primary">Gestionar voluntarios</a>
 																					</div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="panel panel-default">
-                                                                            <div class="panel-heading">
-                                                                                <h4 class="panel-title">
-                                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Tarea #2</a>
-                                                                                </h4>
-                                                                            </div>
-                                                                            <div id="collapseTwo" class="panel-collapse collapse">
-                                                                                <div class="panel-body">
-                                                                                 <div class="form-group col-lg-6">
-                                                                                    <label>Nombre: </label>
-                                                                                    <label>Cosa Bonita</label>
-                                                                                </div>
-                                                                                <div class="form-group col-lg-6">
-                                                                                    <label>Fecha</label>
-                                                                                    <label>123123123123</label>
-
-                                                                                </div>
-                                                                                <div class="form-group col-lg-6">
-                                                                                    <label>Lugar</label>
-                                                                                    <label>Por ahí</label>
-
-                                                                                </div>
-                                                                                <div class="form-group col-lg-6">
-                                                                                    <div class="dropdown">
-																						  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Actualizar estado tarea
-																						  <span class="caret"></span></button>
-																						  <ul class="dropdown-menu">
-																							<li>0</li>
-																							<li>1</li>
-																							<li>2</li>
-																						  </ul>
-																					</div>
-                                                                                </div>
-																				<div class="form-group col-lg-6">
-																						<button type="submit" class="btn btn-primary">Gestionar voluntarios</button>
-																				</div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">
-                                                                            <h4 class="panel-title">
-                                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Tarea #3</a>
-                                                                            </h4>
-                                                                        </div>
-                                                                        <div id="collapseThree" class="panel-collapse collapse">
-                                                                            <div class="panel-body">
-                                                                                <div class="form-group col-lg-6">
-                                                                                    <label>Nombre: </label>
-                                                                                    <label>Cosa Bonita</label>
-                                                                                </div>
-                                                                                <div class="form-group col-lg-6">
-                                                                                    <label>Fecha</label>
-                                                                                    <label>123123123123</label>
-
-                                                                                </div>
-                                                                                <div class="form-group col-lg-6">
-                                                                                    <label>Lugar</label>
-                                                                                    <label>Por ahí</label>
-
-                                                                                </div>
-                                                                                <div class="form-group col-lg-6">
-																					<div class="dropdown">
-																							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Actualizar estado tarea
-																							  <span class="caret"></span></button>
-																							  <ul class="dropdown-menu">
-																								<li>0</li>
-																								<li>1</li>
-																								<li>2</li>
-																							  </ul>
-																					</div>
-																				</div>
-																				<div class="form-group col-lg-6">
-																						<button type="submit" class="btn btn-primary">Gestionar voluntarios</button>
-																				</div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                        <?php endforeach; ?>
+                                                                        <!-- hasta aquí -->
                                                                 </div>
+                                                                </form>
                                                                 <form role="form">
                                                                   <fieldset>
 
@@ -171,7 +77,7 @@
                                                             </form>
                                                         </div>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary">Buscar</button>
+                                                    <a href="/manager/manageMission " class="btn btn-danger">Volver</a>
                                                     <!-- .panel-body -->                                                    
 												</div>
                                             <!-- /.panel -->

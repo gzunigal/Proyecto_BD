@@ -11,15 +11,7 @@ use App\Controller\AppController;
  */
 class MissionsController extends AppController
 {
-    public function manage_mission()
-    {
-        $this->loadModel('Missions');
-
-        $dato = $this->request->session();
-
-        $missions = $this->Missions->find('all')
-            ->where(['Missions.user_id' => $dato->read('User.id')]);
-    }
+    
 
     /**
      * Index method
@@ -35,6 +27,16 @@ class MissionsController extends AppController
 
         $this->set(compact('missions'));
         $this->set('_serialize', ['missions']);
+
+        $datos = $this->request->data;
+        if($this->request->is('post'))
+        {
+            print_r($datos);
+            if($datos['cambio'] == 'm_status_change')
+            {
+                echo '<br><br><br><br><br> ADASDASD <br><br><br><br>';
+            }
+        }
     }
 
     /**
@@ -44,11 +46,18 @@ class MissionsController extends AppController
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view($id)
     {
         $this->loadModel('Tasks');
 
-        $tasks = $this->Tasks->find('all');
+        $mission = $this->Missions->find('all')
+            ->where(['Missions.id' => $id]);
+
+        $tasks = $this->Tasks->find('all')
+            ->where(['Tasks.mission_id' => $id]);
+
+        $this->set(compact('mission'));
+        $this->set(compact('tasks'));
 
 
     }
@@ -94,23 +103,6 @@ class MissionsController extends AppController
      */
     public function edit($id = null)
     {
-        $mission = $this->Missions->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $mission = $this->Missions->patchEntity($mission, $this->request->data);
-            if ($this->Missions->save($mission)) {
-                $this->Flash->success(__('The mission has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The mission could not be saved. Please, try again.'));
-            }
-        }
-        $emergencies = $this->Missions->Emergencies->find('list', ['limit' => 200]);
-        $users = $this->Missions->Users->find('list', ['limit' => 200]);
-        $this->set(compact('mission', 'emergencies', 'users'));
-        $this->set('_serialize', ['mission']);
     }
 
     /**
@@ -122,14 +114,5 @@ class MissionsController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $mission = $this->Missions->get($id);
-        if ($this->Missions->delete($mission)) {
-            $this->Flash->success(__('The mission has been deleted.'));
-        } else {
-            $this->Flash->error(__('The mission could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
     }
 }

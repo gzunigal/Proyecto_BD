@@ -25,6 +25,18 @@ class AdministratorController extends AppController
 
         $this->set(compact('comunes'));
         $this->set(compact('emergencies'));
+
+        $datos = $this->request->data;
+        if($this->request->is('post'))
+        {
+            $emergenciesTable = TableRegistry::get('Emergencies');
+            
+            $emergency = $emergenciesTable->get($datos['id']);
+            $emergency->estado_emergencia = $datos['cambio'];
+
+            $emergenciesTable->save($emergency);
+            
+        }
     }
     
     public function logout(){

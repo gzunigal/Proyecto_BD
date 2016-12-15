@@ -11,9 +11,7 @@ class ManagerController extends AppController
     public function index()
     {
         //Deberia mostrarse todas las misiones
-        $missions = TableRegistry::get('Missions')->find('all');
-
-        $this->set(compact('missions'));
+        
     }
 
     public function defineTask($id_mission)
@@ -22,6 +20,20 @@ class ManagerController extends AppController
     		['conditions' => ['Missions.id =' => $id_mission]]);
 
     	$this->set(compact('mission'));
+    }
+
+    public function manageMission()
+    {
+        $this->loadModel('Missions');
+        $this->loadModel('Emergencies');
+        $this->loadModel('Communes');
+
+        $sesion = $this->request->session();
+        $missions = $this->Missions->find('all')
+                ->where(['Missions.user_id =' => $sesion->read('User.id')])
+                ->contain(['Emergencies.Communes']);
+
+        $this->set(compact('missions'));
     }
 
     public function ManageTask($id_task)

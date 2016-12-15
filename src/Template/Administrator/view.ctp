@@ -24,6 +24,7 @@
                                                             <a href="/emergencies/add" class="btn m-red btn-xs" style="float: right">Nueva Emergencia</a>
                                                         </div>
                                                         <!-- .panel-heading -->
+                                                        <form name="formulario" id="formulario" method="post">
                                                         <div class="panel-body">
                                                             <div class="panel-group" id="accordion">
                                                                 <?php
@@ -48,6 +49,22 @@
                                                                                             <label>Lugar: </label>
                                                                                             <label>'.$emmergencie->commune->nombre_comuna.'</label>
                                                                                         </div>
+                                                                                        <div class="form-group col-lg-6">
+                                                                                            <div class="dropdown">
+                                                                                            <label>Estado de la emergencia</label>
+                                                                                                <select name="emergency_status" id='.$emmergencie->id.'>
+                                                                                                    <option value=0 '; 
+                                                                                                    if($emmergencie->estado_emergencia == 0) echo 'selected';
+                                                                                                    echo'>Creada</option>
+                                                                                                    <option value=1 '; 
+                                                                                                    if($emmergencie->estado_emergencia == 1) echo 'selected';
+                                                                                                    echo'>En proceso</option>
+                                                                                                    <option value=2 ';
+                                                                                                    if($emmergencie->estado_emergencia == 2) echo 'selected';
+                                                                                                    echo'>Finalizada</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
                                                                                         <div class="form-group col-lg-6">';
                                                                         echo $this->Html->link('Gestionar', ['controller' => 'missions', 'action' => 'add', $emmergencie->id], ['class' => 'btn btn-primary']);
                                                                         //<a type="submit" href="/missions/add/'.$emmergencie->id.'" class="btn btn-primary">Gestionar</a>
@@ -59,6 +76,7 @@
                                                                 ?>
                                                             </div>
                                                         </div>
+                                                        </form>
                                                                 <form role="form">
                                                                     <fieldset>
                                                                         <div class="form-group col-lg-12">
@@ -92,3 +110,75 @@
         </div>  <!-- container fadeIn -->
     </article>
 </body>
+
+<script type="text/javascript">
+    $("select[name='emergency_status']").on('focusin', function(){
+        $(this).data('val', this.value);
+    });
+
+    
+    $("select[name='emergency_status']").on('change', function(){
+        prev = $(this).data('val');
+        id_elemento = this.id;
+        if(prev == 0 && this.value == 2)
+        {
+            alert('Aún no se ha iniciado la emergencia.');
+            $(this).data('val', prev);
+            this.value = prev;
+        }
+        else if(prev == 2)
+        {
+            alert('La emergencia ya ha finalizado.');
+            $(this).data('val', prev);
+            this.value = prev;
+        }
+        else if(this.value == 0)
+        {
+            alert('La emergencia está en progreso');
+            this.value = prev;
+            $(this).data('val', prev);
+        }
+        else if(this.value == 1)
+        {
+            pop_up = confirm('Desea iniciar la emergencia?');
+            if(pop_up == true)
+            {
+                $('<input />').attr('type', 'hidden')
+                    .attr('name', "id")
+                    .attr('value', this.id)
+                    .appendTo('#formulario');
+                $('<input />').attr('type', 'hidden')
+                    .attr('name', "cambio")
+                    .attr('value', 1)
+                    .appendTo('#formulario');
+                $("#formulario").submit();
+            }
+            else
+            {
+                this.value = prev;
+                $(this).data('val', prev);
+            }
+        }
+        else if(this.value == 2)
+        {
+            pop_up = confirm('Desea terminar la emergencia?\nUna vez finalizada esta no se puede reiniciar.');
+            if(pop_up == true)
+            {
+                $('<input />').attr('type', 'hidden')
+                    .attr('name', "id")
+                    .attr('value', this.id)
+                    .appendTo('#formulario');
+                $('<input />').attr('type', 'hidden')
+                    .attr('name', "cambio")
+                    .attr('value', 2)
+                    .appendTo('#formulario');
+                $("#formulario").submit();
+            }
+            else
+            {
+                this.value = prev;
+                $(this).data('val', prev);
+            }
+        }
+    });
+</script>

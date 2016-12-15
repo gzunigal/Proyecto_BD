@@ -57,7 +57,8 @@ class AppController extends Controller
             'storage'=>'Session'
         ]);
 
-        $this->Auth->allow(['index', 'view', 'add', 'defineTask', 'manageTask']);
+        //$this->Auth->allow(['index', 'view', 'add', 'defineTask', 'manageTask']);
+        $this->Auth->allow();
     }
 
     /**

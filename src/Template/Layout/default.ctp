@@ -48,7 +48,7 @@
 </head>
 
 <body class="scrollable">
-  <nav  class="navbar navbar-inverse navbar-fixed-top">
+  <nav  class="navbar navbar-dark bg-primary">
     <div class="container-fluid">
       
       <div class="navbar-header">
@@ -71,14 +71,9 @@
 
 <br>
 <br>
-<!-- Here's where I want my views to be displayed -->
-  <?= $this->Flash->render() ?>
-  <div class="container clearfix">
-  <?= $this->fetch('content'); ?>
-  </div>
 
    <!-- jQuery -->
-    <script src="/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
@@ -88,5 +83,13 @@
 
     <!-- Pages JavaScript -->
     <script src="/js/pages.js"></script>
+
+<!-- Here's where I want my views to be displayed -->
+  <?= $this->Flash->render() ?>
+  <div class="container clearfix">
+  <?= $this->fetch('content'); ?>
+  </div>
+
+
 </body>
 </html>
