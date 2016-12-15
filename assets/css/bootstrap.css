@@ -4567,7 +4567,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #cccccc;
 }
 .navbar-inverse {
-  background-color: #FFF;
+  background-color: #000000; // Cambio hecho por fescobar
   border-color: transparent;
 }
 .navbar-inverse .navbar-brand {
