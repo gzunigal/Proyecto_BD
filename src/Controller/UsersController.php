@@ -35,12 +35,14 @@ class UsersController extends AppController
             $user->commune_id = $data['communes'];
 
             if($this->Users->save($user)){
-
+                $session = $this->request->session();
                 $session->write('User',$user->toArray());
                 $session->write('User.isEncargado',$user->hasMissions());
                 $session->write('User.Entity',$user);
 
                 $this->Flash->success('Se ha actualizado con éxito!');
+                return $this->redirect(["controller"=>"Users","action"=>"edit"]);
+
             }else{
                 $this->Flash->error('No se ha podido actualizar');
             }

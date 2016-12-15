@@ -39,7 +39,7 @@
                                             <div class="col-md-9">
                                                 <div class="panel box-shadow">
                                                     <div class="panel-body center-block">
-                                                        <form role="form">
+                                                        <form method="post" role="form">
                                                             <fieldset>
                                                                 <div class="row"><div class="col-sm-12">
 
