@@ -63,7 +63,7 @@
                                             </div>
                                             <!-- Change this to a button or input when using this as a form -->
                                                 <button class="btn btn-success btn-block" type="submit">Guardar</button>
-                                                <a class="btn btn-danger btn-block"  <?= 'href="/administrators/view/'.$id.'"' ?>">Volver</a>
+                                                <a class="btn btn-danger btn-block"  <?= 'href="/emergencies/view/'.$id.'"' ?>">Volver</a>
                                             </div>
                                         </fieldset>
                                     </form>

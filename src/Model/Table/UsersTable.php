@@ -59,11 +59,7 @@ class UsersTable extends Table
 
     public function registerUser($datosUsuario)
     {
-        $phonesTable    = TableRegistry::get('Phones');
-        $emailsTable    = TableRegistry::get('Emails');
         $user = $this->newEntity();
-        $phone = $this->Phones->newEntity();
-        $email = $this->Emails->newEntity();
         
         $user->commune_id       = $datosUsuario['communes'];
         $user->nombre_usuario   = $datosUsuario['user_nickname'];
@@ -73,19 +69,11 @@ class UsersTable extends Table
         $user->run              = $datosUsuario['user_rut'];
         $user->disponibilidad   = $datosUsuario['availability'];
         $user->admin            = 0;
+        $user->phone            = $datosUsuario['user_phone'];
+        $user->email            = $datosUsuario['user_email'];
         if($this->save($user))
         {
-            $phone->phone   = $datosUsuario['user_phone'];
-            $phone->user_id = $user->id;
-            if($phonesTable->save($phone))
-            {
-                $email->email   = $datosUsuario['user_email'];
-                $email->user_id = $user->id;
-                if($emailsTable->save($email))
-                {
-                    return true;
-                }
-            }
+            return true;
         }
         else
         {

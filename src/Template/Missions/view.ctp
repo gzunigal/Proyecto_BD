@@ -27,11 +27,6 @@
                                                                     <a <?= 'href="/tasks/add/'.$m->id.'"' ?> class="btn m-red btn-xs" style="float: right">Nueva Tarea</a>
                                                                 </div>
                                                                 <form id="formulario" method="post" <?= 'action="/missions/view/'.$m->id.'"' ?>>
-																<div class="panel-body">
-																	<div class="form-group col-lg-6">
-																			<button type="submit" class="btn btn-primary">Solicitar voluntarios</button>
-																	</div>
-																</div>
                                                                 <!-- .panel-heading -->
                                                                 <div class="panel-body">
                                                                     <div class="panel-group" id="accordion">
@@ -54,8 +49,9 @@
                                                                                         <label><?= $t->nombre_tarea ?></label>
                                                                                     </div>
 																					<div class="form-group col-lg-6">
-																						<a class="btn btn-primary">Gestionar voluntarios</a>
-																					</div>
+																					   <a class="btn btn-primary pull-left">Gestionar Tarea</a>
+																					   <a class="btn btn-primary pull-right">Seleccionar Voluntarios</a>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -63,18 +59,6 @@
                                                                         <!-- hasta aquí -->
                                                                 </div>
                                                                 </form>
-                                                                <form role="form">
-                                                                  <fieldset>
-
-                                                                    <div class="form-group col-lg-12">
-                                                                        <label>Ingrese ID de la tarea</label>
-                                                                        <input type="number" class="form-control" placeholder="123451">
-                                                                    </div>
-																	<div class="form-group col-lg-12">
-                                                                        <button type="submit" class="btn btn-primary">Buscar</button>
-                                                                    </div>
-                                                                </fieldset>
-                                                            </form>
                                                         </div>
                                                     </div>
                                                     <a href="/managers/manageMission " class="btn btn-danger">Volver</a>
