@@ -1,5 +1,4 @@
-
-<title>Administrador - Vista Principal</title>
+<title>Voluntario - Vista Principal</title>
 <br>
 <br>
 <br>
@@ -13,12 +12,18 @@
                                 <div class="panel-body center-block">
                                     <div class="pages-header text-center">
                                         <div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
-                                        <h4>Administrador - Vista Principal</h4>
+                                        <h4>Voluntario - Vista Principal</h4>
                                     </div>
                                     <form role="form">
                                         <fieldset>
                                             <!-- Change this to a button or input when using this as a form -->
-                                            <a class="btn btn-success btn-block" href="/administrators/view">Panel de emergencias</a>
+                                            <a href="/volunteers/request/<?= $id ?>" class="btn btn-success btn-block" href="#">Solicitudes</a>
+<<<<<<< HEAD
+                                            <a href="/volunteers/tasks" class="btn btn-success btn-block" href="#">Tareas</a>
+=======
+                                            <a class="btn btn-success btn-block" href="/volunteers/tasks/">Tareas</a>
+>>>>>>> 3ed5a59c51cebd7f5ddc1c9d91e34794b3d8c33f
+                                            <a href="/volunteers/assignAbility/<?= $id ?>" class="btn btn-success btn-block" href="#">Añadir Habilidades</a>
                                             </div>
                                         </fieldset>
                                     </form>
@@ -30,5 +35,4 @@
             </div>
     </article>
 </body>
-
 

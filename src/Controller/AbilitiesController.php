@@ -34,21 +34,6 @@ class AbilitiesController extends AppController
         }
     }
 
-    public function request()
-    {
-
-    }
-
-    public function documents()
-    {
-        
-    }
-
-    public function tasks()
-    {
-        
-    }
-
     public function logout()
     {
         return $this->redirect($this->Auth->logout());

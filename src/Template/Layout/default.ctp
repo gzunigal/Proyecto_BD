@@ -68,7 +68,7 @@
             <?=($User['hasNotifications'])?'m-green':'m-gray'; ?> 
             pull-right" 
           style="margin-left: 5px;padding-left:5px; padding-right:5px;" 
-          href="/Notifications/">
+          href="/notifications/view">
           Notificaciones
           </a>
         </li>
