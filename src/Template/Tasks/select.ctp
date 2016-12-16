@@ -10,7 +10,7 @@
                                         <div class="col-lg-12">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h2>Encargado - Gestionar misión</h2>
+                                                    <h2>Encargado - Enviar Solicitud</h2>
                                                 </div>
 
                                                 <div class="panel-body">
@@ -19,39 +19,40 @@
                                                         <div class="col-lg-12">
                                                             <div class="panel panel-primary">
                                                                 <div class="panel-heading">
-                                                                    Misión actual: 
+                                                                    Tarea actual: 
                                                                     <?php 
-                                                                        foreach($mission as $m){} 
-                                                                        echo $m->nombre_mision; 
+                                                                        foreach($task as $t){} 
+                                                                        echo $t->nombre_tarea; 
                                                                     ?>
-                                                                    <a <?= 'href="/tasks/add/'.$m->id.'"' ?> class="btn m-red btn-xs" style="float: right">Nueva Tarea</a>
                                                                 </div>
-                                                                <form id="formulario" method="post" <?= 'action="/missions/view/'.$m->id.'"' ?>>
+                                                                <form id="formulario" method="post" <?= 'action="/tasks/select/'.$idMision.'/'.$t->id.'"' ?>>
                                                                 <!-- .panel-heading -->
                                                                 <div class="panel-body">
                                                                     <div class="panel-group" id="accordion">
                                                                         <!-- desde aquí el foreach -->
-                                                                        <?php foreach($tasks as $t): ?>
+                                                                        <input type="hidden" name="request_name" value="Ayuda en tarea: <?= $t->nombre_tarea ?>">
+                                                                        <input type="hidden" name="request_task" value=<?= $t->id ?>>
+                                                                                    
+                                                                        <?php foreach($candidatos as $c): ?>
                                                                         <div class="panel panel-default">
                                                                             <div class="panel-heading">
                                                                                 <h4 class="panel-title">
                                                                                 <?php
-                                                                                    echo '<a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$t->id.'">Tarea '.$t->id.'</a>';
+                                                                                    echo '<a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$c->id.'">Voluntario '.$c->id.'</a>';
                                                                                 ?>
                                                                                 </h4>
                                                                             </div>
                                                                             <?php
-                                                                                echo '<div id="collapse'.$t->id.'" class="panel-collapse collapse">'
+                                                                                echo '<div id="collapse'.$c->id.'" class="panel-collapse collapse">'
 																			?>
                                                                             	<div class="panel-body">
                                                                                     <div class="form-group col-lg-6">
                                                                                         <label>Nombre: </label>
-                                                                                        <label><?= $t->nombre_tarea ?></label>
+                                                                                        <label><?= $c->name.' '.$c->surname ?></label>
                                                                                     </div>
 																					<div class="form-group col-lg-6">
-																					   <a  <?= 'href="/tasks/assign/'.$m->id.'/'.$t->id.'"' ?> class="btn btn-primary pull-left">Asignar habilidades</a>
-																					   <a href="/tasks/select/<?= $m->id.'/'.$t->id ?>" class="btn btn-primary pull-right">Seleccionar Voluntarios</a>
                                                                                     </div>
+                                                                                    <button name='request_button' id=<?= $c->id ?> class="btn btn-primary pull-right">Enviar Solicitud</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -61,7 +62,7 @@
                                                                 </form>
                                                         </div>
                                                     </div>
-                                                    <a href="/managers/manageMission " class="btn btn-danger">Volver</a>
+                                                    <a href="/missions/view/<?= $idMision ?>" class="btn btn-danger">Volver</a>
                                                     <!-- .panel-body -->                                                    
 												</div>
                                             <!-- /.panel -->
@@ -80,3 +81,14 @@
     </section>
     </div>
     </article>
+
+    <script type="text/javascript">
+        $("button[name='request_button']").on('click', function(){
+            valor = this.id;
+            $('<input />').attr('type', 'hidden')
+                    .attr('name', "request_user")
+                    .attr('value', valor)
+                    .appendTo('#formulario');
+            $("#formulario").submit();
+        });
+    </script>

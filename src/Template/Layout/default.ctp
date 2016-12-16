@@ -110,13 +110,13 @@
     <script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
     <!-- Legit Ripple JavaScript -->
-    <script src="/js/ripple.min.js"></script>
+    <script  type="text/javascript" src="/js/ripple.min.js"></script>
 
     <!-- Pages JavaScript -->
-    <script src="/js/pages.js"></script>
+    <script  type="text/javascript" src="/js/pages.js"></script>
 
 <!-- Here's where I want my views to be displayed -->
   <?= $this->Flash->render() ?>

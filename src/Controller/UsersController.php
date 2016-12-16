@@ -33,6 +33,7 @@ class UsersController extends AppController
             $user->surname = $data['user_surname'];
             $user->email = $data['user_email'];
             $user->commune_id = $data['communes'];
+            $user->disponibilidad = $data['availability'];
 
             if($this->Users->save($user)){
                 $session = $this->request->session();
@@ -65,6 +66,7 @@ class UsersController extends AppController
         $user = $this->request->session()->read('User.Entity');
 
         $habUser = $user->getAbilities();
+
         $abilities = $this->Abilities->find('all');
         $communes = $this->Communes->find('all');
 

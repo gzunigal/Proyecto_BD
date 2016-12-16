@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  * @property int $mission_id
  * @property string $nombre_tarea
  * @property string $descripcion_tarea
+ * @property int $estado_tarea
  *
  * @property \App\Model\Entity\Mission $mission
  * @property \App\Model\Entity\Problem[] $problems

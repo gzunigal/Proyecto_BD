@@ -102,14 +102,56 @@ class TasksController extends AppController
         }
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Task id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
+    public function select($idMision, $idTask)
     {
+        $this->loadModel('Users');
+        $this->loadModel('abilitiesTasks');
+
+        $task = $this->Tasks->find('all')
+            ->where(['Tasks.id' => $idTask]);
+
+        $candidatos = $this->Users->find('all')
+            ->where(['Users.disponibilidad' => 1]);
+
+
+        $this->set(compact('idTask'));
+        $this->set(compact('idMision'));
+        $this->set(compact('candidatos'));
+        $this->set(compact('task'));
+
+        $datos = $this->request->data;
+        if($this->request->is('post'))
+        {
+            $requestTable = TableRegistry::get('Requests');
+            
+            
+            $request = $requestTable->newEntity();
+            
+
+            $request->task_id = $datos['request_task'];
+            $request->user_id = $datos['request_user'];
+            $request->nombre_solicitud = $datos['request_name'];
+            $request->estado = 0;
+
+            if($requestTable->save($request))
+            {
+                $notificationTable = TableRegistry::get('Notifications');
+                $notification = $notificationTable->newEntity();
+
+                $notification->contenido = "Ha recibido una nueva solicitud";
+                if($notificationTable->save($notification))
+                {
+                    $notificationUserTable = TableRegistry::get('NotificationsUsers');
+                    $notificationUser = $notificationUserTable->newEntity();
+
+                    $notificationUser->notification_id = $notification->id;
+                    $notificationUser->user_id = $datos['request_user'];
+                    $notificationUser->visto = 0;
+                    $notificationUserTable->save($notificationUser);
+                }
+            }
+
+            
+        }
     }
 }

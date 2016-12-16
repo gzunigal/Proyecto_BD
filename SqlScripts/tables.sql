@@ -546,6 +546,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `mission_id` int(11) NOT NULL,
   `nombre_tarea` varchar(100) DEFAULT NULL,
   `descripcion_tarea` text,
+  `estado_tarea` int(1),
   PRIMARY KEY (`id`),
   INDEX (`mission_id`),
   FOREIGN KEY (`mission_id`)
