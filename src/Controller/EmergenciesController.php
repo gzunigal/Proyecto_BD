@@ -42,7 +42,6 @@ class EmergenciesController extends AppController
 
 	        $emergency->commune_id 					= $datos['emergency_commune'];
 	        $emergency->nombre_emergencia 			= $datos['emergency_name'];
-	        $emergency->fecha_emergencia 			= $datos['emergency_datetime'];
 	        $emergency->gravedad_emergencia 		= $datos['emergency_gravity'];
 	        $emergency->descripcion_emergencia 		= $datos['emergency_description'];
 
@@ -93,7 +92,6 @@ class EmergenciesController extends AppController
 	        $emergencies->user_id 					= $sesion->read('User.id');
 	        $emergencies->commune_id 				= $datos['emergency_commune'];
 	        $emergencies->nombre_emergencia 		= $datos['emergency_name'];
-	        $emergencies->fecha_emergencia 			= $datos['emergency_datetime'];
 	        $emergencies->gravedad_emergencia 		= $datos['emergency_gravity'];
 	        $emergencies->estado_emergencia 		= 0;
 	        $emergencies->descripcion_emergencia 	= $datos['emergency_description'];

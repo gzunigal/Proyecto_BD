@@ -28,10 +28,6 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="datetime">Fecha</label>
-                                                <input class="form-control" placeholder="Ej: 2016-05-02 07:05:07" id="datetime" name="emergency_datetime" type="datetime" required autofocus>
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="gravity">Gravedad</label> 
                                                 <select class="form-control" id="gravity" name="emergency_gravity" required>
                                                     <option value=0>Indique la gravedad de la emergencia</option>>
