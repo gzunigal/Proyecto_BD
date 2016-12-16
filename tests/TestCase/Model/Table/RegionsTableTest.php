@@ -29,7 +29,15 @@ class RegionsTableTest extends TestCase
         'app.emergencies',
         'app.users',
         'app.missions',
-        'app.tasks'
+        'app.tasks',
+        'app.problems',
+        'app.requests',
+        'app.abilities',
+        'app.abilities_tasks',
+        'app.abilities_users',
+        'app.docs',
+        'app.docs_tasks',
+        'app.tasks_users'
     ];
 
     /**

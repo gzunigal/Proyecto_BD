@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $ability_id
  * @property int $user_id
- * @property int $nivel_requerido
+ * @property int $nivel_habilidad
  *
  * @property \App\Model\Entity\Ability $ability
  * @property \App\Model\Entity\User $user

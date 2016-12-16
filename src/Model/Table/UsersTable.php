@@ -4,19 +4,15 @@ namespace App\Model\Table;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
-use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
-use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Users Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Communes
- * @property \Cake\ORM\Association\HasMany $Emails
  * @property \Cake\ORM\Association\HasMany $Emergencies
  * @property \Cake\ORM\Association\HasMany $Messages
  * @property \Cake\ORM\Association\HasMany $Missions
- * @property \Cake\ORM\Association\HasMany $Phones
  * @property \Cake\ORM\Association\HasMany $Requests
  * @property \Cake\ORM\Association\BelongsToMany $Abilities
  * @property \Cake\ORM\Association\BelongsToMany $Messages
@@ -116,6 +112,7 @@ class UsersTable extends Table
     /*** METODOS CREADOS POR BAKE ***/
     /********************************/
 
+ 
     /**
      * Initialize method
      *
@@ -127,15 +124,12 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->table('users');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
 
         $this->belongsTo('Communes', [
             'foreignKey' => 'commune_id',
             'joinType' => 'INNER'
-        ]);
-        $this->hasMany('Emails', [
-            'foreignKey' => 'user_id'
         ]);
         $this->hasMany('Emergencies', [
             'foreignKey' => 'user_id'
@@ -144,9 +138,6 @@ class UsersTable extends Table
             'foreignKey' => 'user_id'
         ]);
         $this->hasMany('Missions', [
-            'foreignKey' => 'user_id'
-        ]);
-        $this->hasMany('Phones', [
             'foreignKey' => 'user_id'
         ]);
         $this->hasMany('Requests', [
@@ -187,12 +178,34 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->requirePresence('run', 'create')
+            ->notEmpty('run')
+            ->add('run', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+
+        $validator
             ->requirePresence('nombre_usuario', 'create')
             ->notEmpty('nombre_usuario');
 
         $validator
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
+
+        $validator
+            ->requirePresence('surname', 'create')
+            ->notEmpty('surname');
+
+        $validator
             ->requirePresence('password', 'create')
             ->notEmpty('password');
+
+        $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
+
+        $validator
+            ->requirePresence('phone', 'create')
+            ->notEmpty('phone');
 
         $validator
             ->boolean('disponibilidad')
@@ -216,6 +229,8 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['run']));
         $rules->add($rules->existsIn(['commune_id'], 'Communes'));
 
         return $rules;

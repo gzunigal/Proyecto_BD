@@ -26,7 +26,18 @@ class RequestsTableTest extends TestCase
     public $fixtures = [
         'app.requests',
         'app.tasks',
-        'app.users'
+        'app.missions',
+        'app.emergencies',
+        'app.users',
+        'app.communes',
+        'app.regions',
+        'app.problems',
+        'app.abilities',
+        'app.abilities_tasks',
+        'app.abilities_users',
+        'app.docs',
+        'app.docs_tasks',
+        'app.tasks_users'
     ];
 
     /**

@@ -27,7 +27,16 @@ class AbilitiesTasksTableTest extends TestCase
         'app.abilities_tasks',
         'app.abilities',
         'app.tasks',
+        'app.missions',
+        'app.emergencies',
         'app.users',
+        'app.communes',
+        'app.regions',
+        'app.problems',
+        'app.requests',
+        'app.docs',
+        'app.docs_tasks',
+        'app.tasks_users',
         'app.abilities_users'
     ];
 

@@ -27,7 +27,17 @@ class CommunesTableTest extends TestCase
         'app.communes',
         'app.regions',
         'app.emergencies',
-        'app.users'
+        'app.users',
+        'app.missions',
+        'app.tasks',
+        'app.problems',
+        'app.requests',
+        'app.abilities',
+        'app.abilities_tasks',
+        'app.abilities_users',
+        'app.docs',
+        'app.docs_tasks',
+        'app.tasks_users'
     ];
 
     /**

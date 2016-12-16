@@ -60,9 +60,9 @@ class AbilitiesUsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->integer('nivel_requerido')
-            ->requirePresence('nivel_requerido', 'create')
-            ->notEmpty('nivel_requerido');
+            ->integer('nivel_habilidad')
+            ->requirePresence('nivel_habilidad', 'create')
+            ->notEmpty('nivel_habilidad');
 
         return $validator;
     }
