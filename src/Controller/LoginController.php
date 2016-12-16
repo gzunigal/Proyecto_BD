@@ -18,7 +18,7 @@ class LoginController extends AppController
     public function index()
     {
         $session = $this->request->session();
-        if ($session->check('User')) {
+        if ($session->check('User.id')) {
             return $this->redirect(['controller' => 'Home', 'action' => 'index']);
         }
     }

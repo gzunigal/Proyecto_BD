@@ -81,7 +81,7 @@ class MissionsController extends AppController
 
             if($missionsTable->save($mission))
             {
-                $this->redirect(["controller" => "emergencies", "action" => "view", $idEmergencia]);
+                $this->redirect(["controller" => "Emergencies", "action" => "view", $idEmergencia]);
             }
         }
     }

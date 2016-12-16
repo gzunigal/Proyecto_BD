@@ -35,7 +35,7 @@
                                                                         echo'<div class="panel panel-default">
                                                                                 <div class="panel-heading">
                                                                                     <h4 class="panel-title">
-                                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$m->id.'">Misión '.$m->id.'</a>
+                                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$m->id.'">Misión: '.$m->nombre_mision.'</a>
                                                                                     </h4>
                                                                                 </div>
                                                                                 <div id="collapse'.$m->id.'" class="panel-collapse collapse">

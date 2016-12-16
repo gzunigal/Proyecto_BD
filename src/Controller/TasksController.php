@@ -51,7 +51,7 @@ class TasksController extends AppController
             $tasks->nombre_tarea = $datos['task_name'];
             $tasks->descripcion_tarea = $datos['task_description'];
             $tasksTable->save($tasks);
-            return $this->redirect(['controller' => 'tasks', 'action' => 'add', $datos['idMision']]);   
+            return $this->redirect(['controller' => 'Missions', 'action' => 'view', $datos['idMision']]);   
         }
     }
 

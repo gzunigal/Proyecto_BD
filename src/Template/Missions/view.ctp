@@ -36,7 +36,7 @@
                                                                             <div class="panel-heading">
                                                                                 <h4 class="panel-title">
                                                                                 <?php
-                                                                                    echo '<a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$t->id.'">Tarea '.$t->id.'</a>';
+                                                                                    echo '<a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$t->id.'">Tarea: '.$t->nombre_tarea.'</a>';
                                                                                 ?>
                                                                                 </h4>
                                                                             </div>

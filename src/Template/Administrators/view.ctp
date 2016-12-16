@@ -33,7 +33,7 @@
                                                                         echo'<div class="panel panel-default">
                                                                                 <div class="panel-heading">
                                                                                     <h4 class="panel-title">
-                                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$emmergencie->id.'">Emergencia '.$emmergencie->id.'</a>
+                                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$emmergencie->id.'">'.$emmergencie->nombre_emergencia.'</a>
                                                                                     </h4>
                                                                                 </div>
                                                                                 <div id="collapse'.$emmergencie->id.'" class="panel-collapse collapse">
@@ -66,7 +66,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">';
-                                                                        echo $this->Html->link('Gestionar', ['controller' => 'emergencies', 'action' => 'view', $emmergencie->id], ['class' => 'btn btn-primary']);
+                                                                        if($emmergencie->estado_emergencia == 1) echo $this->Html->link('Gestionar', ['controller' => 'emergencies', 'action' => 'view', $emmergencie->id], ['class' => 'btn btn-primary']);
                                                                         echo            '</div>
                                                                                     </div>
                                                                                 </div>

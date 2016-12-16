@@ -60,7 +60,8 @@ class AppController extends Controller
         //$this->Auth->allow(['index', 'view', 'add', 'defineTask', 'manageTask']);
         $this->Auth->allow();
 
-        if($this->request->session()->check('User')){
+
+        if($this->request->session()->check('User.id')){
             $session = $this->request->session();
             $user = $session->read('User.Entity');
             if($user){
@@ -74,6 +75,7 @@ class AppController extends Controller
             $this->set(compact('User'));
         }else{
             $this->set('User',["hasNotifications"=>false,"hasMessages"=>false]);  
+
         }
         
 
@@ -88,6 +90,7 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
+
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {

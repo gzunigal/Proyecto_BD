@@ -46,7 +46,7 @@ class EmergenciesController extends AppController
 	        $emergency->descripcion_emergencia 		= $datos['emergency_description'];
 
 	        $emergenciesTable->save($emergency);
-	        return $this->redirect(["Controller" => "Emergencies", "Action" => "View", $datos['id']]);
+	        return $this->redirect(["controller" => "Emergencies", "action" => "view", $datos['id']]);
 		}
 	}
 
@@ -97,6 +97,8 @@ class EmergenciesController extends AppController
 	        $emergencies->descripcion_emergencia 	= $datos['emergency_description'];
 
 	        $tablaEmergencias->save($emergencies);
+
+	        return $this->redirect(["controller" => "Administrators", "action" => "view"]);
 		}
 	}
 }

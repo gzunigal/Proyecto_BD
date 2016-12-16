@@ -53,27 +53,7 @@
         <a class="navbar-left" href="/"><img style="max-height:30px;margin-top: 14px;" src="/img/handy_hand_logo.png"></a>
         
         </div>
-        <ul class="nav navbar-nav">
-        <li><a 
-          class="btn
-            <?=($User['hasMessages'])?'m-green':'m-gray'; ?>
-            pull-right" 
-          style="margin-left: 5px;padding-left:5px; padding-right:5px;"
-          href="/Messages/">
-          Mensajes
-          </a>
-        </li>
-        <li><a 
-          class="btn 
-            <?=($User['hasNotifications'])?'m-green':'m-gray'; ?> 
-            pull-right" 
-          style="margin-left: 5px;padding-left:5px; padding-right:5px;" 
-          href="/notifications/view">
-          Notificaciones
-          </a>
-        </li>
         
-        </ul>
         <ul class="nav navbar-nav pull-right">
         <li>
             <div class="col-md-12">
@@ -92,6 +72,15 @@
                 </select> 
               </div>
             </div>
+        </li>
+        <li><a 
+          class="btn 
+            <?=($User['hasNotifications'])?'m-green':'m-gray'; ?> 
+            pull-right" 
+          style="margin-left: 5px;padding-left:5px; padding-right:5px;margin-right: 5px;" 
+          href="/notifications/view">
+          Notificaciones
+          </a>
         </li>
         <li><a class="btn m-gray pull-right" style="margin-right: 5px;padding-left:10px; padding-right:10px;" href="/Users/edit/">Perfil</a></li>
 
