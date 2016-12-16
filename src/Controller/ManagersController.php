@@ -33,15 +33,22 @@ class ManagersController extends AppController
                 ->where(['Missions.user_id =' => $sesion->read('User.id')])
                 ->contain(['Emergencies.Communes']);
 
+        echo '<br><br><br><br>';
+
+        foreach ($missions as $m) {
+            print_r($m->emergency->estado_emergencia);
+            echo '<br>';
+        }
+
         $this->set(compact('missions'));
     }
 
     public function ManageTask($id_task)
     {
 
-    	$tasks = TableRegistry::get('Tasks')->find('all', 
-                ['conditions' => ['Tasks.id =' => $id_task]]
-            );
+    	$tasks = TableRegistry::get('Tasks')->find('all') 
+                ->where(['Tasks.id' => $id_task]);
+
     	$this->set(compact('tasks'));
     }
 

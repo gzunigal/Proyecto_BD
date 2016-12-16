@@ -31,20 +31,27 @@
                                                                         echo'<div class="panel panel-default">
                                                                                 <div class="panel-heading">
                                                                                     <h4 class="panel-title">
-                                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$mission->id.'">Misión '.$mission->id.'</a>
+                                                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse'.$mission->id.'">Emergencia:  '.$mission->emergency->nombre_emergencia.' - Misión: '.$mission->id.'</a>
                                                                                     </h4>
                                                                                 </div>
                                                                                 <div id="collapse'.$mission->id.'" class="panel-collapse collapse">
                                                                                     <div class="panel-body">
                                                                                         <div class="form-group col-lg-6">
-                                                                                            <label>Nombre: '.$mission->emergency->nombre_emergencia.'</label>
+                                                                                            <label>Nombre: '.$mission->nombre_mision.'</label>
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">
                                                                                             <label>Lugar: </label>
                                                                                             <label>'.$mission->emergency->commune->nombre_comuna.'</label>
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">';
-                                                                        echo $this->Html->link('Gestionar', ['controller' => 'missions', 'action' => 'view', $mission->id], ['class' => 'btn btn-primary']);
+                                                                        if($mission->emergency->estado_emergencia == 1)
+                                                                        {    
+                                                                            echo $this->Html->link('Gestionar', ['controller' => 'missions', 'action' => 'view', $mission->id], ['class' => 'btn btn-primary']);
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            echo '<button id="emergency_over" class="btn btn-danger">Misión Finalizada</button>';
+                                                                        }
                                                                         echo            '</div>
                                                                                     </div>
                                                                                 </div>
