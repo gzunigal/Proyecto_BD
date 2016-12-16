@@ -26,7 +26,18 @@ class DocsTableTest extends TestCase
     public $fixtures = [
         'app.docs',
         'app.tasks',
-        'app.docs_tasks'
+        'app.missions',
+        'app.emergencies',
+        'app.users',
+        'app.communes',
+        'app.regions',
+        'app.problems',
+        'app.requests',
+        'app.abilities',
+        'app.abilities_tasks',
+        'app.abilities_users',
+        'app.docs_tasks',
+        'app.tasks_users'
     ];
 
     /**

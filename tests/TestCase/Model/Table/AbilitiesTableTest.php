@@ -26,8 +26,17 @@ class AbilitiesTableTest extends TestCase
     public $fixtures = [
         'app.abilities',
         'app.tasks',
-        'app.abilities_tasks',
+        'app.missions',
+        'app.emergencies',
         'app.users',
+        'app.communes',
+        'app.regions',
+        'app.problems',
+        'app.requests',
+        'app.abilities_tasks',
+        'app.docs',
+        'app.docs_tasks',
+        'app.tasks_users',
         'app.abilities_users'
     ];
 

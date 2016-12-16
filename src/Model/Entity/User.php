@@ -2,25 +2,26 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-use Cake\ORM\TableRegistry;
-use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * User Entity
  *
  * @property int $id
+ * @property string $run
  * @property int $commune_id
  * @property string $nombre_usuario
+ * @property string $name
+ * @property string $surname
  * @property string $password
+ * @property string $email
+ * @property string $phone
  * @property bool $disponibilidad
  * @property bool $admin
  *
  * @property \App\Model\Entity\Commune $commune
- * @property \App\Model\Entity\Email[] $emails
  * @property \App\Model\Entity\Emergency[] $emergencies
  * @property \App\Model\Entity\Message[] $messages
  * @property \App\Model\Entity\Mission[] $missions
- * @property \App\Model\Entity\Phone[] $phones
  * @property \App\Model\Entity\Request[] $requests
  * @property \App\Model\Entity\Ability[] $abilities
  * @property \App\Model\Entity\Notification[] $notifications
@@ -28,7 +29,6 @@ use Cake\Auth\DefaultPasswordHasher;
  */
 class User extends Entity
 {
-
     /**
      * Funcion que obtiene la lista de misiones asociadas a un usuario
      *

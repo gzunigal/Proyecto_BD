@@ -29,7 +29,15 @@ class MissionsTableTest extends TestCase
         'app.users',
         'app.communes',
         'app.regions',
-        'app.tasks'
+        'app.tasks',
+        'app.problems',
+        'app.requests',
+        'app.abilities',
+        'app.abilities_tasks',
+        'app.abilities_users',
+        'app.docs',
+        'app.docs_tasks',
+        'app.tasks_users'
     ];
 
     /**

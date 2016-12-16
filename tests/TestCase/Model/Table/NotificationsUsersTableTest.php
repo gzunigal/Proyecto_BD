@@ -26,24 +26,7 @@ class NotificationsUsersTableTest extends TestCase
     public $fixtures = [
         'app.notifications_users',
         'app.notifications',
-        'app.users',
-        'app.communes',
-        'app.regions',
-        'app.emergencies',
-        'app.missions',
-        'app.tasks',
-        'app.problems',
-        'app.requests',
-        'app.abilities',
-        'app.abilities_tasks',
-        'app.abilities_users',
-        'app.docs',
-        'app.docs_tasks',
-        'app.tasks_users',
-        'app.emails',
-        'app.messages',
-        'app.messages_users',
-        'app.phones'
+        'app.users'
     ];
 
     /**

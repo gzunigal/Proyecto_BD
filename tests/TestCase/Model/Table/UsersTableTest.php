@@ -38,10 +38,8 @@ class UsersTableTest extends TestCase
         'app.docs',
         'app.docs_tasks',
         'app.tasks_users',
-        'app.emails',
         'app.messages',
         'app.messages_users',
-        'app.phones',
         'app.notifications',
         'app.notifications_users'
     ];
