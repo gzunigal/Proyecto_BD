@@ -88,7 +88,7 @@ class TasksController extends AppController
             $aTasksTable = TableRegistry::get('AbilitiesTasks');
 
             $abilitiesTasks = $aTasksTable->newEntity();
-            $existe = $taskAbilities = $this->AbilitiesTasks->find('all')
+            $existe = $this->AbilitiesTasks->find('all')
             ->where(['AbilitiesTasks.ability_id' => $datos['ability_new']]);
 
             if($existe->count() == 0)
