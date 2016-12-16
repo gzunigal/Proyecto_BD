@@ -27,7 +27,7 @@
                                                             <div class="profile-job text-center">
                                                                 <?php
                                                                     if($User['admin']) echo "<p>Administrador</p>";
-                                                                    if($User['isEncargado']) echo "<p>Administrador</p>";
+                                                                    if($User['isEncargado']) echo "<p>Encargado de Emergencia</p>";
                                                                     echo "<p>Voluntario</p>";
                                                                 ?>
                                                             </div>
