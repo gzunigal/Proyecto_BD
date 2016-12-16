@@ -118,5 +118,40 @@ class TasksController extends AppController
         $this->set(compact('idMision'));
         $this->set(compact('candidatos'));
         $this->set(compact('task'));
+
+        $datos = $this->request->data;
+        if($this->request->is('post'))
+        {
+            $requestTable = TableRegistry::get('Requests');
+            
+            
+            $request = $requestTable->newEntity();
+            
+
+            $request->task_id = $datos['request_task'];
+            $request->user_id = $datos['request_user'];
+            $request->nombre_solicitud = $datos['request_name'];
+            $request->estado = 0;
+
+            if($requestTable->save($request))
+            {
+                $notificationTable = TableRegistry::get('Notifications');
+                $notification = $notificationTable->newEntity();
+
+                $notification->contenido = "Ha recibido una nueva solicitud";
+                if($notificationTable->save($notification))
+                {
+                    $notificationUserTable = TableRegistry::get('NotificationsUsers');
+                    $notificationUser = $notificationUserTable->newEntity();
+
+                    $notificationUser->notification_id = $notification->id;
+                    $notificationUser->user_id = $datos['request_user'];
+                    $notificationUser->visto = 0;
+                    $notificationUserTable->save($notificationUser);
+                }
+            }
+
+            
+        }
     }
 }

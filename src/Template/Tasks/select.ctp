@@ -25,12 +25,12 @@
                                                                         echo $t->nombre_tarea; 
                                                                     ?>
                                                                 </div>
-                                                                <form id="formulario" method="post" <?= 'action="/tasks/select/'.$t->id.'"' ?>>
+                                                                <form id="formulario" method="post" <?= 'action="/tasks/select/'.$idMision.'/'.$t->id.'"' ?>>
                                                                 <!-- .panel-heading -->
                                                                 <div class="panel-body">
                                                                     <div class="panel-group" id="accordion">
                                                                         <!-- desde aquí el foreach -->
-                                                                        <input type="hidden" name="request_name" value="Ayuda en tarea <?= $t->nombre_tarea ?>">
+                                                                        <input type="hidden" name="request_name" value="Ayuda en tarea: <?= $t->nombre_tarea ?>">
                                                                         <input type="hidden" name="request_task" value=<?= $t->id ?>>
                                                                                     
                                                                         <?php foreach($candidatos as $c): ?>
@@ -51,10 +51,8 @@
                                                                                         <label><?= $c->name.' '.$c->surname ?></label>
                                                                                     </div>
 																					<div class="form-group col-lg-6">
-																					<input type="hidden" name="request_user" value=<?= $c->id ?>>
-                                                                                    
                                                                                     </div>
-                                                                                    <a name="request" type="submit" class="btn btn-primary pull-right">Enviar Solicitud</a>
+                                                                                    <button name='request_button' id=<?= $c->id ?> class="btn btn-primary pull-right">Enviar Solicitud</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -83,3 +81,14 @@
     </section>
     </div>
     </article>
+
+    <script type="text/javascript">
+        $("button[name='request_button']").on('click', function(){
+            valor = this.id;
+            $('<input />').attr('type', 'hidden')
+                    .attr('name', "request_user")
+                    .attr('value', valor)
+                    .appendTo('#formulario');
+            $("#formulario").submit();
+        });
+    </script>

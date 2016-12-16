@@ -22,9 +22,80 @@ class VolunteersController extends AppController
         $this->set(compact('id'));
     }
 
-    public function request()
+    public function request($idUser)
     {
+        $this->loadModel('Requests');
+        $this->loadModel('Tasks');
+        $this->loadModel('Users');
+        $this->loadModel('Missions');
 
+
+        $requests = $this->Requests->find('all')
+            ->where(['Requests.user_id' => $idUser])
+            ->contain(['Tasks']);
+
+        $this->set(compact('requests'));
+        $this->set(compact('idUser'));
+
+        $datos = $this->request->data;
+        if($this->request->is('post'))
+        {
+            /*echo '<br><br><br><br><br>';
+            print_r($datos);*/
+            if($datos['status'] == 0)
+            {
+                $requestDel = $this->Requests->get($datos['r_del']);
+                $task       = $this->Tasks->get($requestDel->task_id);
+                $mission    = $this->Missions->get($task->mission_id);
+                $user       = $this->Users->get($mission->user_id);
+
+                $this->Requests->delete($requestDel);
+                $notificationTable = TableRegistry::get('Notifications');
+                $notification = $notificationTable->newEntity();
+                $notification->contenido = "Se ha rechazado una solicitud";
+                if($notificationTable->save($notification))
+                {
+                    $notificationUserTable = TableRegistry::get('NotificationsUsers');
+                    $notificationUser = $notificationUserTable->newEntity();
+
+                    $notificationUser->notification_id = $notification->id;
+                    $notificationUser->user_id = $user->id;
+                    $notificationUser->visto = 0;
+                    $notificationUserTable->save($notificationUser);
+                }
+            }
+            else
+            {
+                $requestDel = $this->Requests->get($datos['r_acc']);
+                $task = $this->Tasks->get($requestDel->task_id);
+                $mission    = $this->Missions->get($task->mission_id);
+                $user       = $this->Users->get($mission->user_id);
+
+                $tableTaskUsers = TableRegistry::get('TasksUsers');
+                $taskUsers = $tableTaskUsers->newEntity();
+
+                $taskUsers->task_id = $task->id;
+                $taskUsers->user_id = $idUser;
+                $this->Requests->delete($requestDel);
+
+                if($tableTaskUsers->save($taskUsers))
+                {
+                    $notificationTable = TableRegistry::get('Notifications');
+                    $notification = $notificationTable->newEntity();
+                    $notification->contenido = "Se ha aceptado una solicitud";
+                    if($notificationTable->save($notification))
+                    {
+                        $notificationUserTable = TableRegistry::get('NotificationsUsers');
+                        $notificationUser = $notificationUserTable->newEntity();
+
+                        $notificationUser->notification_id = $notification->id;
+                        $notificationUser->user_id =  $user->id;
+                        $notificationUser->visto = 0;
+                        $notificationUserTable->save($notificationUser);
+                    }
+                }
+            }
+        }
     }
 
     public function documents()
@@ -69,7 +140,7 @@ class VolunteersController extends AppController
             if($existe->count() == 0)
             {
                 $abilitiesUsers->user_id            = $datos['ability_user'];
-                $abilitiesUsers->nivel_habilidad    = 0;
+                $abilitiesUsers->nivel_habilidad    = 1;
                 $abilitiesUsers->ability_id         = $datos['ability_new'];
     
                 $aUsersTable->save($abilitiesUsers);
