@@ -51,7 +51,7 @@ class TasksController extends AppController
             $tasks->nombre_tarea = $datos['task_name'];
             $tasks->descripcion_tarea = $datos['task_description'];
             $tasksTable->save($tasks);
-            return $this->redirect(['controller' => 'tasks', 'action' => 'add', $datos['idMision']]);
+            return $this->redirect(['controller' => 'tasks', 'action' => 'add', $datos['idMision']]);   
         }
     }
 
@@ -62,8 +62,44 @@ class TasksController extends AppController
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function assign($idMision, $idTask)
     {
+        $this->loadModel('AbilitiesTasks');
+        $this->loadModel('Abilities');
+        
+        
+
+        $taskAbilities = $this->AbilitiesTasks->find('all')
+            ->where(['AbilitiesTasks.task_id' => $idTask])
+            ->contain(['Abilities']);
+
+        
+
+        $abilities = $this->Abilities->find('all');
+
+        $this->set(compact('idMision'));
+        $this->set(compact('idTask'));   
+        $this->set(compact('taskAbilities'));
+        $this->set(compact('abilities'));
+
+        $datos = $this->request->data;
+        if($this->request->is('post'))
+        {
+            $aTasksTable = TableRegistry::get('AbilitiesTasks');
+
+            $abilitiesTasks = $aTasksTable->newEntity();
+            $existe = $taskAbilities = $this->AbilitiesTasks->find('all')
+            ->where(['AbilitiesTasks.ability_id' => $datos['ability_new']]);
+
+            if($existe->count() == 0)
+            {
+                $abilitiesTasks->task_id            = $datos['ability_task'];
+                $abilitiesTasks->nivel_requerido    = $datos['ability_lvl'];
+                $abilitiesTasks->ability_id         = $datos['ability_new'];
+    
+                $aTasksTable->save($abilitiesTasks);
+            }
+        }
     }
 
     /**

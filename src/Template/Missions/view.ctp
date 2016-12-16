@@ -49,7 +49,7 @@
                                                                                         <label><?= $t->nombre_tarea ?></label>
                                                                                     </div>
 																					<div class="form-group col-lg-6">
-																					   <a class="btn btn-primary pull-left">Gestionar Tarea</a>
+																					   <a  <?= 'href="/tasks/assign/'.$m->id.'/'.$t->id.'"' ?> class="btn btn-primary pull-left">Asignar habilidades</a>
 																					   <a class="btn btn-primary pull-right">Seleccionar Voluntarios</a>
                                                                                     </div>
                                                                                 </div>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <head>
     <title>Perfil</title>
 </head>
@@ -114,3 +115,5 @@
 </main>
 </body>
 </html>
+=======
+>>>>>>> 2007db6a5606416a54f200149be37b8defa5b8fc
