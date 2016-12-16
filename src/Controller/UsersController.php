@@ -40,6 +40,14 @@ class UsersController extends AppController
                 $session->write('User.isEncargado',$user->hasMissions());
                 $session->write('User.Entity',$user);
 
+                $rol = "voluntario";
+                if($user->admin==1){
+                    $rol="admin";
+                }elseif($user->hasMissions()){
+                    $rol="encargado";
+                }
+                $session->write('User.rol',$rol);
+
                 $this->Flash->success('Se ha actualizado con éxito!');
                 return $this->redirect(["controller"=>"Users","action"=>"edit"]);
 

@@ -30,14 +30,20 @@ class TasksTableTest extends TestCase
         'app.users',
         'app.communes',
         'app.regions',
-        'app.problems',
+        'app.emails',
+        'app.messages',
+        'app.messages_users',
+        'app.phones',
         'app.requests',
         'app.abilities',
         'app.abilities_tasks',
         'app.abilities_users',
+        'app.notifications',
+        'app.notifications_users',
+        'app.tasks_users',
+        'app.problems',
         'app.docs',
-        'app.docs_tasks',
-        'app.tasks_users'
+        'app.docs_tasks'
     ];
 
     /**
