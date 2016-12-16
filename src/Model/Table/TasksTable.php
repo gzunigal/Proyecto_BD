@@ -86,10 +86,6 @@ class TasksTable extends Table
         $validator
             ->allowEmpty('descripcion_tarea');
 
-        $validator
-            ->integer('estado_tarea')
-            ->allowEmpty('estado_tarea');
-
         return $validator;
     }
 

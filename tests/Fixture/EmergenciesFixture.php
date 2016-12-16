@@ -21,7 +21,7 @@ class EmergenciesFixture extends TestFixture
         'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'commune_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'nombre_emergencia' => ['type' => 'string', 'length' => 20, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'fecha_emergencia' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'fecha_emergencia' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => '', 'precision' => null],
         'gravedad_emergencia' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'estado_emergencia' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'descripcion_emergencia' => ['type' => 'string', 'length' => 200, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -55,7 +55,7 @@ class EmergenciesFixture extends TestFixture
             'user_id' => 1,
             'commune_id' => 1,
             'nombre_emergencia' => 'Lorem ipsum dolor ',
-            'fecha_emergencia' => '2016-11-27 14:53:33',
+            'fecha_emergencia' => '2016-12-16 08:07:38',
             'gravedad_emergencia' => 1,
             'estado_emergencia' => 1,
             'descripcion_emergencia' => 'Lorem ipsum dolor sit amet'
