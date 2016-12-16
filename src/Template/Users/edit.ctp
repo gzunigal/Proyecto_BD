@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <head>
     <title>Perfil</title>
 </head>
@@ -68,6 +67,13 @@
                                                                         ?>
                                                                     </select>
                                                                 </div>
+                                                                <div class="form-group col-lg-6">
+                                                                    <label>Seleccione su disponibilidad</label>
+                                                                    <select name="availability" class="form-control">
+                                                                        <option value=0>Ocupado</option>
+                                                                        <option value=1>Disponible</option>
+                                                                    </select>
+                                                                </div>
                                                                 </div></div>
 
                                                                 <div class="row"><div class="col-sm-12">
@@ -76,22 +82,21 @@
                                                                     <select multiple class="form-control" style="height: 118px">
                                                                     <?php
                                                                         foreach ($habUser as $hab) {
-                                                                            echo "<option >".$hab->Ability->nombre_habilidad."</option>";
+                                                                            echo "<option >".$hab->ability->nombre_habilidad."</option>";
                                                                         }
                                                                     ?>
                                                                  </select>
-                                                                 <button class="btn m-blue btn-block">Gestionar</button>
                                                                  </div>
 
                                                              </div></div>
                                                          </div>
 
 
-
-
                                                          <!-- Change this to a button or input when using this as a form -->
                                                          <button class="btn btn-success btn-block" type="submit">Actualizar</button>
+                                                         <a class="btn btn-primary btn-block" href="/Home/index">Home</a>
                                                      </fieldset>
+                                                         
                                                  </form>
                                              </div>
                                          </div>
@@ -115,5 +120,3 @@
 </main>
 </body>
 </html>
-=======
->>>>>>> 2007db6a5606416a54f200149be37b8defa5b8fc

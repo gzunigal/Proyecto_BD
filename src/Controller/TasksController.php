@@ -102,14 +102,21 @@ class TasksController extends AppController
         }
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Task id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
+    public function select($idMision, $idTask)
     {
+        $this->loadModel('Users');
+        $this->loadModel('abilitiesTasks');
+
+        $task = $this->Tasks->find('all')
+            ->where(['Tasks.id' => $idTask]);
+
+        $candidatos = $this->Users->find('all')
+            ->where(['Users.disponibilidad' => 1]);
+
+
+        $this->set(compact('idTask'));
+        $this->set(compact('idMision'));
+        $this->set(compact('candidatos'));
+        $this->set(compact('task'));
     }
 }

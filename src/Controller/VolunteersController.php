@@ -63,7 +63,8 @@ class VolunteersController extends AppController
 
             $abilitiesUsers = $aUsersTable->newEntity();
             $existe = $this->AbilitiesUsers->find('all')
-            ->where(['AbilitiesUsers.ability_id' => $datos['ability_new']]);
+            ->where(['AbilitiesUsers.user_id' => $datos['ability_user'], 
+                    'AbilitiesUsers.ability_id' => $datos['ability_new']]);
 
             if($existe->count() == 0)
             {
