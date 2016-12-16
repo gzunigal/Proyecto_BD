@@ -12,7 +12,7 @@
                                 <div class="panel-body center-block">
                                     <div class="pages-header text-center">
                                         <div class="pages-box-icon"><i class="zmdi zmdi-account-o"></i></div>
-                                        <h4>Manager - Vista Principal</h4>
+                                        <h4>Encargado - Vista Principal</h4>
                                     </div>
                                     <form role="form">
                                         <fieldset>
