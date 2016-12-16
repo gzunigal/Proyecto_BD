@@ -19,7 +19,6 @@
                                         <fieldset>
                                             <!-- Change this to a button or input when using this as a form -->
                                             <a class="btn btn-success btn-block" href="/administrators/view">Panel de emergencias</a>
-                                            <button class="btn btn-success btn-block" type="submit">Editar perfil</button>
                                             </div>
                                         </fieldset>
                                     </form>

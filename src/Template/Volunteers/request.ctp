@@ -64,7 +64,7 @@
                                                         <!-- cierra row -->
                                                         </div>
                                                         <div class="col-lg-12">
-                                                                <a href="/managers/index" class="btn btn-danger">Volver</a>
+                                                                <a href="/home/index" class="btn btn-danger">Volver</a>
                                                         </div>
                                                     </div>  
                                                 </div>  <!-- /.panel body-->

@@ -58,7 +58,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group col-lg-6">';
-                                                                        echo $this->Html->link('Ver', ['controller' => 'tasks', 'action' => 'view', $tarea->id], ['class' => 'btn btn-primary']);
+                                                                        echo $this->Html->link('Problema', ['controller' => 'tasks', 'action' => 'view', $tarea->id], ['class' => 'btn btn-primary']);
                                                                         echo            '</div>
                                                                                     </div>
                                                                                 </div>
