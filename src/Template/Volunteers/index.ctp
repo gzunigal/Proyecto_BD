@@ -18,7 +18,7 @@
                                         <fieldset>
                                             <!-- Change this to a button or input when using this as a form -->
                                             <a href="/volunteers/request/<?= $id ?>" class="btn btn-success btn-block" href="#">Solicitudes</a>
-                                            <a class="btn btn-success btn-block" href="#">Tareas</a>
+                                            <a href="/volunteers/tasks" class="btn btn-success btn-block" href="#">Tareas</a>
                                             <a href="/volunteers/assignAbility/<?= $id ?>" class="btn btn-success btn-block" href="#">Añadir Habilidades</a>
                                             </div>
                                         </fieldset>
