@@ -129,7 +129,6 @@
   {
     var x = document.getElementById('roles');
     x.onchange = selectRol;
-    alert(x.value);
   }
 
   function selectRol() {

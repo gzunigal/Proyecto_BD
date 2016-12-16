@@ -1,89 +1,76 @@
-      <article>
-            <div id="pages-form" class="container animated fadeIn">
-                <section>
-                    <div class="row">
-                        <div class="col-md-14 col-md-offset-14">
-                            <div class="panel box-shadow">
-                                <div class="panel-body center-block">
+<title>Asignar Habilidades</title>
+<body id="pages">
+    <article>
+        <div id="pages-form" class="container animated fadeIn">
+            <section>
+                <div class="row">
+                    <div class="col-md-14 col-md-offset-14">
+                        <div class="panel box-shadow">
+                            <div class="panel-body center-block">
+                            <!-- .row -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h2>Encargado - Asignar habilidades a tareas</h2>
+                                        </div>
+                                        <div class="panel-body">
+                                             <!-- .row -->
 
-                                    <!-- .row -->
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h2>Encargado - Definir Habilidad</h2>
-                                                </div>
-                                                <div class="panel-body">
+                                            <div class="row">
 
-                                                    <!-- .row -->
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                    <!-- .panel-body -->
-                                                    <form role="form" method="post" <?= 'action="/tasks/assign/'.$idMision.'/'.$idTask.'"' ?>>
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="panel panel-primary">
-                                                                <div class="panel-heading">
-                                                                    Definir habilidad
-                                                                </div>
+                                            <form method="post" action="/tasks/assign/<?= $idMision.'/'.$idTask ?> ">
+                                                <div class="col-lg-12">
+                                                    <div class="panel panel-primary">
+                                                        <!-- .panel-heading -->
+                                                        <div class="panel-body">
+                                                            <input type="hidden" name="ability_task" value=<?= $idTask ?>>
 
-                                                                <input type="hidden" name="task" value="<?= $idTask ?>">
-
-                                                                <div style="margin-top: 20px" class="form-group col-lg-12">
-                                                                    <label>Habilidades disponibles</label>
-                                                                    <select multiple class="form-control" name="all_abilities">
-                                                                        <?php
-                                                                            foreach ($abilities as $a) {
-                                                                                echo '<option value='.$a->id.'>'.$a->nombre_habilidad.'</option>';
-                                                                            }
-                                                                        ?>
-                                                                    </select>
-                                                                </div>
-
-                                                                <div style="margin-top: 20px" class="form-group col-lg-12">
-                                                                    <label>Nivel de Habilidad</label>
-                                                                    <select multiple class="form-control" name="lvl">
-                                                                        <option value=1>Baja</option>
-                                                                        <option value=2>Media</option>
-                                                                        <option value=3>Alta</option>
-                                                                    </select>
-                                                                </div>
-
-                                                                <div style="margin-top: 20px" class="form-group col-lg-12">
-                                                                    <label>Habilidades actuales</label>
-                                                                    <select multiple class="form-control">
-                                                                        <?php
-                                                                            foreach ($taskabilities as $t) {
-                                                                                echo '<option>'.$t->nombre_habilidad.'</option>';
-                                                                            }
-                                                                        ?>
-                                                                    </select>
-                                                                </div>
+                                                            <div class="form-group col-lg-12">
+                                                                <label>Habilidades actuales</label>
+                                                                <select name="ability_new" multiple class="form-control">
+                                                                    <?php foreach ($abilities as $a):?>
+                                                                        <option value=<?= $a->id ?>><?= $a->nombre_habilidad ?></option>
+                                                                       <?php endforeach; ?>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-lg-12">
+                                                                <label>Nivel requerido</label>
+                                                                <select name="ability_lvl" class="form-control">
+                                                                    <option value=1>Bajo </option>
+                                                                    <option value=2>Medio</option>
+                                                                    <option value=3>Alto</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-lg-12">
+                                                                <label>Habilidades de la tarea</label>
+                                                                <select multiple class="form-control">
+                                                                    <?php foreach ($taskAbilities as $tA):?>
+                                                                        <option value=<?= $tA->id ?>><?= $tA->ability->nombre_habilidad ?></option>
+                                                                    <?php endforeach; ?>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button class="btn m-blue btn-block" type="submit">Agregar</button>
-                                                    <a <?= 'href="/missions/view/'.$idMision.'"' ?> class="btn btn-block btn-danger">Volver</a>
                                                 </div>
+                                            
+                                                        <!-- .panel-body -->
+                                                        <div class="col-lg-12">
+                                                                <a href="/missions/view/<?= $idMision ?>" class="btn btn-danger">Volver</a>
+                                                                <button type="submit" class="btn btn-primary pull-right">Agregar</button>
+                                                        </div>
                                                 </form>
-                                            </div>
-                                            <!-- /.panel -->
-                                        </div>
-                                        <!-- /.col-lg-12 -->
-                                    </div>
-                                    <!-- /.row -->
+                                                    </div>  
+                                                </div>  <!-- /.panel body-->
+                                            </div> <!-- panel default -->
+                                        </div>  <!-- /.col-lg-12 -->
+                                    </div>  <!-- /.row --> 
                                 </div>
-
-                            </div>
-
+                            </div>  <!-- panel dody -->
                         </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-</div>
-</article>
+                    </div>  <!-- col-md-14 col-md-offset-14 -->
+                </div>  <!-- row -->
+            </section>
+        </div>  <!-- container fadeIn -->
+    </article>
+</body>

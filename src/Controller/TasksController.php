@@ -67,15 +67,20 @@ class TasksController extends AppController
         $this->loadModel('AbilitiesTasks');
         $this->loadModel('Abilities');
         
-        $this->set(compact('idMision'));
+        
 
-        $taskabilities = $this->AbilitiesTasks->find('all')->where(['AbilitiesTask.task_id' => $idTask]);
+        $taskAbilities = $this->AbilitiesTasks->find('all')
+            ->where(['AbilitiesTasks.task_id' => $idTask])
+            ->contain(['Abilities']);
+
+        
+
         $abilities = $this->Abilities->find('all');
 
-        $this->set(compact('taskabilities'));
-        $this->set(compact('abilities'));
         $this->set(compact('idMision'));
-        $this->set(compact('idTask'));
+        $this->set(compact('idTask'));   
+        $this->set(compact('taskAbilities'));
+        $this->set(compact('abilities'));
 
         $datos = $this->request->data;
         if($this->request->is('post'))
@@ -83,12 +88,17 @@ class TasksController extends AppController
             $aTasksTable = TableRegistry::get('AbilitiesTasks');
 
             $abilitiesTasks = $aTasksTable->newEntity();
+            $existe = $taskAbilities = $this->AbilitiesTasks->find('all')
+            ->where(['AbilitiesTasks.ability_id' => $datos['ability_new']]);
 
-            $abilitiesTasks->task_id            = $datos['task'];
-            $abilitiesTasks->nivel_requerido    = $datos['lvl'];
-            $abilitiesTasks->ability_id         = $datos['all_abilities'];
-
-            $aTasksTable->save($abilitiesTasks);
+            if($existe->count() == 0)
+            {
+                $abilitiesTasks->task_id            = $datos['ability_task'];
+                $abilitiesTasks->nivel_requerido    = $datos['ability_lvl'];
+                $abilitiesTasks->ability_id         = $datos['ability_new'];
+    
+                $aTasksTable->save($abilitiesTasks);
+            }
         }
     }
 
