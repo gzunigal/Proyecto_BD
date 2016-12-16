@@ -34,7 +34,15 @@ class VolunteersController extends AppController
 
     public function tasks()
     {
-        
+        $this->loadModel("TasksUsers");
+
+        $user = $this->request->session()->read('User.Entity');
+        $tareas = $this->TasksUsers->find()
+                                    ->where(["user_id"=>$user->id])
+                                    ->contain(['Tasks']);
+
+        $this->set(compact('tareas'));  
+
     }
 
     public function assignAbility($idVol)
