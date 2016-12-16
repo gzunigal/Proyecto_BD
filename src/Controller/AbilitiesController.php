@@ -20,8 +20,6 @@ class AbilitiesController extends AppController
 
         $this->set(compact('abilities'));
 
-        echo '<br><br><br>';
-
         $datos = $this->request->data;
         if($this->request->is('post'))
         {
